@@ -35,52 +35,40 @@
 						<h2>회원 가입</h2>
 					</div>
 					<!-- 아이디 -->
-					<div class="input-group mb-3">
+					<div class="input-group">
 					  <input type="text" class="form-control" placeholder="아이디" id="loginIdInput">
 					  <div class="input-group-append">
 					    <button class="btn btn-outline-danger" type="button" id="isDuplicateBtn">중복 확인</button>
 					  </div>
 					  
+					</div>	
+					
 					  <div class="small text-success d-none" id="availableId">사용가능한 아이디 입니다.</div>
 					  <div class="small text-danger d-none" id="duplicateId">중복된 아이디 입니다.</div>
-					  
-					</div>	
 					<!-- /아이디 -->
 					
-					<!-- 패스워드 -->
-					<div class="mb-3">
-						<input type="password" placeholder="패스워드" class="form-control" id="passwordInput">
-					</div>	
+					<!-- 패스워드 -->					
+					<input type="password" placeholder="패스워드" class="form-control mb-3 mt-3" id="passwordInput">					
 					<!-- /패스워드 -->
 					
-					<!-- 패스워드 확인 -->
-					<div class="mb-3">
-						<input type="password" placeholder="패스워드 확인" class="form-control" id="passwordConfirmInput">
-					</div>
+					<!-- 패스워드 확인 -->					
+					<input type="password" placeholder="패스워드 확인" class="form-control mb-3" id="passwordConfirmInput">
 					<!-- /패스워드 확인 -->
 					
 					<!-- 이름 -->
-					<div class="mb-3">
-						<input type="text" placeholder="이름" class="form-control" id="nameInput">
-					</div>
+					<input type="text" placeholder="이름" class="form-control mb-3" id="nameInput">
 					<!-- /이름 -->
 					
 					<!-- 이메일 -->
-					<div class="mb-3">
-						<input type="text" placeholder="이메일" class="form-control" id="emailInput">
-					</div>
+					<input type="text" placeholder="이메일" class="form-control mb-3" id="emailInput">
 					<!-- /이메일 -->
 					
-					<!-- 전화번호 -->
-					<div class="mb-3">
-						<input type="text" placeholder="전화 번호" class="form-control" id="phoneNumberInput">
-					</div>
+					<!-- 전화번호 -->					
+					<input type="text" placeholder="전화 번호" class="form-control mb-3" id="phoneNumberInput">
 					<!-- /전화번호 -->
 					
-					<!-- 회원가입 버튼 -->
-					<div class="mb-3">
-						<button type="button" class="btn btn-secondary btn-block" id="signupBtn">가입하기</button>  
-					</div>
+					<!-- 회원가입 버튼 -->					
+					<button type="button" class="btn btn-secondary btn-block mb-3" id="signupBtn">가입하기</button>  				
 					<!-- /회원가입 버튼 -->
 					
 					<!-- 로그인 링크 -->
@@ -102,6 +90,51 @@
 	
 	$(document).ready(function() {
 		
+		var isDuplicateCheck = false;
+		var isDuplicateId = true;
+		
+		$("#isDuplicateBtn").on("click", function() {
+			
+			let loginId = $("#loginIdInput").val();
+			
+			if(loginId == "") {
+				alert("아이디를 입력해주세요.");
+				return ;
+			}
+			
+			$.ajax({
+				
+				type:"get"
+				, url:"/user/duplicate_id"
+				, data:{"loginId":loginId}
+				, success:function(data) {
+					
+					isDuplicateCheck = true;
+					
+					//중복시	{"id_duplicate":true}
+					//중복이 아닌경우	{"id_duplicate":false}
+					if(data.id_duplicate) {
+						$("#duplicateId").removeClass("d-none");
+						$("#availableId").addClass("d-none");
+						isDuplicateId = true;
+					} else {
+						$("#duplicateId").addClass("d-none");
+						$("#availableId").removeClass("d-none");
+						isDuplicateId = false;
+					}
+					
+				}
+				, error:function() {
+					alert("중복체크 에러");
+				}
+			});
+			
+			
+			
+		});
+		
+		
+		
 		$("#signupBtn").on("click", function() {
 			
 			let loginId = $("#loginIdInput").val();
@@ -111,8 +144,30 @@
 			let email = $("#emailInput").val();
 			let phoneNumber = $("#phoneNumberInput").val();
 			
+			/* var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+			var PW = $("#passwordInput").val();
+
+			if(false === reg.test(PW)) {
+			alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+			}else {
+			console.log("통과");
+			}
+ 
+			} */
+						
 			if(loginId == "") {
 				alert("아이디를 입력해주세요.");
+				return ;
+			}
+			
+			if(isDuplicateCheck == false) {
+				alert("중복확인을 진행해주세요.");
+				return ;
+			}
+			
+			if(isDuplicateId) {
+				alert("아이디가 중복되었습니다.");
 				return ;
 			}
 			
@@ -157,7 +212,7 @@
 					alert("회원가입 에러");
 				}	
 					
-			})
+			});
 			
 		});
 		

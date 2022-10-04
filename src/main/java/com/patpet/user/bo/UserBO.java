@@ -17,4 +17,10 @@ public class UserBO {
 		
 	}
 	
+	public boolean isDuplicate(String loginId) {
+		int count = userDAO.selectCountLoginId(loginId);
+		
+		return count!= 0 ;
+	}
+	
 }
