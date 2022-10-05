@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
     
-			<div class="col-5 mt-4">
+			<div class="col-4 mt-4">
 				<!-- 이미지 -->
 				<div class="sign-image d-flex justify-content-center align-items-center mt-4">
 					<image width="350" src="/static/image/signimage.png">

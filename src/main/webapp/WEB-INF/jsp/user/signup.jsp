@@ -29,7 +29,7 @@
 			<!-- /회원가입 고정-->
 			
 			<!-- 회원가입 입력 창 -->
-			<div class="col-7 d-flex justify-content-center align-items-center">
+			<div class="col-8 d-flex justify-content-center align-items-center">
 				<div class="col-7">
 					<div class="text-center mb-4">
 						<h2>회원 가입</h2>
@@ -48,34 +48,37 @@
 					<!-- /아이디 -->
 					
 					<!-- 패스워드 -->					
-					<input type="password" placeholder="패스워드" class="form-control mb-3 mt-3" id="passwordInput">					
+					<input type="password" placeholder="패스워드" class="form-control mt-3" id="passwordInput">	
+					
+					<div class="small text-success d-none" id="availablePW">사용가능한 패스워드 입니다.</div>			
+					<div class="small text-danger d-none" id="unAvailablePW">8~16자 영문, 숫자, 특수문자를 사용하세요.</div>	
 					<!-- /패스워드 -->
 					
 					<!-- 패스워드 확인 -->					
-					<input type="password" placeholder="패스워드 확인" class="form-control mb-3" id="passwordConfirmInput">
+					<input type="password" placeholder="패스워드 확인" class="form-control mt-3" id="passwordConfirmInput">
 					<!-- /패스워드 확인 -->
 					
 					<!-- 이름 -->
-					<input type="text" placeholder="이름" class="form-control mb-3" id="nameInput">
+					<input type="text" placeholder="이름" class="form-control mt-3" id="nameInput">
 					<!-- /이름 -->
 					
 					<!-- 이메일 -->
-					<input type="text" placeholder="이메일" class="form-control mb-3" id="emailInput">
+					<input type="text" placeholder="이메일" class="form-control mt-3" id="emailInput">														
 					<!-- /이메일 -->
 					
 					<!-- 전화번호 -->					
-					<input type="text" placeholder="전화 번호" class="form-control mb-3" id="phoneNumberInput">
+					<input type="text" placeholder="전화 번호" class="form-control mt-3" id="phoneNumberInput">
 					<!-- /전화번호 -->
 					
 					<!-- 회원가입 버튼 -->					
-					<button type="button" class="btn btn-secondary btn-block mb-3" id="signupBtn">가입하기</button>  				
+					<button type="button" class="btn btn-secondary btn-block mt-3" id="signupBtn">가입하기</button>  				
 					<!-- /회원가입 버튼 -->
 					
 					<!-- 로그인 링크 -->
-					<div class="text-center">
+					<div class="text-center mt-4">
 						계정이 있으신가요? <a href="/user/signin/view">로그인</a>
 					</div>
-					<!--  -->
+					<!-- /로그인 링크 -->
 				</div>
 			</div>
 			<!-- /회원가입 입력 창 -->
@@ -90,8 +93,52 @@
 	
 	$(document).ready(function() {
 		
+		var patternNumber = /[0-9]/;
+        var patternText = /[a-zA-Z]/;
+        var patternChar = /[~!@\#$%<>^&*]/;
+        
+        
 		var isDuplicateCheck = false;
 		var isDuplicateId = true;
+		
+		
+			
+		$("#passwordInput").on("input", function() {
+			
+			let password = $("#passwordInput").val();
+		
+		// 비밀번호 길이, 입력문자 제한
+					
+		if(!patternNumber.test(password)||!patternText.test(password)||!patternChar.test(password)||password.length < 8||password.length > 16){
+
+            $("#unAvailablePW").removeClass("d-none");
+            $("#availablePW").addClass("d-none");
+
+            return ;
+
+        } else{
+        	
+        	$("#unAvailablePW").addClass("d-none");
+        	$("#availablePW").removeClass("d-none");
+        	
+        	return ;
+        }         
+		
+		
+		
+	});
+		
+		
+		// 사용자가 아이디인풋을 건드렸을때 중복체크 관련 기능 모두 초기화
+		$("#loginIdInput").on("input", function() {
+			
+			isDuplicateCheck = false;
+			isDuplicateId = true;
+			
+			$("#duplicateId").addClass("d-none");
+			$("#availableId").addClass("d-none");
+			
+		});
 		
 		$("#isDuplicateBtn").on("click", function() {
 			
@@ -144,17 +191,7 @@
 			let email = $("#emailInput").val();
 			let phoneNumber = $("#phoneNumberInput").val();
 			
-			/* var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-
-			var PW = $("#passwordInput").val();
-
-			if(false === reg.test(PW)) {
-			alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
-			}else {
-			console.log("통과");
-			}
- 
-			} */
+	        
 						
 			if(loginId == "") {
 				alert("아이디를 입력해주세요.");
@@ -176,6 +213,7 @@
 				return ;
 			}
 			
+
 			if(password != passwordConfirm) {
 				alert("비밀번호를 확인해주세요.");
 				return ;
@@ -203,7 +241,7 @@
 				, success:function(data) {
 					
 					if(data.result == "success") {
-						location.href = "/user/signin/view"
+						location.href = "/user/signin/view";
 					} else {
 						alert("회원가입 실패");
 					}

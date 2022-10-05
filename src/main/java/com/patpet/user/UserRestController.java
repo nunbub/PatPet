@@ -3,6 +3,9 @@ package com.patpet.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.patpet.user.bo.UserBO;
+import com.patpet.user.model.User;
 
 @RestController
 @RequestMapping("/user")
@@ -20,7 +24,7 @@ public class UserRestController {
 	private UserBO userBO;
 	
 	@PostMapping("/signup")
-	public Map<String, String> addUser(
+	public Map<String, String> singup(
 			@RequestParam("loginId") String loginId
 			, @RequestParam("password") String password
 			, @RequestParam("name") String name
@@ -58,5 +62,31 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	@PostMapping("/signin")
+	public Map<String, String> signin(
+			@RequestParam("loginId") String loginId
+			, @RequestParam("password") String password
+			, HttpServletRequest request) {
+		
+		User user = userBO.getUser(loginId, password);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(user != null) {
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("userId", user.getId());
+			session.setAttribute("userName", user.getName());
+			
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+		
+	}
+	
 	
 }

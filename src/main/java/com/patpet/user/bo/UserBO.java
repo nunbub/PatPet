@@ -3,7 +3,9 @@ package com.patpet.user.bo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.patpet.common.EncryptUtils;
 import com.patpet.user.dao.UserDAO;
+import com.patpet.user.model.User;
 
 @Service
 public class UserBO {
@@ -13,7 +15,9 @@ public class UserBO {
 	
 	public int addUser(String loginId, String password, String name, String email, String phoneNumber) {
 		
-		return userDAO.insertUser(loginId, password, name, email, phoneNumber);
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		return userDAO.insertUser(loginId, encryptPassword, name, email, phoneNumber);
 		
 	}
 	
@@ -21,6 +25,14 @@ public class UserBO {
 		int count = userDAO.selectCountLoginId(loginId);
 		
 		return count!= 0 ;
+	}
+	
+	public User getUser(String loginId, String password) {
+		
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		return userDAO.selectUser(loginId, encryptPassword);
+		
 	}
 	
 }
