@@ -1,11 +1,54 @@
 @charset "UTF-8";
 
-#signin-page {
-	height:800px;
-	width:1200px;
+
+hr {
+	margin:0;
+	padding:0;
+}
+
+.main-menu {
+	font-size:21px;		
+}
+
+.nav li:hover > a{
+	background-color:#eeeeee;	
+}
+
+.detail-menu {
+	list-style:none;
+	padding:0;
+	margin:0;
+	position:absolute;
+	top:49px;
+	width:164px;
+	text-align:center;
+	font-size:15px;
+	background-color:#eeeeee;
+	opacity:0;
+}
+
+.nav li:hover ul {
+	opacity:1;
+}
+
+.nav ul a {
+	color:black;
+}
+
+.nav ul li:hover a{
+	background:#dcdcdc;
+	font-weight:bold;	
 }
 
 
+
+.dog-title {
+	background:#eeeeee;
+}
+
+.cat-title {
+	background:#eeeeee;
+}
 
 
 

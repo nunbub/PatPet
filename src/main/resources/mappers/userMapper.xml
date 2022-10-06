@@ -40,7 +40,7 @@
 			
 	</select>
 	
-	<select id="selectUser" parameterType="String" resultType="com.patpet.user.model.User">
+	<select id="selectUser" parameterType="map" resultType="com.patpet.user.model.User">
 		SELECT 
 			`id`
 			, `loginId`
