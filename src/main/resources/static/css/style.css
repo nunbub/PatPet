@@ -50,9 +50,41 @@ hr {
 	background:#eeeeee;
 }
 
+.patpet {
+	font-size:40px;
+	font-weight:bold;
+}
 
+.introduce {
+	font-size:30px;
+}
 
+.intent {
+	font-size:23px;
+	font-weight:bold;
+}
 
+.create-post {
+	font-size:37px;
+	font-weight:bold;
+}
+
+.bi-card-image {
+	font-size:25px;
+}
+
+.state {
+	background:#eeeeee;
+}
+
+.post-list {
+	flex-wrap:wrap;
+}
+
+.create-btn {
+	font-size:40px;
+	color:black;
+}
 
 
 
