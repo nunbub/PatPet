@@ -54,8 +54,24 @@
 			`user`
 		WHERE
 			`loginId` = #{loginId}
-			AND `password` = #{password}			
+			AND `password` = #{password}
+				
+	</select>
 	
+	<select id="selectUserById" parameterType="int" resultType="com.patpet.user.model.User">
+		SELECT
+			`id`
+			, `loginId`
+			, `password`
+			, `name`
+			, `email`
+			, `phoneNumber`
+			, `createdAt`
+			, `updatedAt`
+		FROM	
+			`user`
+		WHERE
+			`id` = #{id}		
 	</select>
 
 </mapper>  

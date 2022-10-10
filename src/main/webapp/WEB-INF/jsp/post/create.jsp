@@ -28,8 +28,8 @@
 			<div class="d-flex justify-content-between">
 				<div class="create-post p-3">게시물 등록하기</div>
 				<div class="d-flex align-items-center p-3">
-					<button type="button" class="btn btn-block btn-secondary mr-3">수정하기</button>
-					<button type="button" class="btn btn-block btn-danger mb-2">삭제하기</button>
+					<button type="button" class="btn btn-success">수정하기</button>
+					
 				</div>
 			</div>
 			
@@ -148,6 +148,10 @@
 			}
 			
 			let formData = new FormData();
+			formData.append("title", title);
+			formData.append("name", name);
+			formData.append("category", category);
+			formData.append("state", state);
 			formData.append("content", content);
 			formData.append("file", $("#fileInput")[0].files[0]);
 			

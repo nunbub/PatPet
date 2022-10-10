@@ -34,6 +34,35 @@
 		)
 	
 	</insert>
+	
+	<select id="selectPostList" resultType="com.patpet.post.model.Post">
+		SELECT
+			`id`
+			, `userId`
+			, `imagePath`
+			, `title`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		ORDER BY `id` DESC;		
+	
+	</select>
+	
+	<update id="updatePost" parameterType="map">
+		UPDATE
+			`post`
+		SET
+			`title` = #{title}
+			, `name` = #{name}
+			, `category` = #{category}	
+			, `state` = #{state}
+			, `content` = #{content}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{postId}	
+	</update>
 
 
 </mapper>  

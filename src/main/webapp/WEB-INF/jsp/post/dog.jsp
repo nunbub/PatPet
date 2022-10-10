@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 					<h3 class="mt-2">강아지를 '쓰다듬다'</h3>
 				</div>
 				
-				<div class="small text-secondary ml-4">
+				<div class="small text-secondary text-center ml-4">
 					개는 자신보다 당신을 더 사랑하는 이 세상의 유일한 생명체입니다. <br>
 					- Josh Billings -
 				</div>
@@ -37,15 +38,18 @@
 			
 			<!-- 등록된 게시물 리스트 -->
 			<div class="d-flex justify-content-evenly align-items-center post-list my-4 ml-5">
-				<c:forEach var="post" items="${post }">
+				<c:forEach var="postDetail" items="${postList}">
+				<a href="/post/detail/view">
 				<div class="m-4">
-					<img src="${post.imagePath }" width="300" height="300">	
+					<img src="${postDetail.post.imagePath}" width="250" height="250">	
 					<div>
-						<div><b>${post.title }</b></div>
-						<div class="state">${post.state }</div>
-						<div class="small text-secondary">${post.updatedAt }</div>
+						<div><b class="text-dark post-title">${postDetail.post.title}</b></div>
+						<div class="state text-dark">${postDetail.post.state }</div>
+						<div class="text-dark"> 작성자 : ${postDetail.user.name }</div>
+						<div class="small text-secondary"><fmt:formatDate value="${postDetail.post.createdAt }" pattern="yyyy-MM-dd" /></div>
 					</div>				
 				</div>	
+				</a>
 				</c:forEach>
 			
 			</div>
