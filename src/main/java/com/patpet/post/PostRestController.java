@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +20,7 @@ public class PostRestController {
 	@Autowired
 	private PostBO postBO;
 
+	@PostMapping("/post/create")
 	public Map<String, String> create(
 			@RequestParam("title") String title
 			, @RequestParam("name") String name
