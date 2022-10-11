@@ -37,10 +37,10 @@
 				
 				<!-- 강아지 게시물 -->				
 				<div class="d-flex">
-					<c:forEach var="i" begin="1" end="4" step="1">
+					<c:forEach var="postDetail" items="${postList }">
 				 	<div class="m-3">
-						<img src="https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313__340.jpg" width="250" height="250">
-						<div class="text-center">제목</div>
+						<img src="${postDetail.post.imagePath }" width="250" height="250">
+						<div class="text-center">${postDetail.post.title }</div>
 					</div>
 					</c:forEach>
 				</div>

@@ -47,5 +47,15 @@ public class PostRestController {
 		return result;
 	}
 	
+	public Map<String, String> update(
+			@RequestParam("postId") int postId
+			, @RequestParam("title") String title
+			, @RequestParam("name") String name
+			, @RequestParam("category") String category
+			, @RequestParam("state") String state
+			, @RequestParam("content") String content
+			, @RequestParam(value="file", required=false) MultipartFile file) {
+		
+	}
 	
 }

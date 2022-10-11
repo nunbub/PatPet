@@ -40,21 +40,21 @@
 				</div>
 			</div>
 			
-			<div class="d-flex">
-				<div class="m-3">
-					<c:if test="${user.id eq post.userId}">
-					<button type="button" class="btn btn-block btn-danger">삭제하기</button>
+			<div class="d-flex justify-content-between">
+				<div class="m-3 d-flex">
+					<c:if test="${userId eq post.userId}">
+					<button type="button" class="btn btn-block btn-danger m-2">삭제하기</button>
+					<button type="button" class="btn btn-block btn-primary m-2">수정하기</button>
+					</c:if>
+				</div>
+				
+				<div class="mt-4">
+					<c:if test="${not empty userId}">
+					<a href="/question/create/view" class="btn btn-warning mr-2">문의하기</a>
 					</c:if>
 					
 					<a href="/post/" class="btn btn-secondary">목록으로</a>
 					
-				</div>
-				
-				<div>
-					<c:if test="${user.id eq post.userId}">
-					<a href="/question/create/view">문의하기</a>
-					<button type="button" class="btn btn-block btn-primary">수정하기</button>
-					<</c:if>
 				</div>
 			</div>
 			

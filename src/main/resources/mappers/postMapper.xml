@@ -68,24 +68,7 @@
 			`id` = #{id}		
 	</select>
 	
-	<select id="selectPostByUserId" parameterType="int" resultType="com.patpet.post.model.Post">
-		SELECT	
-			`id`
-			, `userId`
-			, `title`
-			, `name`
-			, `category`
-			, `state`
-			, `content`
-			, `imagePath`
-			, `createdAt`
-			, `updatedAt`
-		FROM	
-			`post`
-		WHERE
-			`userId` = #{userId}
-			AND `id` = #{id}		
-	</select>
+	
 
 
 </mapper>  
