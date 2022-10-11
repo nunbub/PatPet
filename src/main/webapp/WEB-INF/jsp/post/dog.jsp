@@ -39,17 +39,17 @@
 			<!-- 등록된 게시물 리스트 -->
 			<div class="d-flex justify-content-evenly align-items-center post-list my-4 ml-5">
 				<c:forEach var="postDetail" items="${postList}">
-				<a href="/post/detail/view">
 				<div class="m-4">
-					<img src="${postDetail.post.imagePath}" width="250" height="250">	
+				
+					<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="250" height="250"></a>	
 					<div>
 						<div><b class="text-dark post-title">${postDetail.post.title}</b></div>
 						<div class="state text-dark">${postDetail.post.state }</div>
 						<div class="text-dark"> 작성자 : ${postDetail.user.name }</div>
 						<div class="small text-secondary"><fmt:formatDate value="${postDetail.post.createdAt }" pattern="yyyy-MM-dd" /></div>
 					</div>				
+				
 				</div>	
-				</a>
 				</c:forEach>
 			
 			</div>

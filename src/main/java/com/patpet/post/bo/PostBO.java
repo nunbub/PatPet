@@ -63,6 +63,25 @@ public class PostBO {
 		return postDAO.selectPost(id);
 	}
 	
+	public List<PostDetail> getPostByUserId(int loginId) {
+		
+		List<Post> postByUserId = postDAO.selectPostByUserId();
+		List<PostDetail> postDetailByUserIdList = new ArrayList<>();
+		
+		for(Post post : postByUserId) {
+			int userId = post.getUserId();
+			User user = userBO.getUserById(userId);
+			
+			PostDetail postDetailByUserId = new PostDetail();
+			postDetailByUserId.setPost(post);
+			postDetailByUserId.setUser(user);
+			
+			postDetailByUserIdList.add(postDetailByUserId);
+		}
+		
+		return postDetailByUserIdList;
+		
+	}
 	
 	
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt %>      
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,35 +23,49 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 	
 		<section>
-			<div>
-				<div>제목</div>
+			
+			
+			<div class="d-flex m-4 justify-content-between align-items-center">
+				<h1>${post.title }</h1>
 				<div>관심 5명 + 하트 아이콘</div>
 			</div>
-			<div>게시물 등록 날짜</div>
+			<div class="ml-4"><fmt:formatDate value="${post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 			
-			<div>
-				<div><img src=""></div>
+			<div class="m-4 d-flex">
+				<div><img src="${post.imagePath }" width="400" height="400"></div>
 				
-				<div>
-					<div>이름</div>
-					<div>내용</div>
+				<div class="ml-4">
+					<div class="detail-name">이름 : ${post.name }</div>
+					<div class="mt-3 detail-content p-3">${post.content }</div>
 				</div>
 			</div>
 			
-			<div>
-				<%-- <c:if test="${not empty loginId }"> --%>
-				<button type="button" class="btn btn-block btn-danger">삭제하기</button>
-				<%-- </c:if> --%>
-				<a href="/post/">목록으로</a>
+			<div class="d-flex">
+				<div class="m-3">
+					<c:if test="${user.id eq post.userId}">
+					<button type="button" class="btn btn-block btn-danger">삭제하기</button>
+					</c:if>
+					
+					<a href="/post/" class="btn btn-secondary">목록으로</a>
+					
+				</div>
 				
-				<%-- <c:if test="${not empty loginId }"> --%>
-				<a href="/question/create/view">문의하기</a>
-				<button type="button" class="btn btn-bolck btn-primary">수정하기</button>
-				<%-- </c:if> --%>
+				<div>
+					<c:if test="${user.id eq post.userId}">
+					<a href="/question/create/view">문의하기</a>
+					<button type="button" class="btn btn-block btn-primary">수정하기</button>
+					<</c:if>
+				</div>
 			</div>
+			
 		</section>
 	
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<script>
+	
+	
+	</script>
 </body>
 </html>

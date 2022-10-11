@@ -90,6 +90,13 @@ hr {
 	font-size:22px;
 }
 
+.detail-name {
+	font-size:25px;
+}
+
+.detail-content {
+	border:1px solid grey;
+}
 
 
 

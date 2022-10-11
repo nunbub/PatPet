@@ -23,3 +23,4 @@
 				</c:otherwise>
 			</c:choose>
 		</header>
+		<hr>
