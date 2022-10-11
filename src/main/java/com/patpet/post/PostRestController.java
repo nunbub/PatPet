@@ -47,15 +47,5 @@ public class PostRestController {
 		return result;
 	}
 	
-	@PostMapping("/update")
-	public Map<String, String> updatePost(
-			@RequestParam("postId") int postId
-			, @RequestParam("title") String title
-			, @RequestParam("name") String name
-			, @RequestParam("category") String category
-			, @RequestParam("state") String state
-			, @RequestParam("content") String content) {
-		
-	}
 	
 }

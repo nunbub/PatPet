@@ -50,19 +50,23 @@
 	
 	</select>
 	
-	<update id="updatePost" parameterType="map">
-		UPDATE
+	<select id="selectPost" parameterType="int" resultType="com.patpet.post.model.Post">
+		SELECT
+			`id`
+			, `userId`
+			, `title`
+			, `name`
+			, `category`
+			, `state`
+			, `content`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
 			`post`
-		SET
-			`title` = #{title}
-			, `name` = #{name}
-			, `category` = #{category}	
-			, `state` = #{state}
-			, `content` = #{content}
-			, `updatedAt` = now()
 		WHERE
-			`id` = #{postId}	
-	</update>
+			`id` = #{id}		
+	</select>
 
 
 </mapper>  

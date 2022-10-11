@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt %>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +27,10 @@
 				<div>제목</div>
 				<div>관심 5명 + 하트 아이콘</div>
 			</div>
-			<div>게시글 작성 날짜</div>
+			<div>게시물 등록 날짜</div>
 			
 			<div>
-				<div><img src="https://cdn.pixabay.com/photo/2016/11/29/11/26/dog-1869167__480.jpg"></div>
+				<div><img src=""></div>
 				
 				<div>
 					<div>이름</div>
@@ -38,11 +39,15 @@
 			</div>
 			
 			<div>
-				<button>삭제하기</button>
-				<a>목록으로</a>
+				<%-- <c:if test="${not empty loginId }"> --%>
+				<button type="button" class="btn btn-block btn-danger">삭제하기</button>
+				<%-- </c:if> --%>
+				<a href="/post/">목록으로</a>
 				
-				<a>문의하기</a>
-				<button>수정하기</button>
+				<%-- <c:if test="${not empty loginId }"> --%>
+				<a href="/question/create/view">문의하기</a>
+				<button type="button" class="btn btn-bolck btn-primary">수정하기</button>
+				<%-- </c:if> --%>
 			</div>
 		</section>
 	

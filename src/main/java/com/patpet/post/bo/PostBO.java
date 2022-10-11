@@ -63,8 +63,6 @@ public class PostBO {
 		return postDAO.selectPost(id);
 	}
 	
-	public int updatePost(int postId, String title, String name, String category, String state, String content) {
-		
-	}
+	
 	
 }

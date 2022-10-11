@@ -24,12 +24,5 @@ public interface PostDAO {
 	
 	public Post selectPost(@Param("id") int id);
 	
-	public int updatePost(
-			@Param("postId") int postId
-			, @Param("title") String title
-			, @Param("name") String name
-			, @Param("category") String category
-			, @Param("state") String state
-			, @Param("content") String content);
 	
 }
