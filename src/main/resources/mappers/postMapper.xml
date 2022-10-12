@@ -46,6 +46,8 @@
 			, `updatedAt`
 		FROM
 			`post`
+		WHERE	
+			`category` = #{category}	
 		ORDER BY `id` DESC;		
 	
 	</select>
@@ -68,7 +70,27 @@
 			`id` = #{id}		
 	</select>
 	
+	<update id="updatePost" parameterType="map">
+		UPDATE
+			`post`
+		SET
+			`title` = #{title}
+			, `name` = #{name}
+			, `category` = #{category}
+			, `state` = #{state}
+			, `content` = #{content}	
+			, `imagePath` = #{imagePath}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{postId}	
+	</update>
 	
+	<delete id="deletePost" parameterType="int">
+		DELETE FROM
+			`post`
+		WHERE
+			`id` = #{postId}	
+	</delete>
 
 
 </mapper>  

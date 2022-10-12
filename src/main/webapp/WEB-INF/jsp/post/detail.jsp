@@ -26,7 +26,7 @@
 			
 			
 			<div class="d-flex m-4 justify-content-between align-items-center">
-				<h1>${post.title }</h1>
+				<h1>${post.title }</h1>				
 				<div>관심 5명 + 하트 아이콘</div>
 			</div>
 			<div class="ml-4"><fmt:formatDate value="${post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
@@ -43,17 +43,17 @@
 			<div class="d-flex justify-content-between">
 				<div class="m-3 d-flex">
 					<c:if test="${userId eq post.userId}">
-					<button type="button" class="btn btn-block btn-danger m-2">삭제하기</button>
-					<button type="button" class="btn btn-block btn-primary m-2">수정하기</button>
+					<button type="button" class="btn btn-block btn-danger m-2" id="deleteBtn" data-post-id="${post.id }">삭제하기</button>
+					<a href="/post/update/view?id=${post.id }" class="btn btn-primary m-2 text-white" id="updateBtn">수정하기</a>
 					</c:if>
 				</div>
 				
-				<div class="mt-4">
+				<div class="my-4">
 					<c:if test="${not empty userId}">
 					<a href="/question/create/view" class="btn btn-warning mr-2">문의하기</a>
 					</c:if>
 					
-					<a href="/post/" class="btn btn-secondary">목록으로</a>
+					<a href="/post/list/view?category=${post.category }" class="btn btn-secondary">목록으로</a>
 					
 				</div>
 			</div>
@@ -64,7 +64,32 @@
 	</div>
 	
 	<script>
-	
+	$(document).ready(function() {
+		
+		$("#deleteBtn").on("click", function() {
+			let postId = $(this).data("post-id");
+			
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/delete"
+				, data:{"postId":postId}
+				, success:function(data) {
+					
+					if(data.result == "success") {
+						location.href="/post/main/view";
+					} else {
+						alert("삭제 실패");
+					}
+					
+				}
+				, error:function() {
+					alert("삭제 에러");
+				}
+			});
+		});
+		
+	});
 	
 	</script>
 </body>

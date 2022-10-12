@@ -34,5 +34,5 @@ public class UserController {
 		
 	}
 	
-	public 
+	
 }

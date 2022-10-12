@@ -20,7 +20,7 @@ public interface PostDAO {
 			, @Param("content") String content
 			, @Param("imagePath") String imagePath);
 	
-	public List<Post> selectPostList();
+	public List<Post> selectPostList(@Param("category") String category);
 	
 	public Post selectPost(@Param("id") int id);
 	
@@ -32,5 +32,7 @@ public interface PostDAO {
 			, @Param("state") String state
 			, @Param("content") String content
 			, @Param("imagePath") String imagePath);
+	
+	public int deletePost(@Param("postId") int postId);
 	
 }

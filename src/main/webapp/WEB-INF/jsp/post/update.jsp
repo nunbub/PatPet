@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>      
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>패트펫 게시물 입력 페이지</title>
+<title>패트펫 게시물 수정 페이지</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -15,9 +16,10 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+
 </head>
 <body>
-
+	
 	<div class="container">
 		
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
@@ -25,19 +27,15 @@
 		<c:import url="/WEB-INF/jsp/include/nav.jsp" />
 		
 		<section>
-			<div class="d-flex justify-content-between">
-				<div class="create-post p-3">게시물 등록하기</div>
-				<div class="d-flex align-items-center p-3">
-					<button type="button" class="btn btn-success">수정하기</button>
-					
-				</div>
+			<div>
+				<div class="create-post p-3">게시물 수정하기</div>				
 			</div>
 			
 			<!-- 게시물 입력창 -->
 			<div>
 				<!-- 게시물 제목 -->
 				<div class="d-flex align-items-center justify-content-center">
-					<div class="text-center col-1">제목</div> <input type="text" placeholder="제목을 입력해주세요." class="form-control col-11" id="titleInput">
+					<div class="text-center col-1">제목</div> <input value="${post.title }" type="text" class="form-control col-11" id="titleInput">
 				</div>
 				<!-- /게시물 제목 -->
 				
@@ -45,7 +43,7 @@
 				<div class="mt-3 d-flex align-items-center justify-content-center">
 					<!-- 아이 이름 -->
 					<div class="col-4 d-flex align-items-center justify-content-center">
-						<div class="col-3">이름</div> <input type="text" placeholder="아이의 이름을 입력해주세요." class="form-control col-9" id="nameInput">
+						<div class="col-3">이름</div> <input type="text" value="${post.name }"class="form-control col-9" id="nameInput">
 					</div>
 					<!-- /아이 이름 -->
 					
@@ -82,7 +80,7 @@
 					
 					<div class="pb-2">
 					<a href="#" id="imageIcon"> <i class="bi bi-card-image text-dark"></i> </a>
-					<input type="file" id="fileInput" class="d-none">
+					<input type="file" id="fileInput" class="d-none" >
 					</div>
 				</div>
 				<!-- /사진 업로드 -->
@@ -90,7 +88,7 @@
 				<!-- 게시물 내용 -->
 				<div class="mt-3 mb-5 ml-4 pl-2">
 					<div>아이를 소개해 주세요.</div>
-					<textarea class="form-control mt-3" rows="10" cols="50" placeholder="아이를 소개해주세요." id="introduce-textbox"></textarea>
+					<textarea class="form-control mt-3" rows="10" cols="50" id="introduce-textbox">${post.content }</textarea>
 				</div>
 				<!-- /게시물 내용 -->
 				
@@ -98,24 +96,26 @@
 			<!-- /게시물 입력창 -->
 			<div class="d-flex justify-content-between align-items-center p-3">
 				<a href="/post/list/view?category=${post.category }" class="btn btn-secondary">목록으로</a>
-				<button type="button" class="btn btn-primary" id="createBtn">등록하기</button>
+				<button type="button" class="btn btn-success" id="updateBtn" data-post-id="${post.id }">수정하기</button>
 			</div>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
 	</div>
-
+	
 	<script>
 	$(document).ready(function() {
 		
-		$("#createBtn").on("click", function() {
+		$("#updateBtn").on("click", function() {
 			
 			let title = $("#titleInput").val();
 			let name = $("#nameInput").val();
 			let category = $("#categorySelect").val();
 			let state = $("#stateSelect").val();
 			let content = $("#introduce-textbox").val();
+			
+			let postId = $(this).data("post-id");
 			
 			if(title == "") {
 				alert("제목을 입력해주세요.");
@@ -148,6 +148,8 @@
 			}
 			
 			let formData = new FormData();
+			
+			formData.append("postId", postId)
 			formData.append("title", title);
 			formData.append("name", name);
 			formData.append("category", category);
@@ -157,7 +159,7 @@
 			
 			$.ajax({
 				type:"post"
-				, url:"/post/create"
+				, url:"/post/update"
 				, data:formData
 				, enctype:"multipart/form-data"
 				, processData:false
@@ -165,21 +167,22 @@
 				, success:function(data) {
 					
 					if(data.result == "success") {
-						location.href="/post/list/view?category="+category;
-					} else{
-						alert("업로드 실패");
+						location.href="/post/detail/view?id="+postId;
+					} else {
+						alert("수정 실패");
 					}
+					
 				}
-				,error:function() {
-					alert("업로드 에러");
+				, error:function() {
+					alert("수정 에러");
 				}
 			});
-		});
+			
+		}); 
 		
 		$("#imageIcon").on("click", function() {
 			$("#fileInput").click();
 		});
-		
 		
 	});
 	

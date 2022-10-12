@@ -39,20 +39,23 @@ public class PostController {
 		return "post/create";
 	}
 	
-	@GetMapping("/dog/view")
-	public String dogPage(Model model
+	@GetMapping("/list/view")
+	public String listPage(
+			@RequestParam("category") String category
+			, Model model
 			, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		List<PostDetail> postList = postBO.getPostList(userId);
+		List<PostDetail> postList = postBO.getPostList(userId, category);
 		
 		model.addAttribute("postList", postList);
 		
-		return "post/dog";
+		return "post/list";
 	}
+	
 	
 	@GetMapping("/detail/view")
 	public String detail(@RequestParam("id") int id, Model model) {
@@ -61,6 +64,16 @@ public class PostController {
 		
 		model.addAttribute("post", post);
 		return "post/detail";
+	}
+	
+	@GetMapping("/update/view")
+	public String update(@RequestParam("id") int id, Model model) {
+		
+		Post post = postBO.getPost(id);
+		
+		model.addAttribute("post", post);
+		
+		return "post/update";
 	}
 	
 	

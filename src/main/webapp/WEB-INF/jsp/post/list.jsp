@@ -26,19 +26,51 @@
 		<section>
 			
 			<div class="d-flex m-3">
-				<div class="col-4 dog-title text-center main-dog">
-					<h3 class="mt-2">강아지를 '쓰다듬다'</h3>
-				</div>
+				<c:choose>
+					<c:when test="${category eq 'dog'}">
+					
+						<div class="col-4 dog-title text-center main-dog">
+							<h3 class="mt-2">강아지를 '쓰다듬다'</h3>
+						</div>
+						<div class="small text-secondary text-center ml-4">
+						개는 자신보다 당신을 더 사랑하는 이 세상의 유일한 생명체입니다. <br>
+						- Josh Billings -
+						</div>
+					
+					</c:when>
+						
+					<c:when test="${category eq 'cat'}">
+					
+						<div class="col-4 dog-title text-center main-dog">
+							<h3 class="mt-2">고양이를 '쓰다듬다'</h3>
+						</div>
+						<div class="small text-secondary text-center ml-4">
+						고양이는 세상 모두가 자기를 사랑해주길 바라지 않는다. 다만 자기가 선택한 사람이 자기를 사랑해주길 바랄 뿐이다.<br>
+						- Helen Thomson -
+						</div>
+						
+				 	</c:when>
+					
+					<c:otherwise>
+					
+						<div class="col-4 dog-title text-center main-dog">
+							<h3 class="mt-2">기타동물을 '쓰다듬다'</h3>
+						</div>
+						<div class="small text-secondary text-center ml-4">
+						인간에게는 동물을 다스릴 권리가 있는 것이 아니라, 모든 생명체를 지킬 의무가 있다.<br>
+						- Jane Morris Goodall -
+						</div>
+					
+					</c:otherwise>
+				</c:choose>
 				
-				<div class="small text-secondary text-center ml-4">
-					개는 자신보다 당신을 더 사랑하는 이 세상의 유일한 생명체입니다. <br>
-					- Josh Billings -
-				</div>
+			
 			</div>
 			
 			<!-- 등록된 게시물 리스트 -->
 			<div class="d-flex justify-content-evenly align-items-center post-list my-4 ml-5">
 				<c:forEach var="postDetail" items="${postList}">
+				<c:if test="${postDetail.post.category }" >
 				<div class="m-4">
 				
 					<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="250" height="250"></a>	
@@ -50,6 +82,7 @@
 					</div>				
 				
 				</div>	
+				</c:if>
 				</c:forEach>
 			
 			</div>

@@ -36,15 +36,16 @@ public class PostBO {
 		return postDAO.insertPost(userId, title, name, category, state, content, imagePath);
 	}
 	
-	public List<PostDetail> getPostList(int loginId) {
+	public List<PostDetail> getPostList(int loginId, String category) {
 		
-		List<Post> postList = postDAO.selectPostList();
+		List<Post> postList = postDAO.selectPostList(category);
 		
 		List<PostDetail> postDetailList = new ArrayList<>();
 		
 		for(Post post : postList) {
 			
 			int userId = post.getUserId();
+			
 			User user = userBO.getUserById(userId);
 			
 			PostDetail postDetail = new PostDetail();
@@ -63,9 +64,34 @@ public class PostBO {
 		return postDAO.selectPost(id);
 	}
 	
-	public int updatePost(int postId, String title,  String name, String category, String state, String content, String imagePath) {
+	public int updatePost(int userId, int postId, String title,  String name, String category, String state, String content, MultipartFile file) {
 	
+		Post post = postDAO.selectPost(postId);
 		
+		FileManagerService.removeFile(post.getImagePath());
+		
+		String imagePath = null;
+		
+		if(file != null) {
+			imagePath = FileManagerService.saveFile(userId, file);
+			
+			if(imagePath == null) {
+				return 0;
+			}
+		}
+		
+		
+		return postDAO.updatePost(postId, title, name, category, state, content, imagePath);
+		
+	}
+	
+	public int deletePost(int postId) {
+		
+		Post post = postDAO.selectPost(postId);
+		
+		FileManagerService.removeFile(post.getImagePath());
+		
+		return postDAO.deletePost(postId);
 		
 	}
 	

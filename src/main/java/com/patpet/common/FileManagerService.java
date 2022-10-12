@@ -44,5 +44,44 @@ public class FileManagerService {
 		
 	}
 	
+	// 파일 삭제 기능
+	public static boolean removeFile(String filePath) {
+		
+		if(filePath == null) {
+			return true;
+		}
+		
+		String realFilePath = FILE_UPLOAD_PATH + filePath.replace("/images", "");
+		
+		Path path = Paths.get(realFilePath);
+		
+		// 파일이 존재 확인
+		if(Files.exists(path)) {
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		// 디렉토리 삭제
+		path = path.getParent();
+		// 디렉토리 존재 확인
+		if(Files.exists(path)) {
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		return true;
+		
+	}
+	
 }
 
