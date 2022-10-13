@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>패트펫 강아지 게시물 페이지</title>
+<title>페트펫 게시물 리스트 페이지</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -25,9 +25,10 @@
 	
 		<section>
 			
+			
 			<div class="d-flex m-3">
 				<c:choose>
-					<c:when test="${category eq 'dog'}">
+					<c:when test="${param.category == 'dog'}">
 					
 						<div class="col-4 dog-title text-center main-dog">
 							<h3 class="mt-2">강아지를 '쓰다듬다'</h3>
@@ -39,13 +40,13 @@
 					
 					</c:when>
 						
-					<c:when test="${category eq 'cat'}">
+					<c:when test="${param.category == 'cat' }">
 					
 						<div class="col-4 dog-title text-center main-dog">
 							<h3 class="mt-2">고양이를 '쓰다듬다'</h3>
 						</div>
 						<div class="small text-secondary text-center ml-4">
-						고양이는 세상 모두가 자기를 사랑해주길 바라지 않는다. 다만 자기가 선택한 사람이 자기를 사랑해주길 바랄 뿐이다.<br>
+						고양이는 세상 모두가 자기를 사랑해주길 바라지 않는다. <br>다만 자기가 선택한 사람이 자기를 사랑해주길 바랄 뿐이다.<br>
 						- Helen Thomson -
 						</div>
 						
@@ -66,23 +67,22 @@
 				
 			
 			</div>
-			
 			<!-- 등록된 게시물 리스트 -->
 			<div class="d-flex justify-content-evenly align-items-center post-list my-4 ml-5">
-				<c:forEach var="postDetail" items="${postList}">
-				<c:if test="${postDetail.post.category }" >
-				<div class="m-4">
-				
-					<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="250" height="250"></a>	
-					<div>
-						<div><b class="text-dark post-title">${postDetail.post.title}</b></div>
-						<div class="state text-dark">${postDetail.post.state }</div>
-						<div class="text-dark"> 작성자 : ${postDetail.user.name }</div>
-						<div class="small text-secondary"><fmt:formatDate value="${postDetail.post.createdAt }" pattern="yyyy-MM-dd" /></div>
-					</div>				
-				
-				</div>	
-				</c:if>
+				<c:forEach var="postDetail" items="${postList}">			
+					<c:if test="${param.category eq postDetail.post.category }" >
+						<div class="m-4">
+						
+							<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="250" height="250"></a>	
+							<div>
+								<div><b class="text-dark post-title">${postDetail.post.title}</b></div>
+								<div class="state text-dark">${postDetail.post.state }</div>
+								<div class="text-dark"> 작성자 : ${postDetail.user.name }</div>
+								<div class="small text-secondary"><fmt:formatDate value="${postDetail.post.createdAt }" pattern="yyyy-MM-dd" /></div>
+							</div>				
+						
+						</div>	
+					</c:if>
 				</c:forEach>
 			
 			</div>

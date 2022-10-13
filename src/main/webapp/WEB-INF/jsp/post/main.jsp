@@ -29,45 +29,36 @@
 		
 		<!-- 메인 페이지 -->
 		<section class="main-content mt-4">
-			<!-- 강아지를 '쓰다듬다' -->
-			<div class="main-dog">
-				<div class="col-4 dog-title text-center">
-					<h3>강아지를 '쓰다듬다'</h3>
-				</div>
-				
-				<!-- 강아지 게시물 -->				
-				<div class="d-flex">
-					<c:forEach var="postDetail" items="${postList }">
-				 	<div class="m-3">
-						<img src="${postDetail.post.imagePath }" width="250" height="250">
-						<div class="text-center">${postDetail.post.title }</div>
-					</div>
-					</c:forEach>
-				</div>
-				<!-- /강아지 게시물 -->
+			<div class="d-flex justify-content-center align-items-center">
+				<a href="https://www.animal.go.kr/front/index.do"><img src="/static/image/main-image/main-image1.jpg" width="1100" height="550" id="mainImage"></a>
 				
 			</div>
-			<!-- /강아지를 '쓰다듬다' -->
-			
-			<!-- 고양이를 '쓰다듬다' -->
-			<div class="main-cat">
-				<div class="col-4 cat-title text-center">
-					<h3>고양이를 '쓰다듬다'</h3>
-				</div>
-				
-				<!-- 고양이 게시물 -->				
-				<div class="d-flex">
-					<c:forEach var="i" begin="1" end="4" step="1">
-				 	<div class="m-3">
-						<img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554__340.jpg" width="250" height="250">
-						<div class="text-center">제목</div>
+					
+			<div class="d-flex justify-content-around my-4">
+				<div class="col-6">
+					<div class="main-animal text-center">새로운 친구</div>
+					<div class="d-flex justify-content-center align-items-center">
+						<c:forEach var="postDetail" items="${postList }">
+						${postDetail.post.name }
+						<div class="text-center">
+							<img src="${postDetail.post.imagePath }">
+							<div>${postDetail.post.title }</div>
+							<div>작성자 : ${postDetail.user.name }</div>
+						</div>
+						</c:forEach>
 					</div>
-					</c:forEach>
 				</div>
-				<!-- /고양이 게시물 -->
+				<div class="col-6">
+					<div class="main-review text-center">새로운 이후 이야기</div>
+					<div class="d-flex justify-content-center align-items-center">
+						<div class="text-center">
+							<img src="">
+							<div>제목</div>
+							<div>작성자</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<!-- /고양이를 '쓰다듬다' -->
-		
 		</section>
 		<!-- /메인 페이지 -->
 		<hr>
@@ -75,6 +66,33 @@
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
 	</div>
+	
+	<script>
+	 
+	$(document).ready(function() {
+		
+		var mainImageList = [
+			"/static/image/main-image/main-image1.jpg"
+			, "/static/image/main-image/main-image2.jpg"
+			, "/static/image/main-image/main-image3.jpg"
+			, "/static/image/main-image/main-image4.jpg"
+			, "/static/image/main-image/main-image5.jpg"]
+		var currentImageIndex = 0;
+		
+		setInterval(function() {
+			$("#mainImage").attr("src", mainImageList[currentImageIndex]);
+			currentImageIndex++;
+			
+			if(currentImageIndex == mainImageList.length) {
+				currentImageIndex = 0;
+			}
+		}, 5000);
+		
+	});
+	
+	
+		
+	</script>
 
 </body>
 </html>

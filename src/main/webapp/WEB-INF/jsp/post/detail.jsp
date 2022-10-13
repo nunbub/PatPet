@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>패트펫 게시물 디테일 페이지</title>
+<title>페트펫 게시물 디테일 페이지</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -43,7 +43,7 @@
 			<div class="d-flex justify-content-between">
 				<div class="m-3 d-flex">
 					<c:if test="${userId eq post.userId}">
-					<button type="button" class="btn btn-block btn-danger m-2" id="deleteBtn" data-post-id="${post.id }">삭제하기</button>
+					<button type="button" class="btn btn-block btn-danger m-2" id="deleteBtn" data-post-id="${post.id }" data-post-category="${post.category }">삭제하기</button>
 					<a href="/post/update/view?id=${post.id }" class="btn btn-primary m-2 text-white" id="updateBtn">수정하기</a>
 					</c:if>
 				</div>
@@ -68,16 +68,16 @@
 		
 		$("#deleteBtn").on("click", function() {
 			let postId = $(this).data("post-id");
-			
+			let category = $(this).data("post-category");
 			
 			$.ajax({
 				type:"get"
 				, url:"/post/delete"
-				, data:{"postId":postId}
+				, data:{"postId":postId, "category":category}
 				, success:function(data) {
 					
 					if(data.result == "success") {
-						location.href="/post/main/view";
+						location.href="/post/list/view?category="+category;
 					} else {
 						alert("삭제 실패");
 					}

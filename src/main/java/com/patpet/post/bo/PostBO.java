@@ -36,6 +36,27 @@ public class PostBO {
 		return postDAO.insertPost(userId, title, name, category, state, content, imagePath);
 	}
 	
+	public List<PostDetail> getMainPostList(int loginId) {
+		
+		List<Post> postList = postDAO.selectMainPostList();
+		
+		List<PostDetail> postDetailList = new ArrayList<>();
+		
+		for(Post post : postList) {
+			int userId = post.getUserId();
+			
+			User user = userBO.getUserById(userId);
+			
+			PostDetail postDetail = new PostDetail();
+			
+			postDetail.setPost(post);
+			postDetail.setUser(user);
+			
+			postDetailList.add(postDetail);
+		}
+		return postDetailList;
+	}
+	
 	public List<PostDetail> getPostList(int loginId, String category) {
 		
 		List<Post> postList = postDAO.selectPostList(category);

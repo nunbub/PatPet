@@ -41,6 +41,7 @@
 			, `userId`
 			, `imagePath`
 			, `title`
+			, `category`
 			, `state`
 			, `createdAt`
 			, `updatedAt`
@@ -50,6 +51,24 @@
 			`category` = #{category}	
 		ORDER BY `id` DESC;		
 	
+	</select>
+	
+	<select id="selectMainPostList" resultType="com.patpet.post.model.Post">
+		SELECT
+			`id`
+			, `userId`
+			, `imagePath`
+			, `title`
+			, `category`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		WHERE
+			`id` = #{id}				
+		ORDER BY `id` DESC
+		LIMIT 1;
 	</select>
 	
 	<select id="selectPost" parameterType="int" resultType="com.patpet.post.model.Post">
