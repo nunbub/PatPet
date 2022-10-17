@@ -6,8 +6,15 @@ public class PostDetail {
 	
 	private Post post;
 	private User user;
+	private int attentionCount;
 	
 	
+	public int getAttentionCount() {
+		return attentionCount;
+	}
+	public void setAttentionCount(int attentionCount) {
+		this.attentionCount = attentionCount;
+	}
 	public Post getPost() {
 		return post;
 	}

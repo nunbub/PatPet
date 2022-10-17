@@ -68,7 +68,7 @@
 			
 			</div>
 			<!-- 등록된 게시물 리스트 -->
-			<div class="d-flex justify-content-evenly align-items-center post-list my-4 ml-5">
+			<div class="d-flex justify-content-between align-items-center post-list my-4 ml-3">
 				<c:forEach var="postDetail" items="${postList}">			
 					<c:if test="${param.category eq postDetail.post.category }" >
 						<div class="m-4">

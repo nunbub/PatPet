@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.patpet.common.FileManagerService;
+import com.patpet.post.attention.bo.AttentionBO;
 import com.patpet.post.dao.PostDAO;
 import com.patpet.post.model.Post;
 import com.patpet.post.model.PostDetail;
@@ -23,6 +24,9 @@ public class PostBO {
 	@Autowired
 	private UserBO userBO;
 	
+	@Autowired
+	private AttentionBO attentionBO;
+	
 	public int addPost(int userId, String title, String name, String category, String state, String content, MultipartFile file) {
 		String imagePath = null;
 		
@@ -36,25 +40,19 @@ public class PostBO {
 		return postDAO.insertPost(userId, title, name, category, state, content, imagePath);
 	}
 	
-	public List<PostDetail> getMainPostList(int loginId) {
+	public PostDetail getMainPostDetail() {
+		Post post = postDAO.selectMainPost();
 		
-		List<Post> postList = postDAO.selectMainPostList();
+		int userId = post.getUserId();
 		
-		List<PostDetail> postDetailList = new ArrayList<>();
+		User user = userBO.getUserById(userId);
 		
-		for(Post post : postList) {
-			int userId = post.getUserId();
-			
-			User user = userBO.getUserById(userId);
-			
-			PostDetail postDetail = new PostDetail();
-			
-			postDetail.setPost(post);
-			postDetail.setUser(user);
-			
-			postDetailList.add(postDetail);
-		}
-		return postDetailList;
+		PostDetail mainPostDetail = new PostDetail();
+		
+		mainPostDetail.setPost(post);
+		mainPostDetail.setUser(user);
+		
+		return mainPostDetail;
 	}
 	
 	public List<PostDetail> getPostList(int loginId, String category) {
@@ -81,8 +79,21 @@ public class PostBO {
 		
 	}
 	
-	public Post getPost(int id) {
-		return postDAO.selectPost(id);
+	public PostDetail getPost(int id) {
+		Post post = postDAO.selectPost(id);
+		
+		int userId = post.getUserId();
+		
+		User user = userBO.getUserById(userId);
+		int attentionCount = attentionBO.getAttentionCount(post.getId());
+		
+		PostDetail mainPostDetail = new PostDetail();
+		
+		mainPostDetail.setPost(post);
+		mainPostDetail.setUser(user);
+		mainPostDetail.setAttentionCount(attentionCount);
+		
+		return mainPostDetail;
 	}
 	
 	public int updatePost(int userId, int postId, String title,  String name, String category, String state, String content, MultipartFile file) {

@@ -38,14 +38,13 @@
 				<div class="col-6">
 					<div class="main-animal text-center">새로운 친구</div>
 					<div class="d-flex justify-content-center align-items-center">
-						<c:forEach var="postDetail" items="${postList }">
-						${postDetail.post.name }
-						<div class="text-center">
-							<img src="${postDetail.post.imagePath }">
-							<div>${postDetail.post.title }</div>
-							<div>작성자 : ${postDetail.user.name }</div>
+					
+						<div class="mt-3 text-center">
+							<img src="${mainPost.post.imagePath}" width="525">
+							<div class="mainPostTitle"><b>${mainPost.post.title}</b></div>
+							<div class="text-secondary">작성자 : ${mainPost.user.name}</div>
 						</div>
-						</c:forEach>
+						
 					</div>
 				</div>
 				<div class="col-6">

@@ -23,9 +23,7 @@ public class PostRestController {
 	@Autowired
 	private PostBO postBO;
 	
-	public Map<String, String> mainPage(HttpServletRequest request) {
-		
-	}
+	
 
 	@PostMapping("/create")
 	public Map<String, String> create(

@@ -26,25 +26,30 @@
 			
 			
 			<div class="d-flex m-4 justify-content-between align-items-center">
-				<h1>${post.title }</h1>				
-				<div>관심 5명 + 하트 아이콘</div>
+				<h1>${detailPost.post.title }</h1>	
+				
+				<c:choose>		
+					<c:when test="">	
+						<div>관심 5명<i class="bi bi-heart"></i></div>
+					</c:when>
+				</c:choose>
 			</div>
-			<div class="ml-4"><fmt:formatDate value="${post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+			<div class="ml-4"><fmt:formatDate value="${detailPost.post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 			
 			<div class="m-4 d-flex">
-				<div><img src="${post.imagePath }" width="400" height="400"></div>
+				<div><img src="${detailPost.post.imagePath }" width="400" height="400"></div>
 				
 				<div class="ml-4">
-					<div class="detail-name">이름 : ${post.name }</div>
-					<div class="mt-3 detail-content p-3">${post.content }</div>
+					<div class="detail-name">이름 : ${detailPost.post.name }</div>
+					<div class="mt-3 detail-content p-3">${detailPost.post.content }</div>
 				</div>
 			</div>
 			
 			<div class="d-flex justify-content-between">
 				<div class="m-3 d-flex">
-					<c:if test="${userId eq post.userId}">
+					<c:if test="${userId eq detailPost.post.userId}">
 					<button type="button" class="btn btn-block btn-danger m-2" id="deleteBtn" data-post-id="${post.id }" data-post-category="${post.category }">삭제하기</button>
-					<a href="/post/update/view?id=${post.id }" class="btn btn-primary m-2 text-white" id="updateBtn">수정하기</a>
+					<a href="/post/update/view?id=${detailPost.post.id }" class="btn btn-primary m-2 text-white" id="updateBtn">수정하기</a>
 					</c:if>
 				</div>
 				
@@ -53,7 +58,7 @@
 					<a href="/question/create/view" class="btn btn-warning mr-2">문의하기</a>
 					</c:if>
 					
-					<a href="/post/list/view?category=${post.category }" class="btn btn-secondary">목록으로</a>
+					<a href="/post/list/view?category=${detailPost.post.category }" class="btn btn-secondary">목록으로</a>
 					
 				</div>
 			</div>

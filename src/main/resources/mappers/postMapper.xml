@@ -53,7 +53,7 @@
 	
 	</select>
 	
-	<select id="selectMainPostList" resultType="com.patpet.post.model.Post">
+	<select id="selectMainPost" resultType="com.patpet.post.model.Post">
 		SELECT
 			`id`
 			, `userId`
@@ -64,9 +64,7 @@
 			, `createdAt`
 			, `updatedAt`
 		FROM
-			`post`
-		WHERE
-			`id` = #{id}				
+			`post`				
 		ORDER BY `id` DESC
 		LIMIT 1;
 	</select>
@@ -85,8 +83,7 @@
 			, `updatedAt`
 		FROM
 			`post`
-		WHERE
-			`id` = #{id}		
+			
 	</select>
 	
 	<update id="updatePost" parameterType="map">

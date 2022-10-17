@@ -19,6 +19,19 @@ hr {
 	font-size:21px;		
 }
 
+.mainPostTitle {
+	font-size:23px;
+	
+	margin:5px;
+	display:block;
+	width:500px;
+	height:40px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	
+}
+
 .nav li:hover > a{
 	background-color:#eeeeee;	
 }
@@ -97,6 +110,13 @@ hr {
 
 .post-title {
 	font-size:22px;
+	margin:5px;
+	display:block;
+	width:250px;
+	height:40px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 }
 
 .detail-name {

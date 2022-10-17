@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.patpet.post.bo.PostBO;
-import com.patpet.post.model.Post;
 import com.patpet.post.model.PostDetail;
 
 @Controller
@@ -24,7 +23,11 @@ public class PostController {
 	private PostBO postBO;
 
 	@GetMapping("/main/view")
-	public String mainPage() {
+	public String mainPage(Model model) {
+		
+		PostDetail mainPost = postBO.getMainPostDetail();
+		
+		model.addAttribute("mainPost", mainPost);
 		
 		return "post/main";
 	}
@@ -58,18 +61,24 @@ public class PostController {
 	
 	
 	@GetMapping("/detail/view")
-	public String detail(@RequestParam("id") int id, Model model) {
+	public String detail(
+			@RequestParam("id") int id
+			, Model model
+			, HttpServletRequest request) {
 		
-		Post post = postBO.getPost(id);
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
 		
-		model.addAttribute("post", post);
+		PostDetail detailPost = postBO.getPost(userId);
+		
+		model.addAttribute("detailPost", detailPost);
 		return "post/detail";
 	}
 	
 	@GetMapping("/update/view")
 	public String update(@RequestParam("id") int id, Model model) {
 		
-		Post post = postBO.getPost(id);
+		PostDetail post = postBO.getPost(id);
 		
 		model.addAttribute("post", post);
 		

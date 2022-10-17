@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.patpet.post.model.Post;
 
 
+
 @Repository
 public interface PostDAO {
 
@@ -22,7 +23,7 @@ public interface PostDAO {
 	
 	public List<Post> selectPostList(@Param("category") String category);
 	
-	public List<Post> selectMainPostList();
+	public Post selectMainPost();
 	
 	public Post selectPost(@Param("id") int id);
 	
