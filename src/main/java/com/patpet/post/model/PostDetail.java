@@ -7,8 +7,15 @@ public class PostDetail {
 	private Post post;
 	private User user;
 	private int attentionCount;
+	private boolean isAttention;
 	
 	
+	public boolean isAttention() {
+		return isAttention;
+	}
+	public void setAttention(boolean isAttention) {
+		this.isAttention = isAttention;
+	}
 	public int getAttentionCount() {
 		return attentionCount;
 	}

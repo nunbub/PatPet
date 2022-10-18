@@ -86,12 +86,14 @@ public class PostBO {
 		
 		User user = userBO.getUserById(userId);
 		int attentionCount = attentionBO.getAttentionCount(post.getId());
+		boolean isAttention = attentionBO.isAttention(userId, post.getId());
 		
 		PostDetail mainPostDetail = new PostDetail();
 		
 		mainPostDetail.setPost(post);
 		mainPostDetail.setUser(user);
 		mainPostDetail.setAttentionCount(attentionCount);
+		mainPostDetail.setAttention(isAttention);
 		
 		return mainPostDetail;
 	}
@@ -117,11 +119,19 @@ public class PostBO {
 		
 	}
 	
-	public int deletePost(int postId) {
+	public int deletePost(int postId, int userId) {
 		
-		Post post = postDAO.selectPost(postId);
+		
+		
+		Post post = postDAO.selectPostByIdAndUserId(postId, userId);
+		
+		if(post == null) {
+			return 0;
+		}
 		
 		FileManagerService.removeFile(post.getImagePath());
+		
+		attentionBO.deleteAttentionByPostId(postId);
 		
 		return postDAO.deletePost(postId);
 		

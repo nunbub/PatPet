@@ -12,4 +12,13 @@ public interface AttentionDAO {
 	
 	public int selectAttentionCount(@Param("postId") int postId);
 	
+	public int deleteAttention(
+			@Param("userId") int userId
+			, @Param("postId") int postId);
+	
+	public int selectCountAttentionByUserId(
+			@Param("userId") int userId
+			, @Param("postId") int postId);
+	
+	public int deleteAttentionByPostId(@Param("postId") int postId);
 }

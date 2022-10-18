@@ -18,4 +18,22 @@ public class AttentionBO {
 	public int getAttentionCount(int postId) {
 		return attentionDAO.selectAttentionCount(postId);
 	}
+	
+	public int deleteAttention(int userId, int postId) {
+		return attentionDAO.deleteAttention(userId, postId);
+	}
+	
+	public boolean isAttention(int userId, int postId) {
+		int count = attentionDAO.selectCountAttentionByUserId(userId, postId);
+		
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	public int deleteAttentionByPostId(int postId) {
+		return attentionDAO.deleteAttentionByPostId(postId);
+	}
 }

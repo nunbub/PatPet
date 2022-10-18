@@ -28,7 +28,32 @@
 		FROM
 			`attention`
 		WHERE
-			`postId = #{postId}		
+			`postId` = #{postId}		
 	</select>
+	
+	<delete id="deleteAttention" parameterType="map">
+		DELETE FROM
+			`attention`
+		WHERE
+			`userId` = #{userId}
+			AND `postId` = #{postId}	
+	</delete>
+	
+	<select id="selectCountAttentionByUserId" parameterType="map" resultType="int">
+		SELECT
+			count(1)
+		FROM 
+			`attention`
+		WHERE
+			`postId` = #{postId}
+			AND `userId` = #{userId}	
+	</select>
+	
+	<delete id="deleteAttentionByPostId" parameterType="int">
+		DELETE FROM
+			`attention`
+		WHERE
+			`postId` = #{postId}	
+	</delete>
 
 </mapper>  

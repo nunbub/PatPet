@@ -22,7 +22,7 @@
 		
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section class="main-content d-flex">
+		<section class="main-content d-flex my-4">
 			
 			<!-- 회원가입 고정 -->
 			<c:import url="/WEB-INF/jsp/include/signmain.jsp" />

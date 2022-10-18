@@ -83,7 +83,29 @@
 			, `updatedAt`
 		FROM
 			`post`
+		WHERE
+			`id` = #{id}	
 			
+	</select>
+	
+	<select id="selectPostByIdAndUserId" parameterType="map" resultType="com.patpet.post.model.Post">
+		SELECT
+			`id`
+			, `userId`
+			, `title`
+			, `name`
+			, `category`
+			, `state`
+			, `content`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		WHERE
+			`id` = #{id}
+			AND `userId` = #{userId}	
+		
 	</select>
 	
 	<update id="updatePost" parameterType="map">

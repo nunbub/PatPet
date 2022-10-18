@@ -28,12 +28,22 @@
 			<div class="d-flex m-4 justify-content-between align-items-center">
 				<h1>${detailPost.post.title }</h1>	
 				
-				<c:choose>		
-					<c:when test="">	
-						<div>관심 5명<i class="bi bi-heart"></i></div>
-					</c:when>
-				</c:choose>
+				<!-- 관심 버튼 -->
+				<div class="d-flex">
+					<div class="mr-2">관심 ${detailPost.attentionCount }명</div>
+					<c:choose>		
+						<c:when test="${detailPost.attention }">							
+							<a href="#" class="nonattention-btn" data-post-id="${detailPost.post.id }"><i class="bi bi-heart-fill text-danger"></i></a>
+						</c:when>
+						<c:otherwise>							
+							<a href="#" class="attention-btn" data-post-id="${detailPost.post.id }"><i class="bi bi-heart"></i></a>
+						</c:otherwise>					
+					</c:choose>
+				</div>
+				<!-- /관심 버튼 -->
 			</div>
+			
+			<!-- 게시물 내용 -->
 			<div class="ml-4"><fmt:formatDate value="${detailPost.post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 			
 			<div class="m-4 d-flex">
@@ -44,7 +54,9 @@
 					<div class="mt-3 detail-content p-3">${detailPost.post.content }</div>
 				</div>
 			</div>
+			<!-- /게시물 내용 -->
 			
+			<!-- 버튼들 -->
 			<div class="d-flex justify-content-between">
 				<div class="m-3 d-flex">
 					<c:if test="${userId eq detailPost.post.userId}">
@@ -62,6 +74,7 @@
 					
 				</div>
 			</div>
+			<!-- /버튼들 -->
 			
 		</section>
 	
@@ -70,6 +83,58 @@
 	
 	<script>
 	$(document).ready(function() {
+		
+		$(".nonattention-btn").on("click", function(e) {
+			
+			e.preventDefault();
+			
+			let postId = $(this).data("post-id");
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/nonattention"
+				, data:{"postId":postId}
+				, success:function(data) {
+					
+					if(data.result == "success") {
+						location.reload();
+					} else {
+						alert("좋아요 취소 실패");
+					}
+					
+				}
+				, error:function() {
+					alert("좋아요 취소 에러");
+				}
+			});
+			
+		});
+		
+		$(".attention-btn").on("click", function(e) {
+			
+			e.preventDefault();
+			
+			let postId = $(this).data("post-id");
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/attention"
+				, data:{"postId":postId}
+				, success:function(data) {
+					
+					if(data.result == "success") {
+						location.reload();
+					} else {
+						alert("좋아요 실패");
+					}
+					
+				}
+				, error:function() {
+					alert("좋아요 에러");
+				}
+			});
+			
+		});
 		
 		$("#deleteBtn").on("click", function() {
 			let postId = $(this).data("post-id");

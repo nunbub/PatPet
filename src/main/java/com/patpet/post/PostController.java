@@ -63,13 +63,11 @@ public class PostController {
 	@GetMapping("/detail/view")
 	public String detail(
 			@RequestParam("id") int id
-			, Model model
-			, HttpServletRequest request) {
+			, Model model) {
 		
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
 		
-		PostDetail detailPost = postBO.getPost(userId);
+		
+		PostDetail detailPost = postBO.getPost(id);
 		
 		model.addAttribute("detailPost", detailPost);
 		return "post/detail";
