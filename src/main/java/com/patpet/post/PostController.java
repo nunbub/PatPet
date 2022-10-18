@@ -63,11 +63,14 @@ public class PostController {
 	@GetMapping("/detail/view")
 	public String detail(
 			@RequestParam("id") int id
-			, Model model) {
+			, Model model
+			, HttpServletRequest request) {
 		
+		HttpSession session = request.getSession();
 		
+		int userId = (Integer)session.getAttribute("userId"); // 세션을 통해 로그인한 사용자의 id 받기
 		
-		PostDetail detailPost = postBO.getPost(id);
+		PostDetail detailPost = postBO.getPost(id, userId);
 		
 		model.addAttribute("detailPost", detailPost);
 		return "post/detail";
@@ -76,7 +79,7 @@ public class PostController {
 	@GetMapping("/update/view")
 	public String update(@RequestParam("id") int id, Model model) {
 		
-		PostDetail post = postBO.getPost(id);
+		PostDetail post = postBO.getPost(id, userId);
 		
 		model.addAttribute("post", post);
 		

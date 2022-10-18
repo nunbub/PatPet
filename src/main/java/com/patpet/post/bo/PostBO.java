@@ -79,12 +79,14 @@ public class PostBO {
 		
 	}
 	
-	public PostDetail getPost(int id) {
+	public PostDetail getPost(int id, int userId) {
 		Post post = postDAO.selectPost(id); // 여기의 id 는 게시물의 id
 		
-		int userId = post.getUserId(); // 여기서 현재 로그인된 사용자의 id를 가져와야하는데 게시물을 작성한 사용자의 id가 가져와짐
+		// int userId = post.getUserId(); // 여기서 현재 로그인된 사용자의 id를 가져와야하는데 게시물을 작성한 사용자의 id가 가져와짐
 		
-		User user = userBO.getUserById(id);
+		User user = userBO.getUserById(userId); // 여기가 null인상태
+		// int userId = user.getId();
+		
 		int attentionCount = attentionBO.getAttentionCount(post.getId());
 		boolean isAttention = attentionBO.isAttention(userId, post.getId());
 		
