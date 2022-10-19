@@ -99,9 +99,9 @@
 					
 					<div class="pb-2">
 					<a href="#" id="imageIcon"> <i class="bi bi-card-image text-dark"></i> </a>
-					<input type="file" id="fileInput" class="d-none" >
+					<input type="file" id="fileInput" class="d-none" value="${detailPost.post.imagePath }">
 					</div>
-				</div>
+				</div>s
 				<!-- /사진 업로드 -->
 				
 				<!-- 게시물 내용 -->

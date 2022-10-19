@@ -26,7 +26,7 @@
 			
 			
 			<div class="d-flex m-4 justify-content-between align-items-center">
-				<h1>${detailPost.post.title }</h1>	
+				<h2>${detailPost.post.title }</h2>	
 				
 				<!-- 관심 버튼 -->
 				<div class="d-flex">

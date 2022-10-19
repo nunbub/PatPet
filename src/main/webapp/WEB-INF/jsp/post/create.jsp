@@ -25,13 +25,9 @@
 		<c:import url="/WEB-INF/jsp/include/nav.jsp" />
 		
 		<section>
-			<div class="d-flex justify-content-between">
-				<div class="create-post p-3">게시물 등록하기</div>
-				<div class="d-flex align-items-center p-3">
-					<button type="button" class="btn btn-success">수정하기</button>
-					
-				</div>
-			</div>
+			
+			<div class="create-post p-3">게시물 등록하기</div>
+			
 			
 			<!-- 게시물 입력창 -->
 			<div>

@@ -73,10 +73,21 @@
 					<c:if test="${param.category eq postDetail.post.category }" >
 						<div class="m-4">
 						
-							<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="250" height="250"></a>	
+							<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="260" height="200"></a>	
 							<div>
 								<div><b class="text-dark post-title">${postDetail.post.title}</b></div>
-								<div class="state text-dark">${postDetail.post.state }</div>
+								
+								<div class="state text-dark">상태 [ 
+								<c:choose>
+									<c:when test="${postDetail.post.state == '입양 대기'}">
+									<b class="text-danger">${postDetail.post.state }</b>
+									</c:when>
+									<c:otherwise>
+									<span class="text-success">${postDetail.post.state }</span>
+									</c:otherwise>
+								</c:choose>	
+								 ]</div>
+								 
 								<div class="text-dark"> 작성자 : ${postDetail.user.name }</div>
 								<div class="small text-secondary"><fmt:formatDate value="${postDetail.post.createdAt }" pattern="yyyy-MM-dd" /></div>
 							</div>				
