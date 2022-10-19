@@ -12,6 +12,8 @@ import com.patpet.post.attention.bo.AttentionBO;
 import com.patpet.post.dao.PostDAO;
 import com.patpet.post.model.Post;
 import com.patpet.post.model.PostDetail;
+import com.patpet.review.dao.ReviewDAO;
+import com.patpet.review.model.Review;
 import com.patpet.user.bo.UserBO;
 import com.patpet.user.model.User;
 
@@ -26,6 +28,9 @@ public class PostBO {
 	
 	@Autowired
 	private AttentionBO attentionBO;
+	
+	@Autowired
+	private ReviewDAO reviewDAO;
 	
 	public int addPost(int userId, String title, String name, String category, String state, String content, MultipartFile file) {
 		String imagePath = null;
@@ -47,10 +52,13 @@ public class PostBO {
 		
 		User user = userBO.getUserById(userId);
 		
+		Review reivew = reviewDAO.selectMainPage();
+		
 		PostDetail mainPostDetail = new PostDetail();
 		
 		mainPostDetail.setPost(post);
 		mainPostDetail.setUser(user);
+		mainPostDetail.setReview(reivew);
 		
 		return mainPostDetail;
 	}

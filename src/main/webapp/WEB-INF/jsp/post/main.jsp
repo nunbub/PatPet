@@ -29,34 +29,42 @@
 		
 		<!-- 메인 페이지 -->
 		<section class="main-content mt-4">
+			<!-- 메인페이지 배너 이미지 -->
 			<div class="d-flex justify-content-center align-items-center">
 				<a href="https://www.animal.go.kr/front/index.do"><img src="/static/image/main-image/main-image1.jpg" width="1100" height="550" id="mainImage"></a>
 				
 			</div>
+			<!-- /메인페이지 배너 이미지 -->
 					
 			<div class="d-flex justify-content-around my-4">
+				<!-- 최근에 올라온 게시물 -->
 				<div class="col-6">
 					<div class="main-animal text-center">새로운 친구</div>
 					<div class="d-flex justify-content-center align-items-center">
 					
 						<div class="mt-3 text-center">
-							<img src="${mainPost.post.imagePath}" width="525">
+							<img src="${mainPost.post.imagePath}" width="525" height="350">
 							<div class="mainPostTitle"><b>${mainPost.post.title}</b></div>
-							<div class="text-secondary">작성자 : ${mainPost.user.name}</div>
+							<div class="text-secondary">작성자 [ ${mainPost.user.name} ]</div>
 						</div>
 						
 					</div>
 				</div>
+				<!-- /최근에 올라온 게시물 -->
+				
+				<!-- 최근에 올라온 이후 이야기 -->
 				<div class="col-6">
 					<div class="main-review text-center">새로운 이후 이야기</div>
 					<div class="d-flex justify-content-center align-items-center">
-						<div class="text-center">
-							<img src="">
-							<div>제목</div>
-							<div>작성자</div>
+					
+						<div class="mt-3 text-center">
+							<img src="${mainPost.review.imagePath }" width="525" height="350">
+							<div class="mainPostTitle"><b>${mainPost.review.title }</b></div>
+							<div class="text-secondary">작성자 [ $ ] </div>
 						</div>
 					</div>
 				</div>
+				<!-- /최근에 올라온 이후 이야기 -->
 			</div>
 		</section>
 		<!-- /메인 페이지 -->

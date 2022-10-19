@@ -17,4 +17,6 @@ public interface ReviewDAO {
 			, @Param("imagePath") String imagePath);
 	
 	public List<Review> selectReviewList();
+	
+	public Review selectMainPage();
 }
