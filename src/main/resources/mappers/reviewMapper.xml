@@ -27,5 +27,19 @@
 			, now()
 		)
 	</insert>
+	
+	<select id="selectReviewList" resultType="com.patpet.review.model.Review">
+		SELECT
+			`id`
+			, `userId`
+			, `title`
+			, `content`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`review`
+		ORDER BY `id` DESC;		
+	</select>
 
 </mapper>  
