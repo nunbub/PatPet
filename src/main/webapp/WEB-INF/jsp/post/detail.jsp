@@ -60,7 +60,7 @@
 			<div class="d-flex justify-content-between">
 				<div class="m-3 d-flex">
 					<c:if test="${userId eq detailPost.post.userId}">
-					<button type="button" class="btn btn-block btn-danger m-2" id="deleteBtn" data-post-id="${post.id }" data-post-category="${post.category }">삭제하기</button>
+					<button type="button" class="btn btn-block btn-danger m-2" id="deleteBtn" data-post-id="${detailPost.post.id }" data-post-category="${detailPost.post.category }">삭제하기</button>
 					<a href="/post/update/view?id=${detailPost.post.id }" class="btn btn-primary m-2 text-white" id="updateBtn">수정하기</a>
 					</c:if>
 				</div>

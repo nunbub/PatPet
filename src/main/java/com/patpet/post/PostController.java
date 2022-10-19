@@ -77,7 +77,14 @@ public class PostController {
 	}
 	
 	@GetMapping("/update/view")
-	public String update(@RequestParam("id") int id, Model model) {
+	public String update(
+			@RequestParam("id") int id
+			, Model model
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
 		
 		PostDetail post = postBO.getPost(id, userId);
 		

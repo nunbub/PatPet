@@ -97,7 +97,7 @@
 			</div>
 			<!-- /게시물 입력창 -->
 			<div class="d-flex justify-content-between align-items-center p-3">
-				<a href="/post/list/view?category=${post.category }" class="btn btn-secondary">목록으로</a>
+				<a href="/post/list/view?category=dog" class="btn btn-secondary">목록으로</a>
 				<button type="button" class="btn btn-primary" id="createBtn">등록하기</button>
 			</div>
 		</section>

@@ -127,6 +127,20 @@ hr {
 	border:1px solid grey;
 }
 
+#create-review {
+	font-size:40px;
+	font-weight:bold;
+}
+
+.review-letter {
+	font-size:23px;
+	font-weight:bold;
+}
+
+
+.fileIcon {
+	font-size:40px;
+}
 
 
 

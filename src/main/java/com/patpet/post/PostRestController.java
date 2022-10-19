@@ -54,7 +54,8 @@ public class PostRestController {
 	
 	@PostMapping("/update")
 	public Map<String, String> update(
-			@RequestParam("postId") int postId
+			@RequestParam("userId") int userId
+			, @RequestParam("postId") int postId
 			, @RequestParam("title") String title
 			, @RequestParam("name") String name
 			, @RequestParam("category") String category
@@ -62,7 +63,7 @@ public class PostRestController {
 			, @RequestParam("content") String content
 			, @RequestParam(value="file", required=false) MultipartFile file) {
 		
-		int count = postBO.updatePost(postId, postId, title, name, category, state, content, file);
+		int count = postBO.updatePost(userId, postId, title, name, category, state, content, file);
 		
 		Map<String, String> result = new HashMap<>();
 		
