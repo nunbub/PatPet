@@ -54,14 +54,18 @@ public class PostRestController {
 	
 	@PostMapping("/update")
 	public Map<String, String> update(
-			@RequestParam("userId") int userId
-			, @RequestParam("postId") int postId
+			@RequestParam("postId") int postId
 			, @RequestParam("title") String title
 			, @RequestParam("name") String name
 			, @RequestParam("category") String category
 			, @RequestParam("state") String state
 			, @RequestParam("content") String content
-			, @RequestParam(value="file", required=false) MultipartFile file) {
+			, @RequestParam(value="file", required=false) MultipartFile file
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
 		
 		int count = postBO.updatePost(userId, postId, title, name, category, state, content, file);
 		

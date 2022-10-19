@@ -88,7 +88,7 @@ public class PostController {
 		
 		PostDetail post = postBO.getPost(id, userId);
 		
-		model.addAttribute("post", post);
+		model.addAttribute("detailPost", post);
 		
 		return "post/update";
 	}

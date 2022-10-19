@@ -35,7 +35,7 @@
 			<div>
 				<!-- 게시물 제목 -->
 				<div class="d-flex align-items-center justify-content-center">
-					<div class="text-center col-1">제목</div> <input value="${post.title }" type="text" class="form-control col-11" id="titleInput">
+					<div class="text-center col-1">제목</div> <input value="${detailPost.post.title }" type="text" class="form-control col-11" id="titleInput">
 				</div>
 				<!-- /게시물 제목 -->
 				
@@ -43,7 +43,7 @@
 				<div class="mt-3 d-flex align-items-center justify-content-center">
 					<!-- 아이 이름 -->
 					<div class="col-4 d-flex align-items-center justify-content-center">
-						<div class="col-3">이름</div> <input type="text" value="${post.name }"class="form-control col-9" id="nameInput">
+						<div class="col-3">이름</div> <input type="text" value="${detailPost.post.name }"class="form-control col-9" id="nameInput">
 					</div>
 					<!-- /아이 이름 -->
 					
@@ -52,9 +52,20 @@
 						<div class="ml-2 col-3">분류</div>
 						<select class="form-control col-8" id="categorySelect">
 							<option value="nonselect">--분류 선택--</option>
-							<option value="dog">강아지</option>
-							<option value="cat">고양이</option>
-							<option value="etc">기타 동물</option>
+							<option value="dog" 
+							<c:if test="${detailPost.post.category == 'dog'}"> selected="selected"</c:if>
+							>강아지</option>
+							
+							
+							<option value="cat" 
+							<c:if test="${detailPost.post.category == 'cat'}"> selected="selected"</c:if>
+							>고양이</option>
+							
+							
+							<option value="etc" 
+							<c:if test="${datailPost.post.category == 'etc'}"> selected="selected"</c:if>
+							>기타 동물</option>
+							
 						</select>
 					</div>
 					<!-- /아이 분류 -->
@@ -65,8 +76,16 @@
 						
 						<select class="form-control col-8" id="stateSelect">
 							<option value="nonselect">--상태 선택--</option>
-							<option value="입양 대기">입양 대기</option>
-							<option value="입양 완료">입양 완료</option>
+							
+							<option value="입양 대기" 
+							<c:if test="${detailPost.post.state == '입양 대기'}">selected="selected"</c:if>
+							>입양 대기</option>
+							
+							
+							<option value="입양 완료"
+							<c:if test="${detailPost.post.state == '입양 완료'}">selected="selected"</c:if>
+							>입양 완료</option>
+							
 						</select>
 					</div>
 					<!-- /아이 상태 -->
@@ -88,15 +107,15 @@
 				<!-- 게시물 내용 -->
 				<div class="mt-3 mb-5 ml-4 pl-2">
 					<div>아이를 소개해 주세요.</div>
-					<textarea class="form-control mt-3" rows="10" cols="50" id="introduce-textbox">${post.content }</textarea>
+					<textarea class="form-control mt-3" rows="10" cols="50" id="introduce-textbox">${detailPost.post.content }</textarea>
 				</div>
 				<!-- /게시물 내용 -->
 				
 			</div>
 			<!-- /게시물 입력창 -->
 			<div class="d-flex justify-content-between align-items-center p-3">
-				<a href="/post/list/view?category=${post.category }" class="btn btn-secondary">목록으로</a>
-				<button type="button" class="btn btn-success" id="updateBtn" data-post-id="${post.id }">수정하기</button>
+				<a href="/post/list/view?category=${detailPost.post.category }" class="btn btn-secondary">목록으로</a>
+				<button type="button" class="btn btn-success" id="updateBtn" data-post-id="${detailPost.post.id }">수정하기</button>
 			</div>
 		</section>
 		
