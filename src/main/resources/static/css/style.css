@@ -97,10 +97,16 @@ hr {
 
 .state {
 	background:#eeeeee;
+	width:200px;
 }
 
 .post-list {
 	flex-wrap:wrap;
+}
+
+.list-box {
+	width:200px;
+	margin:30px 35px 30px 35px;
 }
 
 .create-btn {
@@ -137,6 +143,9 @@ hr {
 	font-weight:bold;
 }
 
+.review-box {
+	margin:30px 37px 30px 37px;
+}
 
 .fileIcon {
 	font-size:40px;

@@ -68,12 +68,12 @@
 			
 			</div>
 			<!-- 등록된 게시물 리스트 -->
-			<div class="d-flex justify-content-between align-items-center post-list my-4 ml-3">
+			<div class="d-flex align-items-center post-list my-4 ml-3">
 				<c:forEach var="postDetail" items="${postList}">			
 					<c:if test="${param.category eq postDetail.post.category }" >
-						<div class="m-4">
+						<div class="list-box">
 						
-							<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="260" height="200"></a>	
+							<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="200" height="200"></a>	
 							<div>
 								<div><b class="text-dark post-title">${postDetail.post.title}</b></div>
 								
@@ -88,7 +88,7 @@
 								</c:choose>	
 								 ]</div>
 								 
-								<div class="text-dark"> 작성자 : ${postDetail.user.name }</div>
+								<div class="text-dark"> 작성자 : ${postDetail.postUser.name }</div>
 								<div class="small text-secondary"><fmt:formatDate value="${postDetail.post.createdAt }" pattern="yyyy-MM-dd" /></div>
 							</div>				
 						

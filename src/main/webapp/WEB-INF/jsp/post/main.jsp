@@ -45,7 +45,7 @@
 						<div class="mt-3 text-center">
 							<img src="${mainPost.post.imagePath}" width="525" height="350">
 							<div class="mainPostTitle"><b>${mainPost.post.title}</b></div>
-							<div class="text-secondary">작성자 [ ${mainPost.user.name} ]</div>
+							<div class="text-secondary">작성자 [ ${mainPost.postUser.name} ]</div>
 						</div>
 						
 					</div>
@@ -60,7 +60,7 @@
 						<div class="mt-3 text-center">
 							<img src="${mainPost.review.imagePath }" width="525" height="350">
 							<div class="mainPostTitle"><b>${mainPost.review.title }</b></div>
-							<div class="text-secondary">작성자 [ $ ] </div>
+							<div class="text-secondary">작성자 [ ${mainPost.reviewUser.name } ] </div>
 						</div>
 					</div>
 				</div>

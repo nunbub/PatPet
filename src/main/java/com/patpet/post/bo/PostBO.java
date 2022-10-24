@@ -50,15 +50,18 @@ public class PostBO {
 		
 		int userId = post.getUserId();
 		
-		User user = userBO.getUserById(userId);
+		User postUser = userBO.getUserById(userId);
 		
 		Review reivew = reviewDAO.selectMainPage();
+		
+		User reviewUser = userBO.getUserById(userId);
 		
 		PostDetail mainPostDetail = new PostDetail();
 		
 		mainPostDetail.setPost(post);
-		mainPostDetail.setUser(user);
+		mainPostDetail.setPostUser(postUser);
 		mainPostDetail.setReview(reivew);
+		mainPostDetail.setReviewUser(reviewUser);
 		
 		return mainPostDetail;
 	}
@@ -77,7 +80,7 @@ public class PostBO {
 			
 			PostDetail postDetail = new PostDetail();
 			postDetail.setPost(post);
-			postDetail.setUser(user);
+			postDetail.setPostUser(user);
 			
 			postDetailList.add(postDetail);
 			
@@ -98,7 +101,7 @@ public class PostBO {
 		PostDetail mainPostDetail = new PostDetail();
 		
 		mainPostDetail.setPost(post);
-		mainPostDetail.setUser(user);
+		mainPostDetail.setPostUser(user);
 		mainPostDetail.setAttentionCount(attentionCount);
 		mainPostDetail.setAttention(isAttention);
 		

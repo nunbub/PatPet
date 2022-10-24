@@ -26,17 +26,19 @@
 		<c:import url="/WEB-INF/jsp/include/nav.jsp" />
 		
 		<section>
-			<div class="review-main text-center my-4">이후 이야기</div>
+			<div class="review-main text-center mt-4 mb-2">이후 이야기</div>
+			
+			<div class="text-secondary text-center mb-3">Don't buy a pet, adopt one.</div>
 			
 			<!-- 이후 이야기 게시물 리스트 -->
-			<div class="d-flex align-items-center justify-content-around">
-				<div class="d-flex  align-items-center justify-content-between post-list">
+			<div class="d-flex align-items-center">
+				<div class="d-flex  align-items-center post-list">
 					<c:forEach var="reviewDetail" items="${reviewList }">
-					<div class="m-3">
+					<div class="review-box">
 						<img src="${reviewDetail.review.imagePath }" width="200" height="200">
 						<div class="text-center">
-							<div>${reviewDetail.review.title }</div>
-							<div>작성자 : ${reviewDetail.user.name }</div>
+							<div><b>${reviewDetail.review.title }</b></div>
+							<div>작성자 [ ${reviewDetail.user.name } ]</div>
 							<div><fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd"/></div>
 						</div>
 					</div>

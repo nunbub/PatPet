@@ -6,8 +6,21 @@ import com.patpet.user.model.User;
 public class PostDetail {
 	
 	private Post post;
-	private User user;
+	private User postUser;
 	private Review review;
+	private User reviewUser;
+	public User getPostUser() {
+		return postUser;
+	}
+	public void setPostUser(User postUser) {
+		this.postUser = postUser;
+	}
+	public User getReviewUser() {
+		return reviewUser;
+	}
+	public void setReviewUser(User reviewUser) {
+		this.reviewUser = reviewUser;
+	}
 	private int attentionCount;
 	private boolean isAttention;
 	
@@ -36,12 +49,7 @@ public class PostDetail {
 	public void setPost(Post post) {
 		this.post = post;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 	
 	
 
