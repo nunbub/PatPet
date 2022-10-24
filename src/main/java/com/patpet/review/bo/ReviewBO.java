@@ -75,5 +75,23 @@ public class ReviewBO {
 		return reviewDetail;
 	}
 	
-	
+	public int updateReview(int userId, int postId, String title, String content, MultipartFile file) {
+		
+		Review review = reviewDAO.selectReview(postId);
+		
+		FileManagerService.removeFile(review.getImagePath());
+		
+		String imagePath = null;
+		
+		if(file != null) {
+			imagePath = FileManagerService.saveFile(userId, file);
+			
+			if(imagePath == null) {
+				return 0;
+			}
+		}
+		
+		return reviewDAO.updateReview(postId, title, content, imagePath);
+		
+	}
 }

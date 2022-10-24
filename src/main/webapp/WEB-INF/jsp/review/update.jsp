@@ -30,23 +30,23 @@
 			
 			<div class="d-flex mt-4 justify-content-center align-items-center">
 				<div class="col-1 update-style">제목</div>
-				 <input type="text" class="form-control" value="${detailReview.review.title }">
+				 <input type="text" id="titleInput" class="form-control" value="${detailReview.review.title }">
 			</div>
 			
 			<div class="d-flex align-items-center mt-4">
-				<div class="mr-3 ml-2 mt-2 update-style">아이의 사진</div> <a href="#"><i class="bi bi-card-image text-dark fileIcon"></i></a>
+				<div class="mr-3 ml-2 mt-2 update-style">아이의 사진</div> <a href="#"><i id="imageIcon" class="bi bi-card-image text-dark fileIcon"></i></a>
 				<input type="file" id="fileInput" class="d-none">
 			</div>
 			
 			<div class="my-4 ml-2">
 				<div class="mb-3 update-style">입양 이후의 이야기를 들려주세요!</div>
-				<textarea class="form-control" rows="10">${detailReview.review.content }</textarea>
+				<textarea id="contentInput" class="form-control" rows="10">${detailReview.review.content }</textarea>
 			</div>
 			
 			<div class="d-flex justify-content-between align-items-center pl-2 mb-4">
 				<a href="review/main/view" class="btn btn-secondary">목록으로</a>
 				
-				<button type="button" class="btn btn-success">수정하기</button>
+				<button type="button" class="btn btn-success" id="updateBtn">수정하기</button>
 			</div>
 		
 		</section>
@@ -54,6 +54,68 @@
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
 	</div>
+	
+	<script>
+	$(document).ready(function() {
+		
+		$("#updateBtn").on("click", function() {
+			
+			let title = $("#titleInput").val();
+			let content = $("#contentInput").val();
+			
+			let postId = $(this).data("post-id");
+			
+			if(title == "") {
+				alert("제목을 입력해주세요.");
+				return ;
+			}
+			
+			if(content == "") {
+				alert("내용을 입력해주세요.");
+				return ;
+			}
+			
+			if($("#fileInput")[0].files.length == 0) {
+				alert("아이의 사진을 업로드해주세요.");
+				return ;
+			}
+			
+			let formData = new FormData();
+			
+			formData.append("postId", postId);
+			formData.append("title", title);
+			formData.append("content", content);
+			formData.append("file", $("#fileInput")[0].files[0]);
+			
+			$.ajax({
+				type:"post"
+				, url:"/review/update"
+				, data:formData
+				, enctype:"multipart/form-data"
+				, processData:false
+				, contentType:false
+				, success:function(data) {
+					
+					if(data.result == "success") {
+						location.href="/review/detail/view?id="+postId
+					} else {
+						alert("수정 실패");
+					}
+					
+				}
+				, error:function() {
+					alert("수정 에러");
+				}
+			});
+			
+		});
+		
+		$("#imageIcon").on("click", function() {
+			$("#fileInput").click();
+		});
+		
+	});
+	</script>
 
 </body>
 </html>

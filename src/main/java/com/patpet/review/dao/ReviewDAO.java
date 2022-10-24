@@ -21,4 +21,10 @@ public interface ReviewDAO {
 	public Review selectMainPage();
 	
 	public Review selectReview(@Param("id") int id);
+	
+	public int updateReview(
+			@Param("postId") int postId
+			, @Param("title") String title
+			, @Param("content") String content
+			, @Param("imagePath") String imagePath);
 }

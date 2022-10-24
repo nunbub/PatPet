@@ -45,4 +45,29 @@ public class ReviewRestController {
 		
 	}
 	
+	public Map<String, String> update(
+			@RequestParam("postId") int postId
+			, @RequestParam("title") String title
+			, @RequestParam("content") String content
+			, @RequestParam(value="file", required=false) MultipartFile file
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = reviewBO.updateReview(userId, postId, title, content, file);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+		
+	}
+	
 }

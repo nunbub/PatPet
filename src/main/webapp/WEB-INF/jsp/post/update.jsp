@@ -101,7 +101,7 @@
 					<a href="#" id="imageIcon"> <i class="bi bi-card-image text-dark"></i> </a>
 					<input type="file" id="fileInput" class="d-none" value="${detailPost.post.imagePath }">
 					</div>
-				</div>s
+				</div>
 				<!-- /사진 업로드 -->
 				
 				<!-- 게시물 내용 -->
@@ -168,7 +168,7 @@
 			
 			let formData = new FormData();
 			
-			formData.append("postId", postId)
+			formData.append("postId", postId);
 			formData.append("title", title);
 			formData.append("name", name);
 			formData.append("category", category);

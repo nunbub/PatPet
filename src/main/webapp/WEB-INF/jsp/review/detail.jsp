@@ -45,8 +45,10 @@
 		<div class="d-flex justify-content-between align-items-center my-4">
 			<a href="/review/main/view" class="btn btn-secondary">목록으로</a>
 			<div>
+				<c:if test="${userId eq reviewDetail.review.userId }" >
 				<a href="/review/update/view?id=${reviewDetail.review.id }" class="btn btn-success mr-3">수정하기</a>
 				<button type="button" class="btn btn-danger">삭제하기</button>
+				</c:if>
 			</div>
 		</div>
 		<!-- /버튼들 -->

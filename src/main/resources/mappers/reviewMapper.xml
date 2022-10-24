@@ -71,5 +71,17 @@
 		WHERE
 			`id` = #{id}	
 	</select>
+	
+	<update id="updateReview" parameterType="map">
+		UPDATE
+			`review`
+		SET
+			`title` = #{title}	
+			, `content` = #{content}
+			, `imagePath` = #{imagePath}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{postId}	
+	</update>
 
 </mapper>  
