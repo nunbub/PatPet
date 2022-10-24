@@ -34,14 +34,18 @@
 			<div class="d-flex align-items-center">
 				<div class="d-flex  align-items-center post-list">
 					<c:forEach var="reviewDetail" items="${reviewList }">
-					<div class="review-box">
-						<img src="${reviewDetail.review.imagePath }" width="200" height="200">
-						<div class="text-center">
-							<div><b>${reviewDetail.review.title }</b></div>
-							<div>작성자 [ ${reviewDetail.user.name } ]</div>
-							<div><fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd"/></div>
+						
+						<div class="review-box">
+							<a href="/review/detail/view?id=${reviewDetail.review.id }">
+								<img src="${reviewDetail.review.imagePath }" width="200" height="200"></a>
+								
+								<div class="text-center">
+									<div><b>${reviewDetail.review.title }</b></div>
+									<div>작성자 [ ${reviewDetail.user.name } ]</div>
+									<div><fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd"/></div>
+								</div>
+							
 						</div>
-					</div>
 					</c:forEach>
 				</div>
 			</div>

@@ -130,7 +130,9 @@ hr {
 }
 
 .detail-content {
-	border:1px solid grey;
+	border:1px solid #eeeeee;
+	width:600px;
+	height:346.5px;
 }
 
 #create-review {
@@ -158,6 +160,26 @@ hr {
 
 .review-writer {
 	font-size:40px;
+}
+
+.review-title {
+	font-size:40px;
+	font-weight:bold;
+}
+
+.review-info {
+	font-size:22px;
+	color:#808080;
+}
+
+.review-content {
+	border:1px solid #eeeeee;
+	width:550px;
+}
+
+.update-style {
+	font-size:23px;
+	font-weight:bold;
 }
 
 

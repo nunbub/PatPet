@@ -56,5 +56,20 @@
 		ORDER BY `id` DESC
 		LIMIT 1;	
 	</select>
+	
+	<select id="selectReview" parameterType="int" resultType="com.patpet.review.model.Review">
+		SELECT
+			`id`
+			, `userId`
+			, `title`
+			, `content`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`review`
+		WHERE
+			`id` = #{id}	
+	</select>
 
 </mapper>  

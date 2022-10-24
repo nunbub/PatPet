@@ -60,7 +60,20 @@ public class ReviewBO {
 		
 		return reviewDetailList;
 		
-		
 	}
+	
+	public ReviewDetail getReview(int id, int loginUserId) {
+		Review review = reviewDAO.selectReview(id);
+		
+		User reviewUser = userBO.getUserById(loginUserId);
+		
+		ReviewDetail reviewDetail = new ReviewDetail();
+		
+		reviewDetail.setReview(review);
+		reviewDetail.setUser(reviewUser);
+		
+		return reviewDetail;
+	}
+	
 	
 }

@@ -19,4 +19,6 @@ public interface ReviewDAO {
 	public List<Review> selectReviewList();
 	
 	public Review selectMainPage();
+	
+	public Review selectReview(@Param("id") int id);
 }
