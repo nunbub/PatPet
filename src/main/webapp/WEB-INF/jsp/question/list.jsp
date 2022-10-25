@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,14 +37,19 @@
 						<th>아이 이름</th>
 						<th>분류</th>
 						<th>작성 시간</th>
+						<th></th>
 					</tr>
 				</thead>
 				
 				<tbody>
 					<c:forEach var="questionDetail" items="${questionList }" varStatus="status">
 					<tr>
-						<td>${status.count }</td>
-						<td>${questionDetail.question.title }</td>
+						<td>${fn:length(questionList) - status.index }</td>
+						<td>
+							<a href="/question/detail/view?questionId=${questionDetail.question.id }" class="text-dark">
+							${questionDetail.question.title }</a>
+						</td>
+						
 						<td>${questionDetail.post.name }</td>
 							<c:if test="${questionDetail.post.category eq 'dog'}">
 								<td>강아지</td>
@@ -55,6 +61,7 @@
 								<td>기타 동물</td>
 							</c:if>
 						<td><fmt:formatDate value="${questionDetail.question.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td><button type="button" class="btn btn-danger btn-sm deleteBtn" data-question-id="${questionDetail.question.id }">삭제</button></td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -66,7 +73,35 @@
 	
 	</div>
 	
-	<script></script>
+	<script>
+	$(document).ready(function() {
+		
+		$(".deleteBtn").on("click", function() {
+			
+			let questionId = $(this).data("question-id");
+			
+			$.ajax({
+				type:"get"
+				, url:"/question/delete"
+				, data:{"questionId":questionId}
+				, success:function(data) {
+					
+					if(data.result == "success"){
+						location.reload();
+					} else {
+						alert("삭제 실패");
+					}
+					
+				}
+				, error:function() {
+					alert("삭제 에러");
+				}
+			});
+			
+		});
+		
+	});	
+	</script>
 	
 </body>
 </html>

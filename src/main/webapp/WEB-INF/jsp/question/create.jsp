@@ -65,8 +65,8 @@
 			
 			<!-- 버튼들 -->
 			<div class="mb-4 d-flex justify-content-between align-items-center">
-				<a href="/question/list/view" class="btn btn-secondary" data-login-id="${questionDetail.user.id }">목록으로</a>
-				<button type="button" id="createBtn" class="btn btn-primary" data-post-id="${questionDetail.post.id }">등록하기</button>
+				<a href="/question/list/view" class="btn btn-secondary">목록으로</a>
+				<button type="button" id="createBtn" class="btn btn-primary" data-post-id="${questionDetail.post.id }" data-login-id="${userId }">등록하기</button>
 			</div>
 			<!-- /버튼들 -->
 			
@@ -87,6 +87,7 @@
 			let postId = $(this).data("post-id");
 			let loginId = $(this).data("login-id");
 			
+			
 			if(title == "") {
 				alert("제목을 입력해주세요.");
 				return ;
@@ -100,11 +101,11 @@
 			$.ajax({
 				type:"post"
 				, url:"/question/create"
-				, data:{"postId":postId,"loginId":loginId, "title":title, "content":content}
+				, data:{"postId":postId, "loginId":loginId, "title":title, "content":content}
 				, success:function(data) {
 					
 					if(data.result == "success"){
-						location.href="/question/list/view?userId="+loginId;
+						location.href="/question/list/view?loginId="+loginId;
 					} else {
 						alert("업로드 실패");
 					}

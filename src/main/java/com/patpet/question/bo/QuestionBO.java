@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.patpet.post.dao.PostDAO;
 import com.patpet.post.model.Post;
 import com.patpet.question.dao.QuestionDAO;
@@ -22,6 +23,8 @@ public class QuestionBO {
 	
 	@Autowired
 	private PostDAO postDAO;
+	
+	
 	
 	@Autowired
 	private UserBO userBO;
@@ -49,17 +52,31 @@ public class QuestionBO {
 		
 		for(Question question : questionList) {
 			int userId = question.getUserId();
+			int postId = question.getPostId();
 			
 			User user = userBO.getUserById(userId);
+			
+			Post post = postDAO.selectPost(postId);
 			
 			QuestionDetail questionDetail = new QuestionDetail();
 			
 			questionDetail.setQuestion(question);
 			questionDetail.setUser(user);
+			questionDetail.setPost(post);
 			
 			questionDetailList.add(questionDetail);
 		}
 		
 		return questionDetailList;
+	}
+	
+	public int deleteQuestion(int questionId, int userId) {
+		Question question = questionDAO.selectQuestionByIdAndUserId(questionId, userId);
+		
+		if(question == null) {
+			return 0;
+		}
+		
+		return questionDAO.deleteQuestion(questionId);
 	}
 }

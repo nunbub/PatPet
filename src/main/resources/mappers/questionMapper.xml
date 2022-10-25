@@ -44,5 +44,28 @@
 		ORDER BY
 			`id` DESC;			
 	</select>
+	
+	<select id="selectQuestionByIdAndUserId" parameterType="map" resultType="com.patpet.question.model.Question">
+		SELECT
+			`id`
+			, `userId`
+			, `postId`
+			, `title`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`question`
+		WHERE
+			`id` = #{id}
+			AND `userId` = #{userId}	
+	</select>
+	
+	<delete id="deleteQuestion" parameterType="int">
+		DELETE FROM
+			`question`
+		WHERE
+			`id` = #{questionId}	
+	</delete>
 
 </mapper>  

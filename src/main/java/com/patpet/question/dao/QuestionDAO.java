@@ -18,4 +18,8 @@ public interface QuestionDAO {
 	
 	public List<Question> selectQuestionList(@Param("userId") int userId);
 	
+	public Question selectQuestionByIdAndUserId(@Param("id") int id, @Param("userId") int userId);
+	
+	public int deleteQuestion(@Param("questionId") int questionId);
+	
 }

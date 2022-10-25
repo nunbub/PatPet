@@ -90,6 +90,8 @@ public class PostBO {
 		
 	}
 	
+	
+	
 	public PostDetail getPost(int id, int loginUserId) {
 		Post post = postDAO.selectPost(id); 
 		
