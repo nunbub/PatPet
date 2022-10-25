@@ -67,7 +67,7 @@
 				
 				<div class="my-4">
 					<c:if test="${not empty userId}">
-					<a href="/question/create/view" class="btn btn-warning mr-2">문의하기</a>
+					<a href="/question/create/view?postId=${detailPost.post.id }" class="btn btn-warning mr-2">문의하기</a>
 					</c:if>
 					
 					<a href="/post/list/view?category=${detailPost.post.category }" class="btn btn-secondary">목록으로</a>
