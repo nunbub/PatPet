@@ -47,7 +47,7 @@
 			<div>
 				<c:if test="${userId eq reviewDetail.review.userId }" >
 				<a href="/review/update/view?id=${reviewDetail.review.id }" class="btn btn-success mr-3">수정하기</a>
-				<button type="button" class="btn btn-danger">삭제하기</button>
+				<button type="button" id="deleteBtn" class="btn btn-danger" data-review-id="${reviewDetail.review.id }">삭제하기</button>
 				</c:if>
 			</div>
 		</div>
@@ -57,6 +57,36 @@
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		
 	</div>
+	
+	<script>
+	$(document).ready(function() {
+		
+		$("#deleteBtn").on("click", function() {
+			
+			let reviewId = $(this).data("review-id");
+			
+			$.ajax({
+				type:"get"
+				, url:"/review/delete"
+				, data:{"reviewId":reviewId}
+				, success:function(data) {
+					
+					if(data.result == "success") {
+						location.href="/review/main/view";
+					} else {
+						alert("삭제 실패");
+					}
+					
+				}
+				, error:function() {
+					alert("삭제 에러");
+				}
+			});
+			
+		});
+		
+	});	
+	</script>
 
 </body>
 </html>

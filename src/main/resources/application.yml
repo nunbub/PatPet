@@ -9,3 +9,7 @@ spring:
     url: jdbc:mysql://localhost:3306/patpet
     username: root
     password: Dldkgus77!
+  servlet:
+    multipart:
+      maxFileSize: 50MB
+      maxRequestSize: 50MB

@@ -72,6 +72,22 @@
 			`id` = #{id}	
 	</select>
 	
+	<select id="selectReviewByIdAndUserId" parameterType="map" resultType="com.patpet.review.model.Review">
+	 	SELECT
+	 		`id`
+			, `userId`
+			, `title`
+			, `content`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`review`
+		WHERE
+			`id` = #{id}
+			AND `userId` = #{userId}	
+	</select>
+	
 	<update id="updateReview" parameterType="map">
 		UPDATE
 			`review`
@@ -81,7 +97,14 @@
 			, `imagePath` = #{imagePath}
 			, `updatedAt` = now()
 		WHERE
-			`id` = #{postId}	
+			`id` = #{reviewId}	
 	</update>
+	
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM
+			`review`
+		WHERE
+			`id` = #{reviewId}	
+	</delete>
 
 </mapper>  

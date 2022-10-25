@@ -31,8 +31,8 @@
 			<div class="text-secondary text-center mb-3">Don't buy a pet, adopt one.</div>
 			
 			<!-- 이후 이야기 게시물 리스트 -->
-			<div class="d-flex align-items-center">
-				<div class="d-flex  align-items-center post-list">
+			<div class="d-flex align-items-center post-list">
+				
 					<c:forEach var="reviewDetail" items="${reviewList }">
 						
 						<div class="review-box">
@@ -47,7 +47,7 @@
 							
 						</div>
 					</c:forEach>
-				</div>
+				
 			</div>
 			<!-- /이후 이야기 게시물 리스트 -->
 		</section>

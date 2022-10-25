@@ -46,7 +46,7 @@
 			<div class="d-flex justify-content-between align-items-center pl-2 mb-4">
 				<a href="review/main/view" class="btn btn-secondary">목록으로</a>
 				
-				<button type="button" class="btn btn-success" id="updateBtn">수정하기</button>
+				<button type="button" class="btn btn-success" id="updateBtn" data-review-id="${detailReview.review.id }">수정하기</button>
 			</div>
 		
 		</section>
@@ -63,7 +63,7 @@
 			let title = $("#titleInput").val();
 			let content = $("#contentInput").val();
 			
-			let postId = $(this).data("post-id");
+			let reviewId = $(this).data("review-id");
 			
 			if(title == "") {
 				alert("제목을 입력해주세요.");
@@ -82,7 +82,7 @@
 			
 			let formData = new FormData();
 			
-			formData.append("postId", postId);
+			formData.append("reviewId", reviewId);
 			formData.append("title", title);
 			formData.append("content", content);
 			formData.append("file", $("#fileInput")[0].files[0]);
@@ -97,7 +97,7 @@
 				, success:function(data) {
 					
 					if(data.result == "success") {
-						location.href="/review/detail/view?id="+postId
+						location.href="/review/detail/view?id="+reviewId
 					} else {
 						alert("수정 실패");
 					}

@@ -75,9 +75,9 @@ public class ReviewBO {
 		return reviewDetail;
 	}
 	
-	public int updateReview(int userId, int postId, String title, String content, MultipartFile file) {
+	public int updateReview(int userId, int reviewId, String title, String content, MultipartFile file) {
 		
-		Review review = reviewDAO.selectReview(postId);
+		Review review = reviewDAO.selectReview(reviewId);
 		
 		FileManagerService.removeFile(review.getImagePath());
 		
@@ -91,7 +91,20 @@ public class ReviewBO {
 			}
 		}
 		
-		return reviewDAO.updateReview(postId, title, content, imagePath);
+		return reviewDAO.updateReview(reviewId, title, content, imagePath);
 		
+	}
+	
+	public int deleteReview(int reviewId, int userId) {
+		
+		Review review = reviewDAO.selectReviewByIdAndUserId(reviewId, userId);
+		
+		if(review == null) {
+			return 0;
+		}
+		
+		FileManagerService.removeFile(review.getImagePath());
+		
+		return reviewDAO.deleteReview(reviewId);
 	}
 }

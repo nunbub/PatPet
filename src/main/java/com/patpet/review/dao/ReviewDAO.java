@@ -22,9 +22,14 @@ public interface ReviewDAO {
 	
 	public Review selectReview(@Param("id") int id);
 	
+	public Review selectReviewByIdAndUserId(
+			@Param("id") int id, @Param("userId") int userId);
+	
 	public int updateReview(
-			@Param("postId") int postId
+			@Param("reviewId") int reviewId
 			, @Param("title") String title
 			, @Param("content") String content
 			, @Param("imagePath") String imagePath);
+	
+	public int deleteReview(@Param("reviewId") int reviewId);
 }
