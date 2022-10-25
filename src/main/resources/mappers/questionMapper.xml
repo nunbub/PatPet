@@ -27,5 +27,22 @@
 			, now()
 		)
 	</insert>
+	
+	<select id="selectQuestionList" resultType="com.patpet.question.model.Question">
+		SELECT
+			`id`
+			, `userId`
+			, `postId`
+			, `title`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`question`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY
+			`id` DESC;			
+	</select>
 
 </mapper>  

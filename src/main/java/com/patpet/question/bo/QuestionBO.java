@@ -1,11 +1,15 @@
 package com.patpet.question.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.patpet.post.dao.PostDAO;
 import com.patpet.post.model.Post;
 import com.patpet.question.dao.QuestionDAO;
+import com.patpet.question.model.Question;
 import com.patpet.question.model.QuestionDetail;
 import com.patpet.user.bo.UserBO;
 import com.patpet.user.model.User;
@@ -38,4 +42,24 @@ public class QuestionBO {
 		return questionDetail;
 	}
 	
+	public List<QuestionDetail> getQuestionList(int loginId) {
+		
+		List<Question> questionList = questionDAO.selectQuestionList(loginId);
+		List<QuestionDetail> questionDetailList = new ArrayList<>();
+		
+		for(Question question : questionList) {
+			int userId = question.getUserId();
+			
+			User user = userBO.getUserById(userId);
+			
+			QuestionDetail questionDetail = new QuestionDetail();
+			
+			questionDetail.setQuestion(question);
+			questionDetail.setUser(user);
+			
+			questionDetailList.add(questionDetail);
+		}
+		
+		return questionDetailList;
+	}
 }

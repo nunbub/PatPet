@@ -18,7 +18,7 @@
 					<li class="nav-item"><a class="nav-link" href="/review/main/view"><b class="text-dark">이후 이야기</b></a></li>
 					
 					<c:if test="${not empty userId }" >
-						<li class="nav-item"><a class="nav-link" href="/question/list/view"><b class="text-dark">문의하기</b></a></li>
+						<li class="nav-item"><a class="nav-link" href="/question/list/view?userId=${loginId }"><b class="text-dark">문의하기</b></a></li>
 					</c:if>
 				</ul>
 			</div>

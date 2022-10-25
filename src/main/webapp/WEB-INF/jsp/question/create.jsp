@@ -65,7 +65,7 @@
 			
 			<!-- 버튼들 -->
 			<div class="mb-4 d-flex justify-content-between align-items-center">
-				<a href="/question/list/view" class="btn btn-secondary">목록으로</a>
+				<a href="/question/list/view" class="btn btn-secondary" data-login-id="${questionDetail.user.id }">목록으로</a>
 				<button type="button" id="createBtn" class="btn btn-primary" data-post-id="${questionDetail.post.id }">등록하기</button>
 			</div>
 			<!-- /버튼들 -->
@@ -85,6 +85,7 @@
 			let content = $("#contentInput").val();
 			
 			let postId = $(this).data("post-id");
+			let loginId = $(this).data("login-id");
 			
 			if(title == "") {
 				alert("제목을 입력해주세요.");
@@ -99,11 +100,11 @@
 			$.ajax({
 				type:"post"
 				, url:"/question/create"
-				, data:{"postId":postId, "title":title, "content":content}
+				, data:{"postId":postId,"loginId":loginId, "title":title, "content":content}
 				, success:function(data) {
 					
 					if(data.result == "success"){
-						location.href="/question/list/view"
+						location.href="/question/list/view?userId="+loginId;
 					} else {
 						alert("업로드 실패");
 					}

@@ -1,5 +1,7 @@
 package com.patpet.question;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -35,5 +37,21 @@ public class QuestionController {
 		model.addAttribute("questionDetail", questionDetail);
 		
 		return "question/create";
+	}
+	
+	@GetMapping("/list/view")
+	public String listQuestion(
+			@RequestParam("loginId") int loginId
+			, Model model
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<QuestionDetail> questionList = questionBO.getQuestionList(userId);
+		
+		model.addAttribute("questionList", questionList);
+		
+		return "question/list";
 	}
 }

@@ -1,7 +1,11 @@
 package com.patpet.question.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.patpet.question.model.Question;
 
 @Repository
 public interface QuestionDAO {
@@ -11,5 +15,7 @@ public interface QuestionDAO {
 			, @Param("postId") int postId
 			, @Param("title") String title
 			, @Param("content") String content);
+	
+	public List<Question> selectQuestionList(@Param("userId") int userId);
 	
 }
