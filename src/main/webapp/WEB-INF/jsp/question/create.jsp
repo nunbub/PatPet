@@ -65,7 +65,7 @@
 			
 			<!-- 버튼들 -->
 			<div class="mb-4 d-flex justify-content-between align-items-center">
-				<a href="/question/list/view" class="btn btn-secondary">목록으로</a>
+				<a href="/question/list/view?loginId=${userId }" class="btn btn-secondary">목록으로</a>
 				<button type="button" id="createBtn" class="btn btn-primary" data-post-id="${questionDetail.post.id }" data-login-id="${userId }">등록하기</button>
 			</div>
 			<!-- /버튼들 -->

@@ -192,3 +192,20 @@ hr {
 	font-weight:bold;
 }	
 
+.question-detail {
+	font-size:37px;
+	font-weight:bold;
+}
+
+.question-box {
+	font-size:20px;
+	height:150px;
+}
+
+.non-answer {
+	font-size:30px;
+	font-weight:bold;
+	color:#808080;
+	height:150px;
+}
+

@@ -54,4 +54,22 @@ public class QuestionController {
 		
 		return "question/list";
 	}
+	
+	@GetMapping("/detail/view")
+	public String detailQuestion(
+			@RequestParam("questionId") int questionId
+			, Model model
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		QuestionDetail questionDetail = questionBO.getQuestion(questionId, userId);
+		
+		model.addAttribute("questionDetail", questionDetail);
+		
+		return "question/detail";
+		
+	}
 }

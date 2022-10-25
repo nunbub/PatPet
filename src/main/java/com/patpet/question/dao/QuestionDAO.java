@@ -16,6 +16,8 @@ public interface QuestionDAO {
 			, @Param("title") String title
 			, @Param("content") String content);
 	
+	public Question selectQuestion(@Param("questionId") int questionId);
+	
 	public List<Question> selectQuestionList(@Param("userId") int userId);
 	
 	public Question selectQuestionByIdAndUserId(@Param("id") int id, @Param("userId") int userId);

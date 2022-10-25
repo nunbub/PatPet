@@ -28,6 +28,21 @@
 		)
 	</insert>
 	
+	<select id="selectQuestion" parameterType="int" resultType="com.patpet.question.model.Question">
+		SELECT
+			`id`
+			, `userId`
+			, `postId`
+			, `title`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`question`
+		WHERE
+			`id` = #{questionId}	
+	</select>
+	
 	<select id="selectQuestionList" resultType="com.patpet.question.model.Question">
 		SELECT
 			`id`
