@@ -13,8 +13,11 @@ public interface QuestionDAO {
 	public int insertQuestion(
 			@Param("userId") int userId
 			, @Param("postId") int postId
+			, @Param("isAnswer") int isAnswer
 			, @Param("title") String title
 			, @Param("content") String content);
+	
+	
 	
 	public Question selectQuestion(@Param("questionId") int questionId);
 	
@@ -23,5 +26,7 @@ public interface QuestionDAO {
 	public Question selectQuestionByIdAndUserId(@Param("id") int id, @Param("userId") int userId);
 	
 	public int deleteQuestion(@Param("questionId") int questionId);
+	
+	
 	
 }

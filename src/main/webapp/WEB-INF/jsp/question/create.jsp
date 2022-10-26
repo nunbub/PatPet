@@ -65,8 +65,8 @@
 			
 			<!-- 버튼들 -->
 			<div class="mb-4 d-flex justify-content-between align-items-center">
-				<a href="/question/list/view?loginId=${userId }" class="btn btn-secondary">목록으로</a>
-				<button type="button" id="createBtn" class="btn btn-primary" data-post-id="${questionDetail.post.id }" data-login-id="${userId }">등록하기</button>
+				<a href="/post/detail/view?id=${questionDetail.post.id }" class="btn btn-secondary">목록으로</a>
+				<button type="button" id="createBtn" class="btn btn-primary" data-post-id="${questionDetail.post.id }" data-login-id="${userId }" data-answer-id="${questionDetail.question.isAnswer }">등록하기</button>
 			</div>
 			<!-- /버튼들 -->
 			
@@ -86,6 +86,9 @@
 			
 			let postId = $(this).data("post-id");
 			let loginId = $(this).data("login-id");
+			let isAnswer = $(this).data("answer-id");
+			
+			
 			
 			
 			if(title == "") {
@@ -101,7 +104,7 @@
 			$.ajax({
 				type:"post"
 				, url:"/question/create"
-				, data:{"postId":postId, "loginId":loginId, "title":title, "content":content}
+				, data:{"postId":postId, "loginId":loginId, "isAnswer":isAnswer, "title":title, "content":content}
 				, success:function(data) {
 					
 					if(data.result == "success"){

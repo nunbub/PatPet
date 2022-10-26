@@ -32,6 +32,10 @@ hr {
 	
 }
 
+.nav-link {
+	width:163.81px;
+}
+
 .nav li:hover > a{
 	background-color:#eeeeee;	
 }

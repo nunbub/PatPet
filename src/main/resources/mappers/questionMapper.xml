@@ -12,6 +12,7 @@
 		(
 			`userId`
 			, `postId`
+			, `isAnswer`
 			, `title`
 			, `content`
 			, `createdAt`
@@ -21,6 +22,7 @@
 		(
 			#{userId}
 			, #{postId}
+			, #{isAnswer}
 			, #{title}
 			, #{content}
 			, now()
@@ -28,11 +30,14 @@
 		)
 	</insert>
 	
+	
+	
 	<select id="selectQuestion" parameterType="int" resultType="com.patpet.question.model.Question">
 		SELECT
 			`id`
 			, `userId`
 			, `postId`
+			, `isAnswer`
 			, `title`
 			, `content`
 			, `createdAt`
@@ -48,6 +53,7 @@
 			`id`
 			, `userId`
 			, `postId`
+			, `isAnswer`
 			, `title`
 			, `content`
 			, `createdAt`
@@ -65,6 +71,7 @@
 			`id`
 			, `userId`
 			, `postId`
+			, `isAnswer`
 			, `title`
 			, `content`
 			, `createdAt`

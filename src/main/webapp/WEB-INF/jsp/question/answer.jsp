@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>페트펫 문의 디테일 페이지</title>
+<title>페트펫 문의 답변 입력 페이지</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -25,50 +25,73 @@
 		<c:import url="/WEB-INF/jsp/include/nav.jsp" />
 		
 		<section>
-		
-			<div class="question-detail m-4">${questionDetail.question.title }</div>
+			<div class="question-detail my-4">${questionDetail.question.title }</div>
 			
-			<div class="d-flex align-items-center">
-				<div class="mr-4 ml-3 question-info">아이 이름 : </div>
+			<div class="d-flex align-items-center mb-4">
+				<div class="question-info mr-3">아이 이름 : </div>
 				<div>${questionDetail.post.name }</div>
 			</div>
 			
-			<div class="my-4 ml-3">
+			<div class="mb-5">
 				<div class="question-detail mb-4">Q.</div>
-				<div class="question-box">${questionDetail.question.content }</div>
+				<div>${questionDetail.question.content }</div>
 			</div>
 			
-			<div class="my-4 ml-3">
+			<div>
 				<div class="question-detail mb-4">A.</div>
-				
-					<!-- 작성된 답변이 없을 경우 -->
-					<c:if test="${questionDetail.question.isAnswer == 0 }">
-					<div class="non-answer">아직 작성된 답변이 없습니다.</div>
-					<div class="d-none question-box">작성된 답변</div>
-					</c:if>
-					
-					<!-- 작성된 답변이 있을 경우 -->
-					<c:if test="${questionDetail.question.isAnswer == 1 }">
-					<div class="non-answer d-none ">아직 작성된 답변이 없습니다.</div>
-					<div class="question-box">작성된 답변</div>
-					</c:if>
+				<textarea class="form-control" id="answerInput" rows="12" placeholder="답변을 입력해주세요."></textarea>
 			</div>
 			
-			<!-- 버튼들 -->
 			<div class="d-flex justify-content-between align-items-center my-5">
-				<a href="/question/list/view?loginId=${userId }" class="btn btn-secondary">목록으로</a>
-				<!-- 문의를 받은 게시물의 사용자 에게만 답변하기 버튼 보이기 -->
-				<c:if test="${questionDetail.post.userId eq userId }">
-				<a href="/question/answer/view?questionId=${questionDetail.question.id }" class="btn btn-info">답변하기</a>
-				</c:if>
+				<a href="/question/list/view?" class="btn btn-secondary">목록으로</a>
+				<button type="button" class="btn btn-success" id="answerBtn" data-question-id="${questionDetail.question.id }" data-answer-id="${questionDetail.question.isAnswer }">답변 등록</button>
 			</div>
-			<!-- /버튼들 -->
-			
+		
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
 	</div>
-
+	
+	<script>
+	$(document).ready(function() {
+		
+		$("#answerBtn").on("click", function() {
+			
+			let content = $("#answerInput").val();
+			
+			let questionId = $(this).data("question-id");
+			let isAnswer = $(this).data("answer-id");
+			
+			if(content == "") {
+				alert("답변을 입력해주세요.");
+				return ;
+			}
+			
+			
+			
+			$.ajax({
+				type:"get"
+				, url:"/question/answer"
+				, data:{"content":content, "questionId":questionId, "isAnswer":isAnswer}
+				, success:function(data) {
+					
+					if(data.result == "success"){
+						location.href="/question/detail/view?questionId="+questionId;
+					} else {
+						alert("답변작성 실패");
+					}
+					 
+				}
+				, error:function() {
+					alert("답변작성 에러");
+				}
+			});
+			
+		});
+		
+	});
+	</script>
+	
 </body>
 </html>

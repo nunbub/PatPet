@@ -28,8 +28,8 @@ public class QuestionBO {
 	@Autowired
 	private UserBO userBO;
 
-	public int addQuestion(int userId, int postId, String title, String content) {
-		return questionDAO.insertQuestion(userId, postId, title, content);
+	public int addQuestion(int userId, int postId, int isAnswer, String title, String content) {
+		return questionDAO.insertQuestion(userId, postId, isAnswer, title, content);
 	}
 	
 	public QuestionDetail getPostInfo(int userId, int postId) {
@@ -87,6 +87,8 @@ public class QuestionBO {
 		return questionDetail;
 	}
 	
+	
+	
 	public int deleteQuestion(int questionId, int userId) {
 		Question question = questionDAO.selectQuestionByIdAndUserId(questionId, userId);
 		
@@ -96,4 +98,6 @@ public class QuestionBO {
 		
 		return questionDAO.deleteQuestion(questionId);
 	}
+	
+	
 }
