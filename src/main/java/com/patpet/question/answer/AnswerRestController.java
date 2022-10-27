@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.patpet.question.answer.bo.AnswerBO;
 import com.patpet.question.dao.QuestionDAO;
-import com.patpet.question.model.Question;
+
 
 @RestController
 public class AnswerRestController {
@@ -36,13 +36,14 @@ public class AnswerRestController {
 		
 		int count = answerBO.questionAnswer(userId, questionId, content);
 		
-		Question question = questionDAO.selectQuestion(questionId);
-		
 		// question 테이블에 있는 isAnswer컬럼 update 쿼리로 1로 바꾸기
+		int isAnswer = questionDAO.updateIsAnswer(questionId);
+		
+		
 		
 		Map<String, String> result = new HashMap<>();
 		
-		if(count == 1) {
+		if(count == 1 && isAnswer == 1) {
 			result.put("result", "success");
 		} else {
 			result.put("result", "fail");

@@ -27,7 +27,9 @@
 		<c:import url="/WEB-INF/jsp/include/nav.jsp" />
 		
 		<section>
-			<div class="question-title my-4">나의 문의</div>
+		
+			<c:if test="${param.receive eq 'N' }">
+			<div class="question-title my-4">내가 작성한 문의</div>
 			
 			<table class="table text-center">
 				<thead>
@@ -37,6 +39,7 @@
 						<th>아이 이름</th>
 						<th>분류</th>
 						<th>작성 시간</th>
+						<th>답변 여부</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -61,12 +64,72 @@
 								<td>기타 동물</td>
 							</c:if>
 						<td><fmt:formatDate value="${questionDetail.question.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td>
+							<c:if test="${questionDetail.question.isAnswer == 0 }">
+								<div class="text-danger">답변 대기</div>
+							</c:if>
+							<c:if test="${questionDetail.question.isAnswer == 1 }">
+								<div class="text-success">답변 완료</div>
+							</c:if>
+						</td>
 						<td><button type="button" class="btn btn-danger btn-sm deleteBtn" data-question-id="${questionDetail.question.id }">삭제</button></td>
 					</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+			</c:if>
 			
+			<c:if test="${param.loginId eq questionDetail.post.userId }">
+				<div class="question-title my-4">내가 받은 문의</div>
+			
+				<table class="table text-center">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>제목</th>
+						<th>아이 이름</th>
+						<th>분류</th>
+						<th>작성 시간</th>
+						<th>답변 여부</th>
+						<th></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<c:forEach var="questionDetail" items="${questionList }" varStatus="status">
+					<tr>
+						<td>${fn:length(questionList) - status.index }</td>
+						<td>
+							<a href="/question/detail/view?questionId=${questionDetail.question.id }" class="text-dark">
+							${questionDetail.question.title }</a>
+						</td>
+						
+						<td>${questionDetail.post.name }</td>
+							<c:if test="${questionDetail.post.category eq 'dog'}">
+								<td>강아지</td>
+							</c:if>
+							<c:if test="${questionDetail.post.category eq 'cat'}">
+								<td>고양이</td>
+							</c:if>
+							<c:if test="${questionDetail.post.category eq 'etc'}">
+								<td>기타 동물</td>
+							</c:if>
+						<td><fmt:formatDate value="${questionDetail.question.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td>
+							<c:if test="${questionDetail.question.isAnswer == 0 }">
+								<div class="text-danger">답변 대기</div>
+							</c:if>
+							<c:if test="${questionDetail.question.isAnswer == 1 }">
+								<div class="text-success">답변 완료</div>
+							</c:if>
+						</td>
+						
+					</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			
+			</c:if>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />

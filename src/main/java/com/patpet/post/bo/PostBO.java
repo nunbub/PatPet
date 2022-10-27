@@ -57,7 +57,7 @@ public class PostBO {
 		
 		Review reviewInfo = reviewDAO.selectMainPage();
 		
-		int reviewUserId = reviewInfo.getUserId(); //여기가 0인상태
+		int reviewUserId = reviewInfo.getUserId(); 
 				
 		User reviewUser = userBO.getUserById(reviewUserId);
 		

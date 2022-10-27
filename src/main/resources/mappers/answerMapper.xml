@@ -25,5 +25,19 @@
 			, now()
 		)
 	</insert>
+	
+	<select id="selectAnswer" parameterType="int" resultType="com.patpet.question.answer.model.Answer">
+		SELECT
+			`id`
+			, `userId`
+			, `questionId`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`answer`
+		WHERE
+			`questionId` = #{questionId}		
+	</select>
 
 </mapper>  

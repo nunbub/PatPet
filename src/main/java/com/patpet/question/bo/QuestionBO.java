@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.patpet.post.dao.PostDAO;
 import com.patpet.post.model.Post;
+import com.patpet.question.answer.bo.AnswerBO;
+import com.patpet.question.answer.dao.AnswerDAO;
+import com.patpet.question.answer.model.Answer;
 import com.patpet.question.dao.QuestionDAO;
 import com.patpet.question.model.Question;
 import com.patpet.question.model.QuestionDetail;
@@ -23,13 +26,17 @@ public class QuestionBO {
 	@Autowired
 	private PostDAO postDAO;
 	
+	@Autowired
+	private AnswerDAO answerDAO;
 	
+	@Autowired
+	private AnswerBO answerBO;
 	
 	@Autowired
 	private UserBO userBO;
 
-	public int addQuestion(int userId, int postId, int isAnswer, String title, String content) {
-		return questionDAO.insertQuestion(userId, postId, isAnswer, title, content);
+	public int addQuestion(int userId, int postId,  String title, String content) {
+		return questionDAO.insertQuestion(userId, postId,  title, content);
 	}
 	
 	public QuestionDetail getPostInfo(int userId, int postId) {
@@ -69,6 +76,8 @@ public class QuestionBO {
 		return questionDetailList;
 	}
 	
+
+	
 	public QuestionDetail getQuestion(int questionId, int loginId) {
 		Question question = questionDAO.selectQuestion(questionId);
 		
@@ -78,11 +87,14 @@ public class QuestionBO {
 		
 		Post questionPost = postDAO.selectPost(postId);
 		
+		Answer answer = answerBO.getAnswerById(questionId);
+		
 		QuestionDetail questionDetail = new QuestionDetail();
 		
 		questionDetail.setQuestion(question);
 		questionDetail.setUser(questionUser);
 		questionDetail.setPost(questionPost);
+		questionDetail.setAnswer(answer);
 		
 		return questionDetail;
 	}

@@ -44,13 +44,11 @@
 					<!-- 작성된 답변이 없을 경우 -->
 					<c:if test="${questionDetail.question.isAnswer == 0 }">
 					<div class="non-answer">아직 작성된 답변이 없습니다.</div>
-					<div class="d-none question-box">작성된 답변</div>
 					</c:if>
 					
 					<!-- 작성된 답변이 있을 경우 -->
 					<c:if test="${questionDetail.question.isAnswer == 1 }">
-					<div class="non-answer d-none ">아직 작성된 답변이 없습니다.</div>
-					<div class="question-box">작성된 답변</div>
+					<div class="question-box">${questionDetail.answer.content }</div>
 					</c:if>
 			</div>
 			
@@ -58,7 +56,7 @@
 			<div class="d-flex justify-content-between align-items-center my-5">
 				<a href="/question/list/view?loginId=${userId }" class="btn btn-secondary">목록으로</a>
 				<!-- 문의를 받은 게시물의 사용자 에게만 답변하기 버튼 보이기 -->
-				<c:if test="${questionDetail.post.userId eq userId }">
+				<c:if test="${questionDetail.post.userId eq userId && questionDetail.question.isAnswer == 0 }">
 				<a href="/question/answer/view?questionId=${questionDetail.question.id }" class="btn btn-info">답변하기</a>
 				</c:if>
 			</div>

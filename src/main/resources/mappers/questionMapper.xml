@@ -11,8 +11,7 @@
 			`question`
 		(
 			`userId`
-			, `postId`
-			, `isAnswer`
+			, `postId`			
 			, `title`
 			, `content`
 			, `createdAt`
@@ -21,8 +20,7 @@
 		VALUES
 		(
 			#{userId}
-			, #{postId}
-			, #{isAnswer}
+			, #{postId}			
 			, #{title}
 			, #{content}
 			, now()
@@ -82,6 +80,15 @@
 			`id` = #{id}
 			AND `userId` = #{userId}	
 	</select>
+	
+	<update id="updateIsAnswer" parameterType="int">
+		UPDATE
+			`question`
+		SET
+			`isAnswer` = 1, `updatedAt` = now()
+		WHERE		
+			`id` = #{questionId}
+	</update>
 	
 	<delete id="deleteQuestion" parameterType="int">
 		DELETE FROM
