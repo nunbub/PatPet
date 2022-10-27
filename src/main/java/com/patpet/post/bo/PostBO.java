@@ -52,15 +52,21 @@ public class PostBO {
 		
 		User postUser = userBO.getUserById(userId);
 		
-		Review reivew = reviewDAO.selectMainPage();
 		
-		User reviewUser = userBO.getUserById(userId);
+	
+		
+		Review reviewInfo = reviewDAO.selectMainPage();
+		
+		int reviewUserId = reviewInfo.getUserId(); //여기가 0인상태
+				
+		User reviewUser = userBO.getUserById(reviewUserId);
+		
 		
 		PostDetail mainPostDetail = new PostDetail();
 		
 		mainPostDetail.setPost(post);
 		mainPostDetail.setPostUser(postUser);
-		mainPostDetail.setReview(reivew);
+		mainPostDetail.setReview(reviewInfo);
 		mainPostDetail.setReviewUser(reviewUser);
 		
 		return mainPostDetail;

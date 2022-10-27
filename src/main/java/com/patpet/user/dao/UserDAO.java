@@ -24,4 +24,6 @@ public interface UserDAO {
 	public User selectUserById(@Param("id") int id);
 	
 	
+	
+	
 }
