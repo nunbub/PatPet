@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.patpet.post.dao.PostDAO;
 import com.patpet.post.model.Post;
 import com.patpet.question.answer.bo.AnswerBO;
-import com.patpet.question.answer.dao.AnswerDAO;
+
 import com.patpet.question.answer.model.Answer;
 import com.patpet.question.dao.QuestionDAO;
 import com.patpet.question.model.Question;
@@ -26,8 +26,7 @@ public class QuestionBO {
 	@Autowired
 	private PostDAO postDAO;
 	
-	@Autowired
-	private AnswerDAO answerDAO;
+	
 	
 	@Autowired
 	private AnswerBO answerBO;
@@ -35,8 +34,8 @@ public class QuestionBO {
 	@Autowired
 	private UserBO userBO;
 
-	public int addQuestion(int userId, int postId,  String title, String content) {
-		return questionDAO.insertQuestion(userId, postId,  title, content);
+	public int addQuestion(int userId, int postId, int postUserId, String title, String content) {
+		return questionDAO.insertQuestion(userId, postId, postUserId, title, content);
 	}
 	
 	public QuestionDetail getPostInfo(int userId, int postId) {
@@ -51,7 +50,7 @@ public class QuestionBO {
 		return questionDetail;
 	}
 	
-	public List<QuestionDetail> getQuestionList(int loginId) {
+	public List<QuestionDetail> getQuestionList(int loginId, String receive) {
 		
 		List<Question> questionList = questionDAO.selectQuestionList(loginId);
 		List<QuestionDetail> questionDetailList = new ArrayList<>();
@@ -76,6 +75,31 @@ public class QuestionBO {
 		return questionDetailList;
 	}
 	
+	public List<QuestionDetail> receiveQuestionList(int loginId, String receive){
+		
+		List<Question> questionList = questionDAO.selectReceiveQuestion(loginId);
+		List<QuestionDetail> questionDetailList = new ArrayList<>();
+		
+		for(Question question : questionList) {
+			int userId = question.getUserId();
+			int postId = question.getPostId();
+			
+			User user = userBO.getUserById(userId);
+			
+			Post post = postDAO.selectPost(postId);
+			
+			QuestionDetail questionDetail = new QuestionDetail();
+			
+			questionDetail.setQuestion(question);
+			questionDetail.setPost(post);
+			questionDetail.setUser(user);
+			
+			questionDetailList.add(questionDetail);			
+		}
+		
+		return questionDetailList;
+		
+	}
 
 	
 	public QuestionDetail getQuestion(int questionId, int loginId) {

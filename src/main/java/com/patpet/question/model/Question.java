@@ -7,8 +7,15 @@ public class Question {
 	private int id;
 	private int userId;
 	private int postId;
+	private int postUserId;
 	private int isAnswer;
 	private String title;
+	public int getPostUserId() {
+		return postUserId;
+	}
+	public void setPostUserId(int postUserId) {
+		this.postUserId = postUserId;
+	}
 	private String content;
 	private Date createdAt;
 	private Date updatedAt;

@@ -25,6 +25,7 @@ public class QuestionRestController {
 	@PostMapping("/create")
 	public Map<String, String> create(
 			@RequestParam("postId") int postId
+			, @RequestParam("postUserId") int postUserId
 			
 			, @RequestParam("title") String title
 			, @RequestParam("content") String content
@@ -34,7 +35,7 @@ public class QuestionRestController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = questionBO.addQuestion(userId, postId, title, content);
+		int count = questionBO.addQuestion(userId, postId, postUserId, title, content);
 		
 		Map<String, String> result = new HashMap<>();
 		

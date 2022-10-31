@@ -18,7 +18,7 @@
 					<li class="nav-item"><a class="nav-link" href="/review/main/view"><b class="text-dark">이후 이야기</b></a></li>
 					
 					<c:if test="${not empty userId }" >
-						<li class="nav-item"><a class="nav-link" href="/question/list/view?loginId=${userId}"><b class="text-dark">문의 내역</b></a>
+						<li class="nav-item"><a class="nav-link" href="/question/list/view?loginId=${userId}&receive=N"><b class="text-dark">문의 내역</b></a>
 							<ul class="detail-menu" style="z-index:1">
 								<li class="mt-3"><a href="/question/list/view?loginId=${userId }&receive=N">내가 작성한 문의</a></li>
 								<li class="my-3"><a href="/question/list/view?loginId=${userId }&receive=F">내가 받은 문의</a></li>

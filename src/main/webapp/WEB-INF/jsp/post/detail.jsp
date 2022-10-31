@@ -66,7 +66,7 @@
 				</div>
 				
 				<div class="my-4">
-					<c:if test="${not empty userId}">
+					<c:if test="${not empty userId && userId ne detailPost.post.userId}">
 					<a href="/question/create/view?postId=${detailPost.post.id }" class="btn btn-warning mr-2">문의하기</a>
 					</c:if>
 					

@@ -50,14 +50,11 @@
 			
 			<!-- 버튼들 -->
 			<div class="d-flex justify-content-between align-items-center mb-4">
-				<div>
-					<a href="/review/main/view" class="btn btn-secondary">목록으로</a>
-				</div>
 				
-				<div class="d-flex">
-					<button type="button" class="btn btn-success mr-4" id="updateBtn">수정하기</button>
-					<button type="button" class="btn btn-primary" id="createBtn">등록하기</button>
-				</div>
+				<a href="/review/main/view" class="btn btn-secondary">목록으로</a>
+				
+				<button type="button" class="btn btn-primary" id="createBtn">등록하기</button>
+				
 			</div>
 			<!-- /버튼들 -->
 		</section>

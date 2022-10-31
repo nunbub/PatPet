@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.patpet.question.bo.QuestionBO;
-import com.patpet.question.model.Question;
+
 import com.patpet.question.model.QuestionDetail;
 
 @Controller
@@ -52,10 +52,11 @@ public class QuestionController {
 		
 		if(receive == "N") {
 			
-			List<QuestionDetail> questionList = questionBO.getQuestionList(userId);
+			List<QuestionDetail> questionList = questionBO.getQuestionList(userId, receive);
 			model.addAttribute("questionList", questionList);
 		} else {
-			
+			List<QuestionDetail> questionDetailList = questionBO.receiveQuestionList(loginId, receive);
+			model.addAttribute("questionDetailList", questionDetailList);
 		}
 		
 		

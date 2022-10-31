@@ -66,7 +66,11 @@
 			<!-- 버튼들 -->
 			<div class="mb-4 d-flex justify-content-between align-items-center">
 				<a href="/post/detail/view?id=${questionDetail.post.id }" class="btn btn-secondary">목록으로</a>
-				<button type="button" id="createBtn" class="btn btn-primary" data-post-id="${questionDetail.post.id }" data-login-id="${userId }" data-answer-id="${questionDetail.question.isAnswer }">등록하기</button>
+				
+				<button type="button" id="createBtn" class="btn btn-primary" 
+				data-post-id="${questionDetail.post.id }" data-login-id="${userId }" 
+				data-postuser-id="${questionDetail.post.userId }">
+				등록하기</button>
 			</div>
 			<!-- /버튼들 -->
 			
@@ -86,7 +90,8 @@
 			
 			let postId = $(this).data("post-id");
 			let loginId = $(this).data("login-id");
-			let isAnswer = $(this).data("answer-id");
+			let isAnswer = 0;
+			let postUserId = $(this).data("postuser-id")
 			
 			
 			
@@ -104,18 +109,18 @@
 			$.ajax({
 				type:"post"
 				, url:"/question/create"
-				, data:{"postId":postId, "loginId":loginId, "isAnswer":isAnswer, "title":title, "content":content}
+				, data:{"postId":postId, "loginId":loginId, "postUserId":postUserId, "isAnswer":isAnswer, "title":title, "content":content}
 				, success:function(data) {
 					
 					if(data.result == "success"){
-						location.href="/question/list/view?loginId="+loginId;
+						location.href="/question/list/view?loginId="+loginId+"&receive=N";
 					} else {
 						alert("업로드 실패");
 					}
 					
 				}
 				, error:function() {
-					alert("업로드 에러");
+					alert(isAnswer);
 				}
 			});
 			

@@ -11,7 +11,9 @@
 			`question`
 		(
 			`userId`
-			, `postId`			
+			, `postId`	
+			, `postUserId`
+			, `isAnswer`		
 			, `title`
 			, `content`
 			, `createdAt`
@@ -20,7 +22,9 @@
 		VALUES
 		(
 			#{userId}
-			, #{postId}			
+			, #{postId}	
+			, #{postUserId}
+			, 0		
 			, #{title}
 			, #{content}
 			, now()
@@ -35,6 +39,7 @@
 			`id`
 			, `userId`
 			, `postId`
+			, `postUserId`
 			, `isAnswer`
 			, `title`
 			, `content`
@@ -51,6 +56,7 @@
 			`id`
 			, `userId`
 			, `postId`
+			, `postUserId`
 			, `isAnswer`
 			, `title`
 			, `content`
@@ -64,11 +70,31 @@
 			`id` DESC;			
 	</select>
 	
+	<select id="selectReceiveQuestion" resultType="com.patpet.question.model.Question">
+		SELECT
+			`id`
+			, `userId`
+			, `postId`
+			, `postUserId`
+			, `isAnswer`
+			, `title`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`question`
+		WHERE
+			`postUserId` = #{userId}
+		ORDER BY 
+			`id` DESC;					
+	</select>
+	
 	<select id="selectQuestionByIdAndUserId" parameterType="map" resultType="com.patpet.question.model.Question">
 		SELECT
 			`id`
 			, `userId`
 			, `postId`
+			, `postUserId`
 			, `isAnswer`
 			, `title`
 			, `content`
