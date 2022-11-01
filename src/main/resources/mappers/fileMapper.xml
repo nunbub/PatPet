@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.patpet.post.file.dao.FileDAO">
+
+	<insert id="insertFile" parameterType="map">
+		INSERT INTO
+			`file`
+		(
+			`postId`
+			, `reviewId`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		)	
+		VALUES
+		(
+			#{postId}
+			, #{reviewId}
+			, #{imagePath}
+			, now()
+			, now()
+		)
+	</insert>
+
+</mapper>  

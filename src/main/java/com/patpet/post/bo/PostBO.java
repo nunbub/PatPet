@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.patpet.common.FileManagerService;
 import com.patpet.post.attention.bo.AttentionBO;
 import com.patpet.post.dao.PostDAO;
+import com.patpet.post.file.bo.FileBO;
 import com.patpet.post.model.Post;
 import com.patpet.post.model.PostDetail;
 import com.patpet.review.dao.ReviewDAO;
@@ -32,42 +33,77 @@ public class PostBO {
 	@Autowired
 	private ReviewDAO reviewDAO;
 	
-	public int addPost(int userId, String title, String name, String category, String state, String content, MultipartFile file) {
-		String imagePath = null;
+	@Autowired
+	private FileBO fileBO;
+	
+	public int addPost(int userId, String title, String name, String category, String state, String content, MultipartFile[] files) {
 		
-		if(file != null ) {
-			imagePath = FileManagerService.saveFile(userId, file);
+		Post post = new Post();
+		
+		post.setUserId(userId);
+		post.setTitle(title);
+		post.setName(name);
+		post.setCategory(category);
+		post.setState(state);
+		post.setContent(content);
+		
+		int count = postDAO.insertPost(post);
+		
+		// 파일 저장
+		for(int i = 0; i < files.length; i++) {
 			
-			if(imagePath == null) {
-				return 0;
-			}
+			MultipartFile file = files[i];
+			 			
+			String imagePath = FileManagerService.saveFile(userId, file);
+					
+			fileBO.addFile(post.getId(), 0, imagePath);
+					
 		}
-		return postDAO.insertPost(userId, title, name, category, state, content, imagePath);
+		 
+		return count;
+		
 	}
 	
 	public PostDetail getMainPostDetail() {
+		
 		Post post = postDAO.selectMainPost();
-		
-		int userId = post.getUserId();
-		
-		User postUser = userBO.getUserById(userId);
-		
-		
-	
-		
-		Review reviewInfo = reviewDAO.selectMainPage();
-		
-		int reviewUserId = reviewInfo.getUserId(); 
-				
-		User reviewUser = userBO.getUserById(reviewUserId);
-		
 		
 		PostDetail mainPostDetail = new PostDetail();
 		
-		mainPostDetail.setPost(post);
-		mainPostDetail.setPostUser(postUser);
-		mainPostDetail.setReview(reviewInfo);
-		mainPostDetail.setReviewUser(reviewUser);
+		if(post == null) {
+			
+		} else {
+			
+			int userId = post.getUserId();
+			
+			User postUser = userBO.getUserById(userId);
+			
+			mainPostDetail.setPost(post);
+			mainPostDetail.setPostUser(postUser);
+		}
+		
+		
+		
+				
+		Review reviewInfo = reviewDAO.selectMainPage();
+		
+		if(reviewInfo == null) {
+			
+		} else {
+			
+			int reviewUserId = reviewInfo.getUserId(); 
+			
+			User reviewUser = userBO.getUserById(reviewUserId);
+			
+			mainPostDetail.setReview(reviewInfo);
+			mainPostDetail.setReviewUser(reviewUser);
+		}
+		
+		
+		
+		
+
+		
 		
 		return mainPostDetail;
 	}

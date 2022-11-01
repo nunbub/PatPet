@@ -32,6 +32,13 @@ hr {
 	
 }
 
+.null-post {
+	font-size:30px;
+	font-weight:bold;
+	color:#c0c0c0;
+	height:200px;
+}
+
 .nav-link {
 	width:163.81px;
 }

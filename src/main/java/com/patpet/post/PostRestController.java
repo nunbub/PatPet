@@ -1,5 +1,7 @@
 package com.patpet.post;
 
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.patpet.post.bo.PostBO;
+import com.patpet.post.model.Post;
 
 @RestController
 @RequestMapping("/post")
@@ -27,11 +31,7 @@ public class PostRestController {
 
 	@PostMapping("/create")
 	public Map<String, String> create(
-			@RequestParam("title") String title
-			, @RequestParam("name") String name
-			, @RequestParam("category") String category
-			, @RequestParam("state") String state
-			, @RequestParam("content") String content
+			@ModelAttribute Post post
 			, @RequestParam(value="file", required=false) MultipartFile file
 			, HttpServletRequest request) {
 		
@@ -39,7 +39,7 @@ public class PostRestController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = postBO.addPost(userId, title, name, category, state, content, file);
+		int count = postBO.addPost(post);
 		
 		Map<String, String> result = new HashMap<>();
 		

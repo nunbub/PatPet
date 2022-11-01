@@ -13,7 +13,6 @@
 			`userId`
 			, `title`
 			, `content`
-			, `imagePath`
 			, `createdAt`
 			, `updatedAt`
 		)	
@@ -22,7 +21,6 @@
 			#{userId}
 			, #{title}
 			, #{content}
-			, #{imagePath}
 			, now()
 			, now()
 		)
@@ -34,7 +32,6 @@
 			, `userId`
 			, `title`
 			, `content`
-			, `imagePath`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -48,7 +45,6 @@
 			, `userId`
 			, `title`
 			, `content`
-			, `imagePath`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -63,7 +59,6 @@
 			, `userId`
 			, `title`
 			, `content`
-			, `imagePath`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -78,7 +73,6 @@
 			, `userId`
 			, `title`
 			, `content`
-			, `imagePath`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -94,7 +88,6 @@
 		SET
 			`title` = #{title}	
 			, `content` = #{content}
-			, `imagePath` = #{imagePath}
 			, `updatedAt` = now()
 		WHERE
 			`id` = #{reviewId}	

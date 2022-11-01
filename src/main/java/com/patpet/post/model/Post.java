@@ -10,7 +10,6 @@ public class Post {
 	private String name;
 	private String category;
 	private String state;
-	private String imagePath;
 	private String content;
 	private Date createdAt;
 	private Date updatedAt;
@@ -52,12 +51,7 @@ public class Post {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getImagePath() {
-		return imagePath;
-	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
+	
 	public String getContent() {
 		return content;
 	}

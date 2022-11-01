@@ -12,14 +12,7 @@ import com.patpet.post.model.Post;
 @Repository
 public interface PostDAO {
 
-	public int insertPost(
-			@Param("userId") int userId
-			, @Param("title") String title
-			, @Param("name") String name
-			, @Param("category") String category
-			, @Param("state") String state
-			, @Param("content") String content
-			, @Param("imagePath") String imagePath);
+	public int insertPost(Post post);
 	
 	public List<Post> selectPostList(@Param("category") String category);
 	

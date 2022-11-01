@@ -7,7 +7,6 @@ public class Review {
 	private int id;
 	private int userId;
 	private String title;
-	private String imagePath;
 	private String content;
 	private Date createdAt;
 	private Date updatedAt;
@@ -31,12 +30,7 @@ public class Review {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getImagePath() {
-		return imagePath;
-	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
+	
 	public String getContent() {
 		return content;
 	}

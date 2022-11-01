@@ -6,7 +6,7 @@
   
 <mapper namespace="com.patpet.post.dao.PostDAO">
 
-	<insert id="insertPost" parameterType="map">
+	<insert id="insertPost" parameterType="com.patpet.post.model.Post" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO
 			`post`
 		(
@@ -15,8 +15,7 @@
 			, `name`
 			, `category`
 			, `state`
-			, `content`
-			, `imagePath`
+			, `content`			
 			, `createdAt`
 			, `updatedAt`
 		)
@@ -27,8 +26,7 @@
 			, #{name}
 			, #{category}
 			, #{state}
-			, #{content}
-			, #{imagePath}
+			, #{content}			
 			, now()
 			, now()
 		)
@@ -38,8 +36,7 @@
 	<select id="selectPostList" resultType="com.patpet.post.model.Post">
 		SELECT
 			`id`
-			, `userId`
-			, `imagePath`
+			, `userId`			
 			, `title`
 			, `category`
 			, `state`
@@ -56,8 +53,7 @@
 	<select id="selectMainPost" resultType="com.patpet.post.model.Post">
 		SELECT
 			`id`
-			, `userId`
-			, `imagePath`
+			, `userId`			
 			, `title`
 			, `category`
 			, `state`
@@ -77,8 +73,7 @@
 			, `name`
 			, `category`
 			, `state`
-			, `content`
-			, `imagePath`
+			, `content`			
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -96,8 +91,7 @@
 			, `name`
 			, `category`
 			, `state`
-			, `content`
-			, `imagePath`
+			, `content`			
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -116,8 +110,7 @@
 			, `name` = #{name}
 			, `category` = #{category}
 			, `state` = #{state}
-			, `content` = #{content}	
-			, `imagePath` = #{imagePath}
+			, `content` = #{content}				
 			, `updatedAt` = now()
 		WHERE
 			`id` = #{postId}	
