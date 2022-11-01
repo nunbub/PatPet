@@ -50,7 +50,7 @@ public class QuestionController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		if(receive == "N") {
+		if(receive.equals("F")) {
 			
 			List<QuestionDetail> questionList = questionBO.getQuestionList(userId, receive);
 			model.addAttribute("questionList", questionList);

@@ -29,7 +29,7 @@
 		<section>
 		
 			<!-- 내가 작성한 문의 -->
-			<c:if test="${param.receive eq 'N' }">
+			<c:if test="${param.receive eq 'F' }">
 				<div class="question-title my-4">내가 작성한 문의</div>
 				
 				<table class="table text-center">
@@ -86,7 +86,7 @@
 			<!-- /내가 작성한 문의 -->
 			
 			<!-- 내가 받은 문의 -->
-			<c:if test="${param.receive eq 'F' }">
+			<c:if test="${param.receive eq 'T' }">
 				<div class="question-title my-4">내가 받은 문의</div>
 				
 				<table class="table text-center">

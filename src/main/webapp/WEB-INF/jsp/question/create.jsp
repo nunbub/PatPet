@@ -113,7 +113,7 @@
 				, success:function(data) {
 					
 					if(data.result == "success"){
-						location.href="/question/list/view?loginId="+loginId+"&receive=N";
+						location.href="/question/list/view?loginId="+loginId+"&receive=F";
 					} else {
 						alert("업로드 실패");
 					}
