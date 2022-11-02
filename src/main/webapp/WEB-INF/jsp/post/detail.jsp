@@ -47,7 +47,7 @@
 			<div class="ml-4"><fmt:formatDate value="${detailPost.post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 			
 			<div class="m-4 d-flex">
-				<div><img src="${detailPost.post.imagePath }" width="400" height="400"></div>
+				<div><img src="${detailPost.file.imagePath }" width="400" height="400"></div>
 				
 				<div class="ml-4">
 					<div class="detail-name">이름 : ${detailPost.post.name }</div>

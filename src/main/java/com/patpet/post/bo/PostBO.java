@@ -11,6 +11,7 @@ import com.patpet.common.FileManagerService;
 import com.patpet.post.attention.bo.AttentionBO;
 import com.patpet.post.dao.PostDAO;
 import com.patpet.post.file.bo.FileBO;
+import com.patpet.post.file.model.File;
 import com.patpet.post.model.Post;
 import com.patpet.post.model.PostDetail;
 import com.patpet.review.dao.ReviewDAO;
@@ -118,11 +119,16 @@ public class PostBO {
 			
 			int userId = post.getUserId();
 			
+			int postId = post.getId();
+			
 			User user = userBO.getUserById(userId);
+			
+			File file = fileBO.getFileByPostId(postId);
 			
 			PostDetail postDetail = new PostDetail();
 			postDetail.setPost(post);
 			postDetail.setPostUser(user);
+			postDetail.setFile(file);
 			
 			postDetailList.add(postDetail);
 			
@@ -135,12 +141,16 @@ public class PostBO {
 	
 	
 	public PostDetail getPost(int id, int loginUserId) {
+		
 		Post post = postDAO.selectPost(id); 
+		int postId = post.getId();
 		
 		User user = userBO.getUserById(loginUserId);
 		
-		int attentionCount = attentionBO.getAttentionCount(post.getId());
-		boolean isAttention = attentionBO.isAttention(loginUserId, post.getId());
+		List<File> file = fileBO.getFile(postId);
+		
+		int attentionCount = attentionBO.getAttentionCount(postId);
+		boolean isAttention = attentionBO.isAttention(loginUserId, postId);
 		
 		PostDetail mainPostDetail = new PostDetail();
 		
@@ -148,6 +158,7 @@ public class PostBO {
 		mainPostDetail.setPostUser(user);
 		mainPostDetail.setAttentionCount(attentionCount);
 		mainPostDetail.setAttention(isAttention);
+		mainPostDetail.setFile(file);
 		
 		return mainPostDetail;
 	}

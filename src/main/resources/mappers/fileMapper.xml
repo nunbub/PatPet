@@ -25,5 +25,35 @@
 			, now()
 		)
 	</insert>
+	
+	<select id="selectFileByPostId" parameterType="int" resultType="com.patpet.post.file.model.File">
+		SELECT
+			`id`
+			, `postId`
+			, `reviewId`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`file`
+		WHERE
+			`postId` = #{postId}
+		LIMIT 1;			
+	</select>
+	
+	<select id="selectFile" parameterType="int" resultType="com.patpet.post.file.model.File">
+		SELECT
+			`id`
+			, `postId`
+			, `reviewId`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`file`
+		WHERE
+			`postId` = #{postId}
+	
+	</select>
 
 </mapper>  

@@ -32,7 +32,7 @@
 		<section class="main-content mt-4">
 			<!-- 메인페이지 배너 이미지 -->
 			<div class="d-flex justify-content-center align-items-center">
-				<a href="https://www.animal.go.kr/front/index.do" target="_blank"><img src="/static/image/main-image/main-image1.jpg" width="1100" height="550" id="mainImage"></a>
+				<a href="https://www.animal.go.kr/front/index.do" target="_blank"><img src="/static/image/main-image/main-image1.jpg" width="1000" height="500" id="mainImage"></a>
 				
 			</div>
 			<!-- /메인페이지 배너 이미지 -->

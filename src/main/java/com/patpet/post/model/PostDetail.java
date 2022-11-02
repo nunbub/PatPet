@@ -1,5 +1,7 @@
 package com.patpet.post.model;
 
+import java.util.List;
+
 import com.patpet.post.file.model.File;
 import com.patpet.review.model.Review;
 import com.patpet.user.model.User;
@@ -8,15 +10,16 @@ public class PostDetail {
 	
 	private Post post;
 	private User postUser;
-	private File file;
+	private List<File> file;
 	private Review review;
 	private User reviewUser;
 	
 	
-	public File getFile() {
+	
+	public List<File> getFile() {
 		return file;
 	}
-	public void setFile(File file) {
+	public void setFile(List<File> file) {
 		this.file = file;
 	}
 	public User getPostUser() {

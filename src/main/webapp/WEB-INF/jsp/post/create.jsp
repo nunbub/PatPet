@@ -73,13 +73,19 @@
 				<!-- /이름, 분류, 상태 -->
 				
 				<!-- 사진 업로드 -->
-				<div class="d-flex align-items-center col-5 mt-3">
-					<div class="col-5">아이의 사진 업로드</div>
+				<div class="d-flex align-items-center mt-3">
+					<div class="ml-4">아이의 사진 업로드</div>
 					
-					<div class="pb-2">
+					<div class="pb-2 ml-4">
 					<a href="#" id="imageIcon"> <i class="bi bi-card-image text-dark"></i> </a>
-					<input type="file" id="fileInput" class="d-none">
+					<input type="file" id="fileInput" class="d-none" name="uploadFile" multiple>
 					</div>
+					
+					<div class="text-danger ml-4 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
+				</div>
+				
+				<div id="articlefileChange">
+				
 				</div>
 				<!-- /사진 업로드 -->
 				
@@ -94,7 +100,7 @@
 			<!-- /게시물 입력창 -->
 			<div class="d-flex justify-content-between align-items-center p-3">
 				<a href="/post/list/view?category=dog" class="btn btn-secondary">목록으로</a>
-				<button type="button" class="btn btn-primary" id="createBtn">등록하기</button>
+				<button type="button" class="btn btn-primary" id="createBtn" data-post-id="${post.id }">등록하기</button>
 			</div>
 		</section>
 		
@@ -105,13 +111,30 @@
 	<script>
 	$(document).ready(function() {
 		
-		$("#createBtn").on("click", function() {
+		
+		
+		$("#createBtn").on("click", function(e) {
 			
 			let title = $("#titleInput").val();
 			let name = $("#nameInput").val();
 			let category = $("#categorySelect").val();
 			let state = $("#stateSelect").val();
 			let content = $("#introduce-textbox").val();
+			let postId = $(this).data("post-id");
+			
+			var formData = new FormData();
+			var inputFile = $("input[name='uploadFile']");
+			var files = inputFile[0].files;
+			
+			
+			for(var i = 0; i < files.length; i++) {
+				formData.append("file", files[i]);
+				
+				if(files.length > 5) {
+					alert("사진은 최대 5개까지 선택 가능합니다.");
+					return ;
+				}
+			}
 			
 			if(title == "") {
 				alert("제목을 입력해주세요.");
@@ -143,13 +166,14 @@
 				return ;
 			}
 			
-			let formData = new FormData();
+			
+			
 			formData.append("title", title);
 			formData.append("name", name);
 			formData.append("category", category);
 			formData.append("state", state);
 			formData.append("content", content);
-			formData.append("file", $("#fileInput")[0].files[0]);
+			formData.append("postId", postId);
 			
 			$.ajax({
 				type:"post"
@@ -178,6 +202,8 @@
 		
 		
 	});
+	
+	
 	
 	</script>
 

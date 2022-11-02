@@ -73,7 +73,7 @@
 					<c:if test="${param.category eq postDetail.post.category }" >
 						<div class="list-box">
 						
-							<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.post.imagePath}" width="200" height="200"></a>	
+							<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.file.imagePath}" width="200" height="200"></a>	
 							<div>
 								<div><b class="text-dark post-title">${postDetail.post.title}</b></div>
 								
