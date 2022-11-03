@@ -27,14 +27,14 @@ public class ReviewRestController {
 	public Map<String, String> create(
 			@RequestParam("title") String title
 			, @RequestParam("content") String content
-			, @RequestParam(value="file", required=false) MultipartFile file
+			, @RequestParam(value="file", required=false) MultipartFile[] files
 			, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = reviewBO.addReview(userId, title, content, file);
+		int count = reviewBO.addReview(userId, title, content, files);
 		
 		Map<String, String> result = new HashMap<>();
 		
@@ -53,14 +53,13 @@ public class ReviewRestController {
 			@RequestParam("reviewId") int reviewId
 			, @RequestParam("title") String title
 			, @RequestParam("content") String content
-			, @RequestParam(value="file", required=false) MultipartFile file
 			, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = reviewBO.updateReview(userId, reviewId, title, content, file);
+		int count = reviewBO.updateReview(userId, reviewId, title, content);
 		
 		Map<String, String> result = new HashMap<>();
 		

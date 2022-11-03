@@ -10,16 +10,24 @@ public class PostDetail {
 	
 	private Post post;
 	private User postUser;
-	private List<File> file;
+	private List<File> files;
+	private File file;
 	private Review review;
 	private User reviewUser;
 	
 	
 	
-	public List<File> getFile() {
+	
+	public List<File> getFiles() {
+		return files;
+	}
+	public void setFiles(List<File> files) {
+		this.files = files;
+	}
+	public File getFile() {
 		return file;
 	}
-	public void setFile(List<File> file) {
+	public void setFile(File file) {
 		this.file = file;
 	}
 	public User getPostUser() {

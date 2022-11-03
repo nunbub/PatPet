@@ -65,6 +65,7 @@ public class PostBO {
 		
 	}
 	
+	
 	public PostDetail getMainPostDetail() {
 		
 		Post post = postDAO.selectMainPost();
@@ -83,8 +84,6 @@ public class PostBO {
 			mainPostDetail.setPostUser(postUser);
 		}
 		
-		
-		
 				
 		Review reviewInfo = reviewDAO.selectMainPage();
 		
@@ -101,13 +100,9 @@ public class PostBO {
 		}
 		
 		
-		
-		
-
-		
-		
 		return mainPostDetail;
 	}
+	
 	
 	public List<PostDetail> getPostList(int loginId, String category) {
 		
@@ -139,7 +134,6 @@ public class PostBO {
 	}
 	
 	
-	
 	public PostDetail getPost(int id, int loginUserId) {
 		
 		Post post = postDAO.selectPost(id); 
@@ -147,7 +141,7 @@ public class PostBO {
 		
 		User user = userBO.getUserById(loginUserId);
 		
-		List<File> file = fileBO.getFile(postId);
+		List<File> files = fileBO.getFile(postId);
 		
 		int attentionCount = attentionBO.getAttentionCount(postId);
 		boolean isAttention = attentionBO.isAttention(loginUserId, postId);
@@ -158,43 +152,32 @@ public class PostBO {
 		mainPostDetail.setPostUser(user);
 		mainPostDetail.setAttentionCount(attentionCount);
 		mainPostDetail.setAttention(isAttention);
-		mainPostDetail.setFile(file);
+		mainPostDetail.setFiles(files);
 		
 		return mainPostDetail;
 	}
 	
-	public int updatePost(int userId, int postId, String title,  String name, String category, String state, String content, MultipartFile file) {
 	
-		Post post = postDAO.selectPost(postId);
+	public int updatePost(int userId, int postId, String title,  String name, String category, String state, String content) {
+	
+		return postDAO.updatePost(userId, title, name, category, state, content);
 		
-		FileManagerService.removeFile(post.getImagePath());
-		
-		String imagePath = null;
-		
-		if(file != null) {
-			imagePath = FileManagerService.saveFile(userId, file);
-			
-			if(imagePath == null) {
-				return 0;
-			}
-		}
-		
-		
-		return postDAO.updatePost(postId, title, name, category, state, content, imagePath);
 		
 	}
 	
+	
 	public int deletePost(int postId, int userId) {
-		
-		
-		
+
+
 		Post post = postDAO.selectPostByIdAndUserId(postId, userId);
+		
+		File getFile = fileBO.selectFile(postId);
 		
 		if(post == null) {
 			return 0;
 		}
 		
-		FileManagerService.removeFile(post.getImagePath());
+		FileManagerService.removeFile(getFile.getImagePath());
 		
 		attentionBO.deleteAttentionByPostId(postId);
 		

@@ -47,8 +47,13 @@
 			<div class="ml-4"><fmt:formatDate value="${detailPost.post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 			
 			<div class="m-4 d-flex">
-				<div><img src="${detailPost.file.imagePath }" width="400" height="400"></div>
+				<div>
+				<img src="${detailPost.files[0].imagePath }" width="400" height="400" id="detailImage">
 				
+				<c:forEach var="file" items="${detailPost.files }">
+				<input type="hidden" value="${file.imagePath }" class="file-image">
+				</c:forEach>
+				</div>
 				<div class="ml-4">
 					<div class="detail-name">이름 : ${detailPost.post.name }</div>
 					<div class="mt-3 detail-content p-3">${detailPost.post.content }</div>
@@ -83,6 +88,29 @@
 	
 	<script>
 	$(document).ready(function() {
+		
+		var files = [];
+		var fileImage = $(".file-image");
+		
+		console.log(fileImage);
+		
+		for(var i = 0; i < fileImage.length; i++) {
+			files.push($(fileImage[i]).val());
+		}
+		
+		var currentImageIndex = 0;
+		
+		setInterval(function() {
+			$("#detailImage").attr("src", files[currentImageIndex]);
+			currentImageIndex++;
+			
+			if(currentImageIndex == files.length) {
+				currentImageIndex = 0;
+			}
+			
+		}, 5000);
+		
+		
 		
 		$(".nonattention-btn").on("click", function(e) {
 			

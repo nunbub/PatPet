@@ -93,16 +93,6 @@
 				</div>
 				<!-- /이름, 분류, 상태 -->
 				
-				<!-- 사진 업로드 -->
-				<div class="d-flex align-items-center col-5 mt-3">
-					<div class="col-5">아이의 사진 업로드</div>
-					
-					<div class="pb-2">
-					<a href="#" id="imageIcon"> <i class="bi bi-card-image text-dark"></i> </a>
-					<input type="file" id="fileInput" class="d-none" value="${detailPost.post.imagePath }">
-					</div>
-				</div>
-				<!-- /사진 업로드 -->
 				
 				<!-- 게시물 내용 -->
 				<div class="mt-3 mb-5 ml-4 pl-2">
@@ -161,10 +151,7 @@
 				return
 			}
 			
-			if($("#fileInput")[0].files.length == 0) {
-				alert("아이의 사진을 업로드해주세요.");
-				return ;
-			}
+			
 			
 			let formData = new FormData();
 			
@@ -174,7 +161,7 @@
 			formData.append("category", category);
 			formData.append("state", state);
 			formData.append("content", content);
-			formData.append("file", $("#fileInput")[0].files[0]);
+			
 			
 			$.ajax({
 				type:"post"
@@ -199,9 +186,7 @@
 			
 		}); 
 		
-		$("#imageIcon").on("click", function() {
-			$("#fileInput").click();
-		});
+		
 		
 	});
 	

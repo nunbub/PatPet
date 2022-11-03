@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.patpet.post.file.dao.FileDAO;
 import com.patpet.post.file.model.File;
 
+
 @Service
 public class FileBO {
 	
@@ -22,8 +23,20 @@ public class FileBO {
 		return fileDAO.selectFileByPostId(postId);
 	}
 	
-	public List<File> getFile(int postId) {
+	public File selectFile(int postId) {
 		return fileDAO.selectFile(postId);
+	}
+	
+	public List<File> getFile(int postId) {
+		return fileDAO.selectFileList(postId);
+	}
+	
+	public File reviewFile(int reviewId) {
+		return fileDAO.selectReviewFile(reviewId);
+	}
+	
+	public File getFileByReviewId(int reviewId) {
+		return fileDAO.selectFileByReviewId(reviewId);
 	}
 	
 	

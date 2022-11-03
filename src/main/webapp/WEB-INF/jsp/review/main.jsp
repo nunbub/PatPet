@@ -37,7 +37,7 @@
 						
 						<div class="review-box">
 							<a href="/review/detail/view?id=${reviewDetail.review.id }">
-								<img src="${reviewDetail.review.imagePath }" width="200" height="200"></a>
+								<img src="${reviewDetail.file.imagePath }" width="200" height="200"></a>
 								
 								<div class="text-center">
 									<div><b>${reviewDetail.review.title }</b></div>

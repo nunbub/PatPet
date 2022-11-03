@@ -53,7 +53,7 @@
 							<div class="d-flex justify-content-center align-items-center">
 							
 								<div class="mt-3 text-center">
-									<img src="${mainPost.post.imagePath}" width="525" height="350">
+									<img src="${mainPost.file.imagePath}" width="525" height="350">
 									<div class="mainPostTitle"><b>${mainPost.post.title}</b></div>
 									<div class="text-secondary">작성자 [ ${mainPost.postUser.name} ]</div>
 								</div>

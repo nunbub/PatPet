@@ -10,11 +10,7 @@ import com.patpet.review.model.Review;
 @Repository
 public interface ReviewDAO {
 
-	public int insertReview(
-			@Param("userId") int userId
-			, @Param("title") String title
-			, @Param("content") String content
-			, @Param("imagePath") String imagePath);
+	public int insertReview(Review review);
 	
 	public List<Review> selectReviewList();
 	
@@ -28,8 +24,7 @@ public interface ReviewDAO {
 	public int updateReview(
 			@Param("reviewId") int reviewId
 			, @Param("title") String title
-			, @Param("content") String content
-			, @Param("imagePath") String imagePath);
+			, @Param("content") String content);
 	
 	public int deleteReview(@Param("reviewId") int reviewId);
 }

@@ -84,9 +84,7 @@
 					<div class="text-danger ml-4 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
 				</div>
 				
-				<div id="articlefileChange">
 				
-				</div>
 				<!-- /사진 업로드 -->
 				
 				<!-- 게시물 내용 -->

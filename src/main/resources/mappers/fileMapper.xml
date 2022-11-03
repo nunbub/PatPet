@@ -26,6 +26,20 @@
 		)
 	</insert>
 	
+	<select id="selectFile" parameterType="int" resultType="com.patpet.post.file.model.File">
+		SELECT
+			`id`
+			, `postId`
+			, `reviewId`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`file`
+		WHERE
+			`postId` = #{postId}
+	</select>
+	
 	<select id="selectFileByPostId" parameterType="int" resultType="com.patpet.post.file.model.File">
 		SELECT
 			`id`
@@ -41,7 +55,7 @@
 		LIMIT 1;			
 	</select>
 	
-	<select id="selectFile" parameterType="int" resultType="com.patpet.post.file.model.File">
+	<select id="selectFileList" parameterType="int" resultType="com.patpet.post.file.model.File">
 		SELECT
 			`id`
 			, `postId`
@@ -54,6 +68,36 @@
 		WHERE
 			`postId` = #{postId}
 	
+	</select>
+	
+	<select id="selectReviewFile" parameterType="int" resultType="com.patpet.post.file.model.File">
+		SELECT
+			`id`
+			, `postId`
+			, `reviewId`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`file`
+		WHERE
+			`reviewId` = #{reviewId}
+		
+	</select>
+	
+	<select id="selectFileByReviewId" parameterType="int" resultType="com.patpet.post.file.model.File">
+		SELECT
+			`id`
+			, `postId`
+			, `reviewId`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`file`
+		WHERE
+			`reviewId` = #{reviewId}
+		LIMIT 1;
 	</select>
 
 </mapper>  

@@ -64,14 +64,13 @@ public class PostRestController {
 			, @RequestParam("category") String category
 			, @RequestParam("state") String state
 			, @RequestParam("content") String content
-			, @RequestParam(value="file", required=false) MultipartFile file
 			, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = postBO.updatePost(userId, postId, title, name, category, state, content, file);
+		int count = postBO.updatePost(userId, postId, title, name, category, state, content);
 		
 		Map<String, String> result = new HashMap<>();
 		

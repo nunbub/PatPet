@@ -37,7 +37,9 @@
 			<div class="d-flex align-items-center ml-2 mt-4">
 				<div class="mr-3 mt-2 review-letter">아이의 사진</div>
 				<a href="#" id="imageIcon"><i class="bi bi-card-image text-dark fileIcon"></i></a>
-				<input type="file" id="fileInput" class="d-none">
+				<input type="file" id="fileInput" class="d-none" name="uploadFile" multiple>
+				
+				<div class="text-danger ml-4 mt-2 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
 			</div>
 			<!-- /이후 이야기 이미지 파일 -->
 			
@@ -71,6 +73,19 @@
 				let title = $("#titleInput").val();
 				let content = $("#contentInput").val();
 				
+				var formData = new FormData();
+				var inputFile = $("input[name='uploadFile']")
+				var files = inputFile[0].files;
+				
+				for(var i = 0; i < files.length; i++) {
+					formData.append("file", files[i]);
+					
+					if(files.length > 5) {
+						alert("사진은 최대 5개까지 선택 가능합니다.");
+						return ;
+					}
+				}
+				
 				if(title == "") {
 					alert("제목을 입력해주세요.");
 					return ;
@@ -86,10 +101,10 @@
 					return ;
 				}
 				
-				let formData = new FormData();
+				
 				formData.append("title", title);
 				formData.append("content", content);
-				formData.append("file", $("#fileInput")[0].files[0]);
+				
 				
 				$.ajax({
 					type:"post"

@@ -6,7 +6,7 @@
   
 <mapper namespace="com.patpet.review.dao.ReviewDAO">
 
-	<insert id="insertReview" parameterType="map">
+	<insert id="insertReview" parameterType="com.patpet.review.model.Review" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO
 			`review`
 		(

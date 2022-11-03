@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.patpet.common.FileManagerService;
+import com.patpet.post.file.bo.FileBO;
+import com.patpet.post.file.model.File;
 import com.patpet.review.dao.ReviewDAO;
 import com.patpet.review.model.Review;
 import com.patpet.review.model.ReviewDetail;
@@ -23,18 +25,28 @@ public class ReviewBO {
 	@Autowired
 	private UserBO userBO;
 	
-	public int addReview(int userId, String title, String content, MultipartFile file) {
-		String imagePath = null;
+	@Autowired
+	private FileBO fileBO;
+	
+	public int addReview(int userId, String title, String content, MultipartFile[] files) {
 		
-		if(file != null) {
-			imagePath = FileManagerService.saveFile(userId, file);
-			
-			if(imagePath == null) {
-				return 0;
-			}
+ 		Review review = new Review();
+ 		
+ 		review.setUserId(userId);
+ 		review.setTitle(title);
+ 		review.setContent(content);
+ 		
+ 		int count = reviewDAO.insertReview(review);
+ 		
+ 		for(int i = 0; i < files.length; i++) {
+ 			MultipartFile file = files[i];
+ 			
+ 			String imagePath = FileManagerService.saveFile(userId, file);
+ 			
+ 			fileBO.addFile(0, review.getId(), imagePath);
  		}
 		
-		return reviewDAO.insertReview(userId, title, content, imagePath);
+		return count;
 	}
 
 	public List<ReviewDetail> getMainReviewList(int loginId) {
@@ -47,12 +59,17 @@ public class ReviewBO {
 			
 			int userId = review.getUserId();
 			
+			int reviewId = review.getId();
+			
 			User user = userBO.getUserById(userId);
+			
+			File file = fileBO.getFileByReviewId(reviewId);
 			
 			ReviewDetail reviewDetail = new ReviewDetail();
 			
 			reviewDetail.setReview(review);
 			reviewDetail.setUser(user);
+			reviewDetail.setFile(file);
 			
 			reviewDetailList.add(reviewDetail);
 			
@@ -75,23 +92,10 @@ public class ReviewBO {
 		return reviewDetail;
 	}
 	
-	public int updateReview(int userId, int reviewId, String title, String content, MultipartFile file) {
+	public int updateReview(int userId, int reviewId, String title, String content) {
 		
-		Review review = reviewDAO.selectReview(reviewId);
 		
-		FileManagerService.removeFile(review.getImagePath());
-		
-		String imagePath = null;
-		
-		if(file != null) {
-			imagePath = FileManagerService.saveFile(userId, file);
-			
-			if(imagePath == null) {
-				return 0;
-			}
-		}
-		
-		return reviewDAO.updateReview(reviewId, title, content, imagePath);
+		return reviewDAO.updateReview(reviewId, title, content);
 		
 	}
 	
@@ -99,11 +103,13 @@ public class ReviewBO {
 		
 		Review review = reviewDAO.selectReviewByIdAndUserId(reviewId, userId);
 		
+		File file = fileBO.reviewFile(reviewId);
+		
 		if(review == null) {
 			return 0;
 		}
 		
-		FileManagerService.removeFile(review.getImagePath());
+		FileManagerService.removeFile(file.getImagePath());
 		
 		return reviewDAO.deleteReview(reviewId);
 	}

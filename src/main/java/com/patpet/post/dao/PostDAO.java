@@ -28,8 +28,7 @@ public interface PostDAO {
 			, @Param("name") String name
 			, @Param("category") String category
 			, @Param("state") String state
-			, @Param("content") String content
-			, @Param("imagePath") String imagePath);
+			, @Param("content") String content);
 	
 	public int deletePost(@Param("postId") int postId);
 	
