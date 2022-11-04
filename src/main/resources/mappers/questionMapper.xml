@@ -122,5 +122,12 @@
 		WHERE
 			`id` = #{questionId}	
 	</delete>
+	
+	<delete id="deleteQuestionByPostId" parameterType="int">
+		DELETE FROM
+			`question`
+		WHERE
+			`postId` = #{postId}	
+	</delete>
 
 </mapper>  

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.patpet.post.bo.PostBO;
 import com.patpet.post.model.PostDetail;
+import com.patpet.review.model.ReviewDetail;
 
 @Controller
 @RequestMapping("/post")
@@ -26,8 +27,11 @@ public class PostController {
 	public String mainPage(Model model) {
 		
 		PostDetail mainPost = postBO.getMainPostDetail();
+		ReviewDetail reviewDetail = postBO.getMainReview();
+		
 		
 		model.addAttribute("mainPost", mainPost);
+		model.addAttribute("mainReview", reviewDetail);
 		
 		return "post/main";
 	}

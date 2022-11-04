@@ -135,5 +135,9 @@ public class QuestionBO {
 		return questionDAO.deleteQuestion(questionId);
 	}
 	
+	public int deleteQuestionByPostId(int postId) {
+		return questionDAO.deleteQuestionByPostId(postId);
+	}
+	
 	
 }

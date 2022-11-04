@@ -33,10 +33,6 @@
 				 <input type="text" id="titleInput" class="form-control" value="${detailReview.review.title }">
 			</div>
 			
-			<div class="d-flex align-items-center mt-4">
-				<div class="mr-3 ml-2 mt-2 update-style">아이의 사진</div> <a href="#"><i id="imageIcon" class="bi bi-card-image text-dark fileIcon"></i></a>
-				<input type="file" id="fileInput" class="d-none">
-			</div>
 			
 			<div class="my-4 ml-2">
 				<div class="mb-3 update-style">입양 이후의 이야기를 들려주세요!</div>
@@ -75,17 +71,14 @@
 				return ;
 			}
 			
-			if($("#fileInput")[0].files.length == 0) {
-				alert("아이의 사진을 업로드해주세요.");
-				return ;
-			}
+			
 			
 			let formData = new FormData();
 			
 			formData.append("reviewId", reviewId);
 			formData.append("title", title);
 			formData.append("content", content);
-			formData.append("file", $("#fileInput")[0].files[0]);
+			
 			
 			$.ajax({
 				type:"post"

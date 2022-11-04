@@ -31,6 +31,12 @@ public class FileBO {
 		return fileDAO.selectFileList(postId);
 	}
 	
+	public int deleteFileByPostId(int postId) {
+		return fileDAO.deleteFileByPostId(postId);
+	}
+	
+	
+	
 	public File reviewFile(int reviewId) {
 		return fileDAO.selectReviewFile(reviewId);
 	}
@@ -39,5 +45,12 @@ public class FileBO {
 		return fileDAO.selectFileByReviewId(reviewId);
 	}
 	
+	public List<File> getReviewList(int reviewId) {
+		return fileDAO.selectReviewList(reviewId);
+	}
+	
+	public int deleteFileByReviewId(int reviewId) {
+		return fileDAO.deleteFileByReviewId(reviewId);
+	}
 	
 }

@@ -41,7 +41,7 @@
 								
 								<div class="text-center">
 									<div><b>${reviewDetail.review.title }</b></div>
-									<div>작성자 [ <b>${reviewDetail.user.name }</b> ]</div>
+									<div>작성자 [ <b>${reviewDetail.reviewUser.name }</b> ]</div>
 									<div><fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd"/></div>
 								</div>
 							

@@ -3,7 +3,7 @@ package com.patpet.post.model;
 import java.util.List;
 
 import com.patpet.post.file.model.File;
-import com.patpet.review.model.Review;
+
 import com.patpet.user.model.User;
 
 public class PostDetail {
@@ -12,9 +12,8 @@ public class PostDetail {
 	private User postUser;
 	private List<File> files;
 	private File file;
-	private Review review;
-	private User reviewUser;
-	
+	private int attentionCount;
+	private boolean isAttention;
 	
 	
 	
@@ -36,22 +35,8 @@ public class PostDetail {
 	public void setPostUser(User postUser) {
 		this.postUser = postUser;
 	}
-	public User getReviewUser() {
-		return reviewUser;
-	}
-	public void setReviewUser(User reviewUser) {
-		this.reviewUser = reviewUser;
-	}
-	private int attentionCount;
-	private boolean isAttention;
 	
 	
-	public Review getReview() {
-		return review;
-	}
-	public void setReview(Review review) {
-		this.review = review;
-	}
 	public boolean isAttention() {
 		return isAttention;
 	}

@@ -22,8 +22,18 @@ public interface FileDAO {
 	
 	public List<File> selectFileList(@Param("postId") int postId);
 	
+	public int deleteFileByPostId(@Param("postId") int postId);
+	
+	public File selectMainPost(@Param("postId") int postId);
+	
+	public File selectMainReview(@Param("reviewId") int reviewId);
+	
 	public File selectReviewFile(@Param("reviewId") int reviewId);
 	
 	public File selectFileByReviewId(@Param("reviewId") int reviewId);
+	
+	public List<File> selectReviewList(@Param("reviewId") int reviewId);
+	
+	public int deleteFileByReviewId(@Param("reviewId") int reviewId);
 	
 }

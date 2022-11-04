@@ -14,8 +14,10 @@ import com.patpet.post.file.bo.FileBO;
 import com.patpet.post.file.model.File;
 import com.patpet.post.model.Post;
 import com.patpet.post.model.PostDetail;
+import com.patpet.question.bo.QuestionBO;
 import com.patpet.review.dao.ReviewDAO;
 import com.patpet.review.model.Review;
+import com.patpet.review.model.ReviewDetail;
 import com.patpet.user.bo.UserBO;
 import com.patpet.user.model.User;
 
@@ -33,6 +35,9 @@ public class PostBO {
 	
 	@Autowired
 	private ReviewDAO reviewDAO;
+	
+	@Autowired
+	private QuestionBO questionBO;
 	
 	@Autowired
 	private FileBO fileBO;
@@ -70,6 +75,8 @@ public class PostBO {
 		
 		Post post = postDAO.selectMainPost();
 		
+		
+		
 		PostDetail mainPostDetail = new PostDetail();
 		
 		if(post == null) {
@@ -77,14 +84,23 @@ public class PostBO {
 		} else {
 			
 			int userId = post.getUserId();
+			int postId = post.getId();
 			
 			User postUser = userBO.getUserById(userId);
+			File postFile = fileBO.getFileByPostId(postId);
 			
 			mainPostDetail.setPost(post);
 			mainPostDetail.setPostUser(postUser);
+			mainPostDetail.setFile(postFile);
 		}
 		
-				
+		
+		return mainPostDetail;
+	}
+	
+	public ReviewDetail getMainReview() {
+		
+		ReviewDetail reviewDetail = new ReviewDetail();
 		Review reviewInfo = reviewDAO.selectMainPage();
 		
 		if(reviewInfo == null) {
@@ -92,15 +108,17 @@ public class PostBO {
 		} else {
 			
 			int reviewUserId = reviewInfo.getUserId(); 
+			int reviewId = reviewInfo.getId();
 			
 			User reviewUser = userBO.getUserById(reviewUserId);
+			File reviewFile = fileBO.getFileByReviewId(reviewId);
 			
-			mainPostDetail.setReview(reviewInfo);
-			mainPostDetail.setReviewUser(reviewUser);
+			reviewDetail.setFile(reviewFile);
+			reviewDetail.setReview(reviewInfo);
+			reviewDetail.setReviewUser(reviewUser);
 		}
 		
-		
-		return mainPostDetail;
+		return reviewDetail;
 	}
 	
 	
@@ -171,15 +189,23 @@ public class PostBO {
 
 		Post post = postDAO.selectPostByIdAndUserId(postId, userId);
 		
-		File getFile = fileBO.selectFile(postId);
+		List<File> getFile = fileBO.getFile(postId);
 		
 		if(post == null) {
 			return 0;
 		}
 		
-		FileManagerService.removeFile(getFile.getImagePath());
+		for(File file : getFile) {
+			
+			FileManagerService.removeFile(file.getImagePath());
+			
+		}
+		
 		
 		attentionBO.deleteAttentionByPostId(postId);
+		questionBO.deleteQuestionByPostId(postId);
+		fileBO.deleteFileByPostId(postId);
+		
 		
 		return postDAO.deletePost(postId);
 		

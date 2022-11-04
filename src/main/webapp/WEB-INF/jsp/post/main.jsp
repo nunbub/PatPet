@@ -39,55 +39,52 @@
 					
 			<div class="d-flex justify-content-around my-4">
 				<!-- 최근에 올라온 게시물 -->
-				<c:choose>
-					<c:when test="${mainPost.post == null }">
 						<div class="col-6">
-							<div class="main-animal text-center">새로운 친구</div>
+							<div class="main-animal text-center">New Post</div>
 							
-							<div class="null-post d-flex justify-content-center align-items-center">아직 새로운 친구가 없습니다.</div>
-						</div>	
-					</c:when>
-					<c:otherwise>					
-						<div class="col-6">
-							<div class="main-animal text-center">새로운 친구</div>
-							<div class="d-flex justify-content-center align-items-center">
+						<c:choose>
+							<c:when test="${mainPost.post == null }">
+								<div class="null-post d-flex justify-content-center align-items-center">아직 새로운 친구가 없습니다.</div>
+							</c:when>
 							
-								<div class="mt-3 text-center">
-									<img src="${mainPost.file.imagePath}" width="525" height="350">
-									<div class="mainPostTitle"><b>${mainPost.post.title}</b></div>
-									<div class="text-secondary">작성자 [ ${mainPost.postUser.name} ]</div>
-								</div>
+							<c:otherwise>					
+								<div class="d-flex justify-content-center align-items-center">
 								
-							</div>
+									<div class="mt-3 text-center">
+										<a href="/post/detail/view?id=${mainPost.post.id }"><img src="${mainPost.file.imagePath}" width="525" height="350"></a>
+										<div class="mainPostTitle"><b>${mainPost.post.title}</b></div>
+										<div class="text-secondary">작성자 [ ${mainPost.postUser.name} ]</div>
+									</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+								
 						</div>
-					</c:otherwise>
-				</c:choose>
 				<!-- /최근에 올라온 게시물 -->
 								
 				<!-- 최근에 올라온 이후 이야기 -->
-				<c:choose>
-					<c:when test="${mainPost.review == null }">
 						<div class="col-6">
-							<div class="main-review text-center">새로운 이후 이야기</div>
+							<div class="main-review text-center">New Review</div>
 							
-							<div class="null-post d-flex justify-content-center align-items-center">아직 새로운 이야기가 없습니다.</div>
-						</div>	
-					</c:when>
-					<c:otherwise>
-						<div class="col-6">
-							<div class="main-review text-center">새로운 이후 이야기</div>
-							
-							<div class="d-flex justify-content-center align-items-center">
+						<c:choose>
+							<c:when test="${mainReview.review == null }">
+								<div class="null-post d-flex justify-content-center align-items-center">아직 새로운 이야기가 없습니다.</div>
+							</c:when>
 						
-								<div class="mt-3 text-center">
-									<img src="${mainPost.review.imagePath }" width="525" height="350">
-									<div class="mainPostTitle"><b>${mainPost.review.title }</b></div>
-									<div class="text-secondary">작성자 [ ${mainPost.reviewUser.name } ] </div>
+						
+							<c:otherwise>
+	
+								<div class="d-flex justify-content-center align-items-center">
+							
+									<div class="mt-3 text-center">
+										<a href="/review/detail/view?id=${mainReview.review.id }"><img src="${mainReview.file.imagePath }" width="525" height="350"></a>
+										<div class="mainPostTitle"><b>${mainReview.review.title }</b></div>
+										<div class="text-secondary">작성자 [ ${mainReview.reviewUser.name } ] </div>
+									</div>
 								</div>
-							</div>
+							</c:otherwise>
+						</c:choose>
 						</div>
-					</c:otherwise>
-				</c:choose>
 				
 				
 				<!-- /최근에 올라온 이후 이야기 -->

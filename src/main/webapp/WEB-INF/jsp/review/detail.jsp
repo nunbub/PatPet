@@ -29,12 +29,19 @@
 		<!-- 디테일 카드 -->
 		<div class="review-title mt-3">${reviewDetail.review.title}</div>
 		<div class="mt-3 review-info">
-			<div >작성자 : ${reviewDetail.user.name }</div>
+			<div >작성자 : ${reviewDetail.reviewUser.name }</div>
 			<div class="mt-2">작성 일자 : <fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
 		</div>
 		
 		<div class="d-flex mt-4 align-itmes-center">
-			<div><img src="${reviewDetail.review.imagePath }" width="520" height="500"></div>
+			<div>
+				<img src="${reviewDetail.files[0].imagePath }" width="520" height="500" id="detailImage">
+				
+				<c:forEach var="file" items="${reviewDetail.files }">
+					<input type="hidden" value="${file.imagePath }" class="file-image">
+				</c:forEach>
+			</div>
+			
 			<div class="ml-4 review-content p-3">
 				<div>${reviewDetail.review.content }</div>
 			</div>	
@@ -60,6 +67,29 @@
 	
 	<script>
 	$(document).ready(function() {
+		
+		var files = [];
+		var fileImage = $(".file-image");
+		
+		console.log(fileImage);
+		
+		for(var i = 0; i < fileImage.length; i++) {
+			files.push($(fileImage[i]).val());
+		}
+		
+		var currentImageIndex = 0;
+		
+		setInterval(function() {
+			
+			$("#detailImage").attr("src", files[currentImageIndex]);
+			currentImageIndex++;
+			
+			if(currentImageIndex == files.length) {
+				currentImageIndex = 0;
+				
+			}
+			
+		}, 5000);
 		
 		$("#deleteBtn").on("click", function() {
 			

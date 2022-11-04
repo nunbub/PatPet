@@ -68,7 +68,7 @@ public class ReviewBO {
 			ReviewDetail reviewDetail = new ReviewDetail();
 			
 			reviewDetail.setReview(review);
-			reviewDetail.setUser(user);
+			reviewDetail.setReviewUser(user);
 			reviewDetail.setFile(file);
 			
 			reviewDetailList.add(reviewDetail);
@@ -84,10 +84,13 @@ public class ReviewBO {
 		
 		User reviewUser = userBO.getUserById(loginUserId);
 		
+		List<File> files = fileBO.getReviewList(id);
+		
 		ReviewDetail reviewDetail = new ReviewDetail();
 		
 		reviewDetail.setReview(review);
-		reviewDetail.setUser(reviewUser);
+		reviewDetail.setReviewUser(reviewUser);
+		reviewDetail.setFiles(files);
 		
 		return reviewDetail;
 	}
@@ -103,13 +106,19 @@ public class ReviewBO {
 		
 		Review review = reviewDAO.selectReviewByIdAndUserId(reviewId, userId);
 		
-		File file = fileBO.reviewFile(reviewId);
+		List<File> getReviewFile = fileBO.getReviewList(reviewId);
 		
 		if(review == null) {
 			return 0;
 		}
 		
-		FileManagerService.removeFile(file.getImagePath());
+		for(File file : getReviewFile) {
+			
+			FileManagerService.removeFile(file.getImagePath());
+		}
+		
+		fileBO.deleteFileByReviewId(reviewId);
+		
 		
 		return reviewDAO.deleteReview(reviewId);
 	}

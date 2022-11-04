@@ -29,6 +29,8 @@ public interface QuestionDAO {
 	
 	public int deleteQuestion(@Param("questionId") int questionId);
 	
+	public int deleteQuestionByPostId(@Param("postId") int postId);
+	
 	
 	
 }

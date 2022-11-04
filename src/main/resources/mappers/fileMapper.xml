@@ -52,6 +52,8 @@
 			`file`
 		WHERE
 			`postId` = #{postId}
+		ORDER BY 
+			`id` DESC	
 		LIMIT 1;			
 	</select>
 	
@@ -69,6 +71,8 @@
 			`postId` = #{postId}
 	
 	</select>
+	
+	
 	
 	<select id="selectReviewFile" parameterType="int" resultType="com.patpet.post.file.model.File">
 		SELECT
@@ -97,7 +101,40 @@
 			`file`
 		WHERE
 			`reviewId` = #{reviewId}
+		ORDER BY 
+			`id` DESC
 		LIMIT 1;
 	</select>
+	
+	<select id="selectReviewList" parameterType="int" resultType="com.patpet.post.file.model.File">
+		SELECT
+			`id`
+			, `postId`
+			, `reviewId`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`file`
+		WHERE
+			`reviewId` = #{reviewId}
+	</select>
+	
+	
+	
+	<delete id="deleteFileByPostId" parameterType="int">
+		DELETE FROM
+			`file`
+		WHERE
+			`postId` = #{postId}	
+	</delete>
+	
+	<delete id="deleteFileByReviewId" parameterType="int">
+		DELETE FROM
+			`file`
+		WHERE
+			`reviewId` = #{reviewId}	
+	
+	</delete>
 
 </mapper>  
