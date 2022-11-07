@@ -15,6 +15,9 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 
@@ -27,24 +30,24 @@
 		<section>
 			<div class="question-detail my-4">${questionDetail.question.title }</div>
 			
-			<div class="d-flex align-items-center mb-4">
-				<div class="question-info mr-3">아이 이름 : </div>
+			<div class="d-flex align-items-center mb-4 question-font">
+				<div class="mr-3">아이 이름 : </div>
 				<div>${questionDetail.post.name }</div>
 			</div>
 			
 			<div class="mb-5">
-				<div class="question-detail mb-4">Q.</div>
-				<div>${questionDetail.question.content }</div>
+				<div class="question-logo mb-4">Q.</div>
+				<div class="question-font">${questionDetail.question.content }</div>
 			</div>
 			
 			<div>
-				<div class="question-detail mb-4">A.</div>
+				<div class="question-logo mb-4">A.</div>
 				<textarea class="form-control" id="answerInput" rows="12" placeholder="답변을 입력해주세요."></textarea>
 			</div>
 			
 			<div class="d-flex justify-content-between align-items-center my-5">
-				<a href="/question/list/view?" class="btn btn-secondary">목록으로</a>
-				<button type="button" class="btn btn-success" id="answerBtn" data-question-id="${questionDetail.question.id }" data-answer-id="${questionDetail.question.isAnswer }">답변 등록</button>
+				<a href="/question/list/view?" class="btn listbtn-font">목록으로</a>
+				<button type="button" class="btn createbtn-font" id="answerBtn" data-question-id="${questionDetail.question.id }" data-answer-id="${questionDetail.question.isAnswer }">답변 등록</button>
 			</div>
 		
 		</section>

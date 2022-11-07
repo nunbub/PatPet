@@ -13,15 +13,15 @@
 				<div class="d-flex align-items-center justify-content-center mt-5">
 					<div>
 						<div>
-							<h4>Pat</h4>
-							<div class="small text-secondary">
+							<div class="introduce">Pat</div>
+							<div class="sign-main">
 								[동사] (특히 애정을 담아) 쓰다듬다[토닥거리다]
 							</div>
 						</div>
 						
 						<div class="mt-4">
-							<h4>Pet</h4>
-							<div class="small text-secondary">
+							<div class="introduce">Pet</div>
+							<div class="sign-main">
 								[명사] 반려동물
 							</div>
 						</div>

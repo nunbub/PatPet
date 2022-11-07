@@ -13,6 +13,9 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   	
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 	
@@ -29,20 +32,20 @@
 				
 				<div class="col-7 p-3">
 					<div class="d-flex">
-						<div class="patpet">패트펫은?</div>
-						<span class="text-secondary pl-3 pt-4">[ Pat, Pet ]</span>
+						<div class="patpet">페트펫은?</div>
+						<span class="patpet-consisting pl-3 pt-4">[ Pat, Pet ]</span>
 					</div>
 					
 					<div class="pt-5">
-						'쓰다듬다' 라는 뜻의 <b class="introduce">Pat</b> <br>
-						'반려동물' 이라는 뜻의 <b class="introduce">Pet</b> 을 합친 말로,
+						<span class="introduce-letter">'쓰다듬다' 라는 뜻의</span> <b class="introduce">Pat</b> <br>
+						<span class="introduce-letter">'반려동물' 이라는 뜻의</span> <b class="introduce">Pet</b><span class="introduce-letter"> 을 합친 말로,</span>
 					</div>
 					
 					<div class="intent text-center pt-5">
 						' 모든 반려동물은 사랑가득한 쓰다듬을 받을 수 있다 '
 					</div>
 					
-					<div class="pt-5">
+					<div class="pt-5 introduce-letter">
 						라는 의미로, <br>
 						상처받은 아이들에게 새로운 가족을 찾아주고자 만들게 되었습니다.
 					</div>

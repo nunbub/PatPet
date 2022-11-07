@@ -15,21 +15,7 @@
   	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 	
-	<!-- 구글 웹 폰트 -->
-	<!-- Pat, Pet -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
-	<!-- / Pat, Pet -->
-	
-	<!-- 메뉴 -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300&display=swap" rel="stylesheet">
-	<!-- / 메뉴 -->
-	
-	
-	<!-- / 구글 웹 폰트 -->
+	<c:import url="/WEB-INF/jsp/include/font.jsp" />
 	
 </head>
 <body>
@@ -56,11 +42,11 @@
 			<div class="d-flex justify-content-around my-4">
 				<!-- 최근에 올라온 게시물 -->
 						<div class="col-6">
-							<div class="main-animal text-center">New Post</div>
+							<div class="main-new text-center">New Post</div>
 							
 						<c:choose>
 							<c:when test="${mainPost.post == null }">
-								<div class="null-post d-flex justify-content-center align-items-center">아직 새로운 친구가 없습니다.</div>
+								<div class="null-post d-flex justify-content-center align-items-center">아직 새로운 게시물이 없습니다.</div>
 							</c:when>
 							
 							<c:otherwise>					
@@ -68,8 +54,8 @@
 								
 									<div class="mt-3 text-center">
 										<a href="/post/detail/view?id=${mainPost.post.id }"><img src="${mainPost.file.imagePath}" width="525" height="350"></a>
-										<div class="mainPostTitle"><b>${mainPost.post.title}</b></div>
-										<div class="text-secondary">작성자 [ ${mainPost.postUser.name} ]</div>
+										<div class="mainpost-title"><b>${mainPost.post.title}</b></div>
+										<div class="main-writer">작성자 [ ${mainPost.postUser.name} ]</div>
 									</div>
 								</div>
 							</c:otherwise>
@@ -80,11 +66,11 @@
 								
 				<!-- 최근에 올라온 이후 이야기 -->
 						<div class="col-6">
-							<div class="main-review text-center">New Review</div>
+							<div class="main-new text-center">New Review</div>
 							
 						<c:choose>
 							<c:when test="${mainReview.review == null }">
-								<div class="null-post d-flex justify-content-center align-items-center">아직 새로운 이야기가 없습니다.</div>
+								<div class="null-post d-flex justify-content-center align-items-center">아직 새로운 게시물이 없습니다.</div>
 							</c:when>
 						
 						
@@ -94,8 +80,8 @@
 							
 									<div class="mt-3 text-center">
 										<a href="/review/detail/view?id=${mainReview.review.id }"><img src="${mainReview.file.imagePath }" width="525" height="350"></a>
-										<div class="mainPostTitle"><b>${mainReview.review.title }</b></div>
-										<div class="text-secondary">작성자 [ ${mainReview.reviewUser.name } ] </div>
+										<div class="mainpost-title"><b>${mainReview.review.title }</b></div>
+										<div class="main-writer">작성자 [ ${mainReview.reviewUser.name } ] </div>
 									</div>
 								</div>
 							</c:otherwise>

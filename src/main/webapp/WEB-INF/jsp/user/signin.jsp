@@ -15,6 +15,8 @@
   	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 	
+	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+	
 </head>
 <body>
 
@@ -31,7 +33,7 @@
 			<!-- 로그인 입력 창 -->
 			<div class="col-8 d-flex justify-content-center align-items-center">
 				<div class="col-7">
-					<h1>로그인</h1>
+					<span class="sign-font">Sign In</span>
 					<!-- 로그인 입력 카드 -->
 					<form id="loginBox">
 						<!-- 아이디 입력 -->
@@ -42,11 +44,11 @@
 						<input type="password" placeholder="패스워드" class="form-control mt-4" id="passwordInput">
 						<!-- /패스워드 입력 -->
 						
-						<button type="submit" class="btn btn-block btn-secondary mt-4" id="signinBtn">로그인</button>
+						<button type="submit" class="btn btn-block listbtn-font mt-4" id="signinBtn">로그인</button>
 					</form>
 					<!-- /로그인 입력 카드 -->
 					
-					<div class="mt-4 text-center">
+					<div class="mt-4 text-center sign-link">
 						계정이 없으신가요?<a href="/user/signup/view">회원가입</a>
 					</div>
 				

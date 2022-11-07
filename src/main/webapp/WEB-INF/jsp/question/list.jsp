@@ -17,6 +17,9 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 
@@ -30,9 +33,9 @@
 		
 			<!-- 내가 작성한 문의 -->
 			<c:if test="${param.receive eq 'F' }">
-				<div class="question-title my-4">내가 작성한 문의</div>
+				<div class="review-main my-4">내가 작성한 문의</div>
 				
-				<table class="table text-center">
+				<table class="table text-center create-font">
 					<thead>
 						<tr>
 							<th>No.</th>
@@ -87,9 +90,9 @@
 			
 			<!-- 내가 받은 문의 -->
 			<c:if test="${param.receive eq 'T' }">
-				<div class="question-title my-4">내가 받은 문의</div>
+				<div class="review-main my-4">내가 받은 문의</div>
 				
-				<table class="table text-center">
+				<table class="table text-center create-font">
 					<thead>
 						<tr>
 							<th>No.</th>

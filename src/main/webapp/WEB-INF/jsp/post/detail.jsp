@@ -16,6 +16,9 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 	<div class="container">
@@ -26,11 +29,11 @@
 			
 			
 			<div class="d-flex m-4 justify-content-between align-items-center">
-				<h2>${detailPost.post.title }</h2>	
+				<span class="detail-title">${detailPost.post.title }</span>	
 				
 				<!-- 관심 버튼 -->
-				<div class="d-flex">
-					<div class="mr-2">관심 ${detailPost.attentionCount }명</div>
+				<div class="d-flex align-items-center">
+					<div class="mr-2 interest-btn">관심 ${detailPost.attentionCount }명</div>
 					<c:choose>		
 						<c:when test="${detailPost.attention }">							
 							<a href="#" class="nonattention-btn" data-post-id="${detailPost.post.id }"><i class="bi bi-heart-fill text-danger"></i></a>
@@ -44,7 +47,7 @@
 			</div>
 			
 			<!-- 게시물 내용 -->
-			<div class="ml-4"><fmt:formatDate value="${detailPost.post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+			<div class="ml-4 post-date"><fmt:formatDate value="${detailPost.post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 			
 			<div class="m-4 d-flex">
 				<div>
@@ -55,7 +58,7 @@
 				</c:forEach>
 				</div>
 				<div class="ml-4">
-					<div class="detail-name">이름 : ${detailPost.post.name }</div>
+					<div class="post-info">이름 : ${detailPost.post.name }</div>
 					<div class="mt-3 detail-content p-3">${detailPost.post.content }</div>
 				</div>
 			</div>
@@ -65,17 +68,17 @@
 			<div class="d-flex justify-content-between">
 				<div class="m-3 d-flex">
 					<c:if test="${userId eq detailPost.post.userId}">
-					<button type="button" class="btn btn-block btn-danger m-2" id="deleteBtn" data-post-id="${detailPost.post.id }" data-post-category="${detailPost.post.category }">삭제하기</button>
-					<a href="/post/update/view?id=${detailPost.post.id }" class="btn btn-primary m-2 text-white" id="updateBtn">수정하기</a>
+					<button type="button" class="btn deletebtn-font m-2" id="deleteBtn" data-post-id="${detailPost.post.id }" data-post-category="${detailPost.post.category }">삭제하기</button>
+					<a href="/post/update/view?id=${detailPost.post.id }" class="btn updatebtn-font m-2" id="updateBtn">수정하기</a>
 					</c:if>
 				</div>
 				
 				<div class="my-4">
 					<c:if test="${not empty userId && userId ne detailPost.post.userId}">
-					<a href="/question/create/view?postId=${detailPost.post.id }" class="btn btn-warning mr-2">문의하기</a>
+					<a href="/question/create/view?postId=${detailPost.post.id }" class="btn questionbtn-font mr-2">문의하기</a>
 					</c:if>
 					
-					<a href="/post/list/view?category=${detailPost.post.category }" class="btn btn-secondary">목록으로</a>
+					<a href="/post/list/view?category=${detailPost.post.category }" class="btn listbtn-font">목록으로</a>
 					
 				</div>
 			</div>

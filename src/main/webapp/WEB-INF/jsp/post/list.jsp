@@ -16,6 +16,9 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>	
 	<div class="container">
@@ -30,10 +33,10 @@
 				<c:choose>
 					<c:when test="${param.category == 'dog'}">
 					
-						<div class="col-4 dog-title text-center main-dog">
-							<h3 class="mt-2">강아지를 '쓰다듬다'</h3>
+						<div class="col-4 list-title text-center">
+							강아지를 '쓰다듬다'
 						</div>
-						<div class="small text-secondary text-center ml-4">
+						<div class="famous-saying text-center ml-4">
 						개는 자신보다 당신을 더 사랑하는 이 세상의 유일한 생명체입니다. <br>
 						- Josh Billings -
 						</div>
@@ -42,22 +45,22 @@
 						
 					<c:when test="${param.category == 'cat' }">
 					
-						<div class="col-4 dog-title text-center main-dog">
-							<h3 class="mt-2">고양이를 '쓰다듬다'</h3>
+						<div class="col-4 list-title text-center">
+							고양이를 '쓰다듬다'
 						</div>
-						<div class="small text-secondary text-center ml-4">
-						고양이는 세상 모두가 자기를 사랑해주길 바라지 않는다. <br>다만 자기가 선택한 사람이 자기를 사랑해주길 바랄 뿐이다.<br>
-						- Helen Thomson -
+						<div class="famous-saying text-center ml-4">
+						인생에 고양이를 더하면 그 힘은 무한대가 된다.<br>
+						- Rainer Maria Rilke -
 						</div>
 						
 				 	</c:when>
 					
 					<c:otherwise>
 					
-						<div class="col-4 dog-title text-center main-dog">
-							<h3 class="mt-2">기타동물을 '쓰다듬다'</h3>
+						<div class="col-4 list-title text-center">
+							기타동물을 '쓰다듬다'
 						</div>
-						<div class="small text-secondary text-center ml-4">
+						<div class="famous-saying text-center ml-4">
 						인간에게는 동물을 다스릴 권리가 있는 것이 아니라, 모든 생명체를 지킬 의무가 있다.<br>
 						- Jane Morris Goodall -
 						</div>
@@ -68,16 +71,16 @@
 			
 			</div>
 			<!-- 등록된 게시물 리스트 -->
-			<div class="d-flex align-items-center post-list my-4 ml-3">
+			<div class="d-flex align-items-center flex-wrap my-4 ml-3">
 				<c:forEach var="postDetail" items="${postList}">			
 					<c:if test="${param.category eq postDetail.post.category }" >
 						<div class="list-box">
 						
 							<a href="/post/detail/view?id=${postDetail.post.id }"><img src="${postDetail.file.imagePath}" width="200" height="200"></a>	
 							<div>
-								<div><b class="text-dark post-title">${postDetail.post.title}</b></div>
+								<div><b class="post-title">${postDetail.post.title}</b></div>
 								
-								<div class="state text-dark">상태 [ 
+								<div class="state">상태 [ 
 								<c:choose>
 									<c:when test="${postDetail.post.state == '입양 대기'}">
 									<b class="text-danger">${postDetail.post.state }</b>
@@ -88,8 +91,8 @@
 								</c:choose>	
 								 ]</div>
 								 
-								<div class="text-dark"> 작성자 : ${postDetail.postUser.name }</div>
-								<div class="small text-secondary"><fmt:formatDate value="${postDetail.post.createdAt }" pattern="yyyy-MM-dd" /></div>
+								<div class="main-writer"> 작성자 : ${postDetail.postUser.name }</div>
+								<div class="post-date"><fmt:formatDate value="${postDetail.post.createdAt }" pattern="yyyy-MM-dd" /></div>
 							</div>				
 						
 						</div>	
@@ -102,7 +105,7 @@
 			<!-- 게시물 작성 아이콘 -->
 			<c:if test="${not empty userId }">
 			<div class="d-flex justify-content-end mb-4 mr-3">
-				<a href="/post/create/view"><i class="bi bi-pencil-square create-btn"></i></a>
+				<a href="/post/create/view"><i class="bi bi-pencil-square create-logo"></i></a>
 			</div>
 			</c:if>
 			<!-- /게시물 작성 아이콘 -->

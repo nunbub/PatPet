@@ -15,14 +15,16 @@
   	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 	
+	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+	
 </head>
 <body>
 
-	<div class="container signup-page" >
+	<div class="container" >
 		
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section class="main-content d-flex my-4">
+		<section class="d-flex my-4">
 			
 			<!-- 회원가입 고정 -->
 			<c:import url="/WEB-INF/jsp/include/signmain.jsp" />
@@ -32,13 +34,13 @@
 			<div class="col-8 d-flex justify-content-center align-items-center">
 				<div class="col-7">
 					<div class="text-center mb-4">
-						<h2>회원 가입</h2>
+						<span class="sign-font">Sign Up</span>
 					</div>
 					<!-- 아이디 -->
 					<div class="input-group">
 					  <input type="text" class="form-control" placeholder="아이디" id="loginIdInput">
 					  <div class="input-group-append">
-					    <button class="btn btn-outline-danger" type="button" id="isDuplicateBtn">중복 확인</button>
+					    <button class="btn btn-outline-danger sign-link" type="button" id="isDuplicateBtn">중복 확인</button>
 					  </div>
 					  
 					</div>	
@@ -71,11 +73,11 @@
 					<!-- /전화번호 -->
 					
 					<!-- 회원가입 버튼 -->					
-					<button type="button" class="btn btn-secondary btn-block mt-3" id="signupBtn">가입하기</button>  				
+					<button type="button" class="btn listbtn-font btn-block mt-3" id="signupBtn">가입하기</button>  				
 					<!-- /회원가입 버튼 -->
 					
 					<!-- 로그인 링크 -->
-					<div class="text-center mt-4">
+					<div class="text-center mt-4 sign-link">
 						계정이 있으신가요? <a href="/user/signin/view">로그인</a>
 					</div>
 					<!-- /로그인 링크 -->

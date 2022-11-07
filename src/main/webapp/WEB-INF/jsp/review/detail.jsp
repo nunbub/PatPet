@@ -15,6 +15,9 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+	
+	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+	
 </head>
 <body>
 
@@ -27,22 +30,22 @@
 		<section>
 		
 		<!-- 디테일 카드 -->
-		<div class="review-title mt-3">${reviewDetail.review.title}</div>
-		<div class="mt-3 review-info">
-			<div >작성자 : ${reviewDetail.reviewUser.name }</div>
-			<div class="mt-2">작성 일자 : <fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+		<div class="review-main mt-3">${reviewDetail.review.title}</div>
+		<div class="mt-3">
+			<div class="post-info">작성자 : ${reviewDetail.reviewUser.name }</div>
+			<div class="mt-2 post-date">작성 일자 : <fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
 		</div>
 		
-		<div class="d-flex mt-4 align-itmes-center">
+		<div class="d-flex mt-4 align-itmes-center justify-content-center">
 			<div>
-				<img src="${reviewDetail.files[0].imagePath }" width="520" height="500" id="detailImage">
+				<img src="${reviewDetail.files[0].imagePath }" width="450" height="346.5" id="detailImage">
 				
 				<c:forEach var="file" items="${reviewDetail.files }">
 					<input type="hidden" value="${file.imagePath }" class="file-image">
 				</c:forEach>
 			</div>
 			
-			<div class="ml-4 review-content p-3">
+			<div class="ml-4 detail-content p-3">
 				<div>${reviewDetail.review.content }</div>
 			</div>	
 		</div>
@@ -50,11 +53,11 @@
 		
 		<!-- 버튼들 -->
 		<div class="d-flex justify-content-between align-items-center my-4">
-			<a href="/review/main/view" class="btn btn-secondary">목록으로</a>
+			<a href="/review/main/view" class="btn listbtn-font">목록으로</a>
 			<div>
 				<c:if test="${userId eq reviewDetail.review.userId }" >
-				<a href="/review/update/view?id=${reviewDetail.review.id }" class="btn btn-success mr-3">수정하기</a>
-				<button type="button" id="deleteBtn" class="btn btn-danger" data-review-id="${reviewDetail.review.id }">삭제하기</button>
+				<a href="/review/update/view?id=${reviewDetail.review.id }" class="btn updatebtn-font mr-3">수정하기</a>
+				<button type="button" id="deleteBtn" class="btn deletebtn-font" data-review-id="${reviewDetail.review.id }">삭제하기</button>
 				</c:if>
 			</div>
 		</div>

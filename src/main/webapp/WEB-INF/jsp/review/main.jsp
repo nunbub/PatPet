@@ -16,6 +16,9 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 
@@ -28,10 +31,10 @@
 		<section>
 			<div class="review-main text-center mt-4 mb-2">이후 이야기</div>
 			
-			<div class="text-secondary text-center mb-3">Don't buy a pet, adopt one.</div>
+			<div class="review-writing text-center mb-3">Don't buy a pet, adopt one.</div>
 			
 			<!-- 이후 이야기 게시물 리스트 -->
-			<div class="d-flex align-items-center post-list">
+			<div class="d-flex align-items-center flex-wrap">
 				
 					<c:forEach var="reviewDetail" items="${reviewList }">
 						
@@ -40,9 +43,9 @@
 								<img src="${reviewDetail.file.imagePath }" width="200" height="200"></a>
 								
 								<div class="text-center">
-									<div><b>${reviewDetail.review.title }</b></div>
-									<div>작성자 [ <b>${reviewDetail.reviewUser.name }</b> ]</div>
-									<div><fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd"/></div>
+									<div class="review-title">${reviewDetail.review.title }</div>
+									<div class="main-writer">작성자 [ <b>${reviewDetail.reviewUser.name }</b> ]</div>
+									<div class="post-date"><fmt:formatDate value="${reviewDetail.review.createdAt }" pattern="yyyy-MM-dd"/></div>
 								</div>
 							
 						</div>

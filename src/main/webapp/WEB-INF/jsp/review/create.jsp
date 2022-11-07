@@ -16,6 +16,10 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 	<div class="container">
@@ -25,22 +29,22 @@
 		<c:import url="/WEB-INF/jsp/include/nav.jsp" />
 		
 		<section>
-			<div id="create-review" class="my-4 ml-2">이후 이야기</div>
+			<div class="my-4 ml-2 review-main">이후 이야기</div>
 			
 			<!-- 이후 이야기 게시물 제목 -->
 			<div class="d-flex align-items-center mt-3">
-				<div class="col-1 review-letter p-0 ml-2">제목</div><input id="titleInput" type="text" class="form-control col-11" placeholder="제목을 입력해주세요">
+				<div class="col-1 create-font p-0 ml-2">제목</div><input id="titleInput" type="text" class="form-control col-11" placeholder="제목을 입력해주세요">
 			</div>
 			<!-- /이후 이야기 게시물 제목 -->
 			
 			<!-- 이후 이야기 이미지 파일 -->
 			<div class=" ml-2 mt-4">
 				<div class="d-flex align-items-center">
-					<div class="mr-3 mt-2 review-letter">아이의 사진</div>
+					<div class="mr-3 mt-2 create-font">아이의 사진</div>
 					<a href="#" id="imageIcon"><i class="bi bi-card-image text-dark fileIcon"></i></a>
 					<input type="file" id="fileInput" class="d-none" name="uploadFile" multiple accept=".jpg, .png">
 					
-					<div class="text-danger ml-4 mt-2 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
+					<div class="file-warning ml-4 mt-2">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
 				</div>
 				
 				<div id="image-preview" class="ml-5 d-none align-items-center">
@@ -51,7 +55,7 @@
 			
 			<!-- 이후 이야기 게시물 내용 -->
 			<div>
-				<div class="review-letter ml-2 mt-5">입양 이후의 이야기를 들려주세요 !</div>
+				<div class="create-font ml-2 mt-5">입양 이후의 이야기를 들려주세요 !</div>
 				<textarea id="contentInput" placeholder="내용을 입력해주세요" class="form-control my-3" rows="10"></textarea>
 			</div>
 			<!-- /이후 이야기 게시물 내용 -->
@@ -59,9 +63,9 @@
 			<!-- 버튼들 -->
 			<div class="d-flex justify-content-between align-items-center mb-4">
 				
-				<a href="/review/main/view" class="btn btn-secondary">목록으로</a>
+				<a href="/review/main/view" class="btn listbtn-font">목록으로</a>
 				
-				<button type="button" class="btn btn-primary" id="createBtn">등록하기</button>
+				<button type="button" class="btn createbtn-font" id="createBtn">등록하기</button>
 				
 			</div>
 			<!-- /버튼들 -->

@@ -14,7 +14,10 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+		
+	<c:import url="/WEB-INF/jsp/include/font.jsp" />	
+		
 </head>
 <body>
 
@@ -26,23 +29,23 @@
 		
 		<section>
 		
-			<div class="mt-3 review-title">이후이야기 수정하기</div>
+			<div class="mt-3 create-post">이후이야기 수정하기</div>
 			
 			<div class="d-flex mt-4 justify-content-center align-items-center">
-				<div class="col-1 update-style">제목</div>
+				<div class="col-1 create-font">제목</div>
 				 <input type="text" id="titleInput" class="form-control" value="${detailReview.review.title }">
 			</div>
 			
 			
 			<div class="my-4 ml-2">
-				<div class="mb-3 update-style">입양 이후의 이야기를 들려주세요!</div>
+				<div class="mb-3 create-font">입양 이후의 이야기를 들려주세요!</div>
 				<textarea id="contentInput" class="form-control" rows="10">${detailReview.review.content }</textarea>
 			</div>
 			
 			<div class="d-flex justify-content-between align-items-center pl-2 mb-4">
-				<a href="review/main/view" class="btn btn-secondary">목록으로</a>
+				<a href="/review/main/view" class="btn listbtn-font">목록으로</a>
 				
-				<button type="button" class="btn btn-success" id="updateBtn" data-review-id="${detailReview.review.id }">수정하기</button>
+				<button type="button" class="btn updatebtn-font" id="updateBtn" data-review-id="${detailReview.review.id }">수정하기</button>
 			</div>
 		
 		</section>

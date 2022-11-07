@@ -15,6 +15,9 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 
@@ -33,7 +36,7 @@
 			<div>
 				<!-- 게시물 제목 -->
 				<div class="d-flex align-items-center justify-content-center">
-					<div class="text-center col-1">제목</div> <input type="text" placeholder="제목을 입력해주세요." class="form-control col-11" id="titleInput">
+					<div class="text-center col-1 create-font">제목</div> <input type="text" placeholder="제목을 입력해주세요." class="form-control col-11" id="titleInput">
 				</div>
 				<!-- /게시물 제목 -->
 				
@@ -41,14 +44,14 @@
 				<div class="mt-3 d-flex align-items-center justify-content-center">
 					<!-- 아이 이름 -->
 					<div class="col-4 d-flex align-items-center justify-content-center">
-						<div class="col-3">이름</div> <input type="text" placeholder="아이의 이름을 입력해주세요." class="form-control col-9" id="nameInput">
+						<div class="col-3 create-font">이름</div> <input type="text" placeholder="아이의 이름을 입력해주세요." class="form-control col-9" id="nameInput">
 					</div>
 					<!-- /아이 이름 -->
 					
 					<!-- 아이 분류 -->
 					<div class="d-flex col-4 align-items-center justify-content-center">
-						<div class="ml-2 col-3">분류</div>
-						<select class="form-control col-8" id="categorySelect">
+						<div class="ml-2 col-3 create-font">분류</div>
+						<select class="form-control col-8 create-font" id="categorySelect">
 							<option value="nonselect">--분류 선택--</option>
 							<option value="dog">강아지</option>
 							<option value="cat">고양이</option>
@@ -59,9 +62,9 @@
 					
 					<!-- 아이 상태 -->
 					<div class="d-flex col-4 align-items-center justify-content-center">
-						<div class="ml-2 col-3">상태</div>
+						<div class="ml-2 col-3 create-font">상태</div>
 						
-						<select class="form-control col-8" id="stateSelect">
+						<select class="form-control col-8  create-font" id="stateSelect">
 							<option value="nonselect">--상태 선택--</option>
 							<option value="입양 대기">입양 대기</option>
 							<option value="입양 완료">입양 완료</option>
@@ -76,14 +79,14 @@
 				<div class="mt-3">
 					<div class="d-flex align-items-center">
 					
-						<div class="ml-4">아이의 사진 업로드</div>
+						<div class="ml-4 create-font">아이의 사진 업로드</div>
 						
 						<div class="pb-2 ml-4">
 						<a href="#" id="imageIcon"> <i class="bi bi-card-image text-dark"></i> </a>
 						<input type="file" id="fileInput" class="d-none" name="uploadFile" multiple accept=".jpg, .png">
 						</div>
 						
-						<div class="text-danger ml-4 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
+						<div class="ml-4 file-warning">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
 						
 					</div>
 					
@@ -98,8 +101,8 @@
 				<!-- /사진 업로드 -->
 				
 				<!-- 게시물 내용 -->
-				<div class="mt-3 mb-5 ml-4 pl-2">
-					<div>아이를 소개해 주세요.</div>
+				<div class="mt-3 mb-5 ml-3 pl-2">
+					<div class="create-font">아이를 소개해 주세요.</div>
 					<textarea class="form-control mt-3" rows="10" cols="50" placeholder="아이를 소개해주세요." id="introduce-textbox"></textarea>
 				</div>
 				<!-- /게시물 내용 -->
@@ -107,8 +110,8 @@
 			</div>
 			<!-- /게시물 입력창 -->
 			<div class="d-flex justify-content-between align-items-center p-3">
-				<a href="/post/list/view?category=dog" class="btn btn-secondary">목록으로</a>
-				<button type="button" class="btn btn-primary" id="createBtn" data-post-id="${post.id }">등록하기</button>
+				<a href="/post/list/view?category=dog" class="btn listbtn-font">목록으로</a>
+				<button type="button" class="btn createbtn-font" id="createBtn" data-post-id="${post.id }">등록하기</button>
 			</div>
 		</section>
 		

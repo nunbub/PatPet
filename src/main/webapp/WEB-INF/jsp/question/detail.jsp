@@ -15,6 +15,9 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 
@@ -28,36 +31,36 @@
 		
 			<div class="question-detail m-4">${questionDetail.question.title }</div>
 			
-			<div class="d-flex align-items-center">
-				<div class="mr-4 ml-3 question-info">아이 이름 : </div>
+			<div class="d-flex align-items-center question-font">
+				<div class="mr-4 ml-3">아이 이름 : </div>
 				<div>${questionDetail.post.name }</div>
 			</div>
 			
 			<div class="my-4 ml-3">
-				<div class="question-detail mb-4">Q.</div>
-				<div class="question-box">${questionDetail.question.content }</div>
+				<div class="question-logo mb-4">Q.</div>
+				<div class="question-font">${questionDetail.question.content }</div>
 			</div>
 			
 			<div class="my-4 ml-3">
-				<div class="question-detail mb-4">A.</div>
+				<div class="question-logo mb-4">A.</div>
 				
 					<!-- 작성된 답변이 없을 경우 -->
 					<c:if test="${questionDetail.question.isAnswer == 0 }">
-					<div class="non-answer">아직 작성된 답변이 없습니다.</div>
+					<div class="question-font">아직 작성된 답변이 없습니다.</div>
 					</c:if>
 					
 					<!-- 작성된 답변이 있을 경우 -->
 					<c:if test="${questionDetail.question.isAnswer == 1 }">
-					<div class="question-box">${questionDetail.answer.content }</div>
+					<div class="question-font">${questionDetail.answer.content }</div>
 					</c:if>
 			</div>
 			
 			<!-- 버튼들 -->
 			<div class="d-flex justify-content-between align-items-center my-5">
-				<a href="/question/list/view?loginId=${userId }" class="btn btn-secondary">목록으로</a>
+				<a href="/question/list/view?loginId=${userId }" class="btn listbtn-font">목록으로</a>
 				<!-- 문의를 받은 게시물의 사용자 에게만 답변하기 버튼 보이기 -->
 				<c:if test="${questionDetail.post.userId eq userId && questionDetail.question.isAnswer == 0 }">
-				<a href="/question/answer/view?questionId=${questionDetail.question.id }" class="btn btn-info">답변하기</a>
+				<a href="/question/answer/view?questionId=${questionDetail.question.id }" class="btn createbtn-font">답변하기</a>
 				</c:if>
 			</div>
 			<!-- /버튼들 -->

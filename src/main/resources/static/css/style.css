@@ -8,35 +8,27 @@
 }
 
 .nav-font {
-	font-family: 'Gaegu', cursive;
+	font-family: 'Sunflower', sans-serif;
 	font-size:24px;
 	color:black;
 }
 
-/* /폰트 */
+.detail-nav {
+	font-family: 'Sunflower', sans-serif;
+	font-size:20px;
+	color:black;
+}
 
-.main-animal {
+.main-new {
+	font-family: 'Caveat', cursive;
+	font-size:35px;
 	background:#eeeeee;
-	font-size:30px;
 }
 
-.main-review {
-	background:#eeeeee;
-	font-size:30px;
-}
 
-hr {
-	margin:0;
-	padding:0;
-}
-
-.main-menu {
-	font-size:21px;		
-}
-
-.mainPostTitle {
-	font-size:23px;
-	
+.mainpost-title {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:25px;
 	margin:5px;
 	display:block;
 	width:500px;
@@ -48,14 +40,232 @@ hr {
 }
 
 .null-post {
+	font-family: 'Hahmlet', serif;
 	font-size:30px;
 	font-weight:bold;
 	color:#c0c0c0;
 	height:200px;
 }
 
+.main-writer {
+	font-family: 'Gowun Batang', serif;
+	color:#666666;
+}
+
+.footer-font {
+	font-family: 'Nanum Myeongjo', serif;
+	font-size:12px;
+	color:#999999;
+}
+
+.patpet {
+	font-family: 'Do Hyeon', sans-serif;
+	font-size:40px;
+}
+
+.patpet-consisting {
+	font-family: 'Xanh Mono', monospace;
+	font-size:15px;
+	color:#666666;
+}
+
+.introduce-letter {
+	font-family: 'Gowun Batang', serif;
+	font-size:21px;
+}
+
+.introduce {
+	font-family: 'Poppins', sans-serif;
+	font-size:33px;
+}
+
+.intent {
+	font-family: 'Hahmlet', serif;
+	font-size:26px;
+	font-weight:bold;
+	text-decoration-line:underline;
+	text-underline-offset :10px;
+ 	text-decoration-color:red;
+}
+
+.list-title {
+	font-family: 'Sunflower', sans-serif;
+	background:#eeeeee;
+	font-size:25px;
+	padding:10px 0 0 0;
+}
+
+.famous-saying {
+	font-family: 'Nanum Pen Script', cursive;
+	font-size:19px;
+	color:#999999;
+}
+
+.post-title {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:22px;
+	margin:5px;
+	display:block;
+	width:250px;
+	height:40px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.state {
+	font-family: 'Gowun Dodum', sans-serif;
+	background:#eeeeee;
+	width:200px;
+	color:black;
+}
+
+.post-date {
+	font-family: 'Montserrat', sans-serif;
+	font-size:17px;
+	color:#999999;
+}
+
+.create-post {
+	font-family: 'Hahmlet', serif;
+	font-size:37px;
+}
+
+.create-font {
+	font-family: 'Hahmlet', serif;
+}
+
+.file-warning {
+	font-family: 'Gowun Batang', serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#ff0000;
+}
+
+.listbtn-font {
+	font-family: 'Hahmlet', serif;
+	background-color:#d3d3d3;
+	color:black;
+}
+
+.createbtn-font {
+	font-family: 'Hahmlet', serif;
+	background-color:#4169E1;
+	color:white;
+}
+
+.detail-title {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:37px;
+}
+
+.interest-btn {
+	font-family: 'Dongle', sans-serif;
+	font-size:25px;
+}
+
+.post-info {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:25px;
+}
+
+.detail-content {
+	font-family: 'Gowun Dodum', sans-serif;
+	border:1px solid #eeeeee;
+	width:600px;
+	height:346.5px;
+}
+
+.deletebtn-font {
+	font-family: 'Hahmlet', serif;
+	background-color:#DC143C;
+	color:white;
+}
+
+
+.updatebtn-font {
+	font-family: 'Hahmlet', serif;
+	background-color:#32CD32;
+	color:white;
+}
+
+.questionbtn-font {
+	font-family: 'Hahmlet', serif;
+	background-color:#FFD700;
+	color:white;
+}
+
+.review-main {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:47px;
+	font-weight:bold;
+}
+
+.review-writing {
+	font-family: 'Caveat', cursive;
+	font-size:23px;
+	color:#999999;
+}
+
+.review-title {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:23px;
+	display:block;
+	width:200px;
+	height:40px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.question-detail {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:40px;
+}
+
+.question-font {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:25px;
+}
+
+.question-logo {
+	font-family: 'Lobster', cursive;
+	font-size:36px;
+}
+
+.sign-font {
+	font-family: 'Fira Sans', sans-serif;
+	font-size:45px;
+}
+
+.sign-link {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:15px;
+}
+
+.sign-main {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-size:12px;
+	color:#999999;
+}
+
+/* /폰트 */
+
+
+
+.create-logo {
+	font-size:40px;
+	color:black;
+}
+
+
+hr {
+	margin:0;
+	padding:0;
+}
+
 .nav-link {
-	width:163.81px;
+	width:180px;
 }
 
 .nav li:hover > a{
@@ -68,7 +278,7 @@ hr {
 	margin:0;
 	position:absolute;
 	top:49px;
-	width:164px;
+	width:180px;
 	text-align:center;
 	font-size:15px;
 	background-color:#eeeeee;
@@ -90,43 +300,12 @@ hr {
 
 
 
-.dog-title {
-	background:#eeeeee;
-}
-
-.cat-title {
-	background:#eeeeee;
-}
-
-.patpet {
-	font-size:40px;
-	font-weight:bold;
-}
-
-.introduce {
-	font-size:30px;
-}
-
-.intent {
-	font-size:23px;
-	font-weight:bold;
-}
-
-.create-post {
-	font-size:37px;
-	font-weight:bold;
-}
-
 .bi-card-image {
 	font-size:25px;
 }
 
-.state {
-	background:#eeeeee;
-	width:200px;
-}
 
-.post-list {
+.flex-wrap {
 	flex-wrap:wrap;
 }
 
@@ -135,41 +314,6 @@ hr {
 	margin:30px 35px 30px 35px;
 }
 
-.create-btn {
-	font-size:40px;
-	color:black;
-}
-
-.post-title {
-	font-size:22px;
-	margin:5px;
-	display:block;
-	width:250px;
-	height:40px;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	white-space:nowrap;
-}
-
-.detail-name {
-	font-size:25px;
-}
-
-.detail-content {
-	border:1px solid #eeeeee;
-	width:600px;
-	height:346.5px;
-}
-
-#create-review {
-	font-size:40px;
-	font-weight:bold;
-}
-
-.review-letter {
-	font-size:23px;
-	font-weight:bold;
-}
 
 .review-box {
 	margin:30px 35px 30px 35px;
@@ -179,61 +323,11 @@ hr {
 	font-size:40px;
 }
 
-.review-main {
-	font-size:47px;
-	font-weight:bold;
-}
 
 .review-writer {
 	font-size:40px;
 }
 
-.review-title {
-	font-size:40px;
-	font-weight:bold;
-}
-
-.review-info {
-	font-size:22px;
-	color:#808080;
-}
-
-.review-content {
-	border:1px solid #eeeeee;
-	width:550px;
-}
-
-.update-style {
-	font-size:23px;
-	font-weight:bold;
-}
-
-.question-title {
-	font-size:45px;
-	font-weight:bold;
-}
-
-.question-info {
-	font-size:23px;
-	font-weight:bold;
-}	
-
-.question-detail {
-	font-size:37px;
-	font-weight:bold;
-}
-
-.question-box {
-	font-size:20px;
-	height:150px;
-}
-
-.non-answer {
-	font-size:30px;
-	font-weight:bold;
-	color:#808080;
-	height:150px;
-}
 
 #image-preview {
 	width:150px;

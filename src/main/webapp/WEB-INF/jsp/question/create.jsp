@@ -16,6 +16,9 @@
   	
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	
+  	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+  	
 </head>
 <body>
 
@@ -26,23 +29,23 @@
 		<c:import url="/WEB-INF/jsp/include/nav.jsp" />
 		
 		<section>
-			<div class="question-title mt-3">문의 하기</div>
+			<div class="review-main mt-3">문의 하기</div>
 			<!-- 문의 하기 제목 -->
 			<div class="d-flex align-items-center mt-4">
-				<div class="question-info col-1 my-4">제목</div>
+				<div class="create-font col-1 my-4">제목</div>
 				<input type="text" class="form-control" id="titleInput">
 			</div>
 			<!-- /문의 하기 제목 -->
 			
 			<!-- 문의 하기 버튼을 누른 게시물의 정보 -->
 			<div class="d-flex align-items-center">
-				<div class="question-info my-3 ml-2 mr-3">아이 이름 : </div>
-				<div>${questionDetail.post.name }</div>
+				<div class="create-font my-3 ml-2 mr-3">아이 이름 : </div>
+				<div class="create-font">${questionDetail.post.name }</div>
 			</div>
 			
 			<div class="d-flex align-items-center">
-				<div class="question-info my-3 ml-2 mr-3">분류 : </div>
-				<div>
+				<div class="create-font my-3 ml-2 mr-3">분류 : </div>
+				<div class="create-font">
 					<c:if test="${questionDetail.post.category == 'dog' }">
 						강아지
 					</c:if>
@@ -58,16 +61,16 @@
 			
 			<!-- 문의 내용 -->
 			<div class="mb-5">
-				<div class="question-info my-3 ml-2">문의 내용</div>
+				<div class="create-font my-3 ml-2">문의 내용</div>
 				<textarea class="form-control mt-4" rows="13" id="contentInput"></textarea>
 			</div>
 			<!-- /문의 내용 -->
 			
 			<!-- 버튼들 -->
 			<div class="mb-4 d-flex justify-content-between align-items-center">
-				<a href="/post/detail/view?id=${questionDetail.post.id }" class="btn btn-secondary">목록으로</a>
+				<a href="/post/detail/view?id=${questionDetail.post.id }" class="btn listbtn-font">목록으로</a>
 				
-				<button type="button" id="createBtn" class="btn btn-primary" 
+				<button type="button" id="createBtn" class="btn createbtn-font" 
 				data-post-id="${questionDetail.post.id }" data-login-id="${userId }" 
 				data-postuser-id="${questionDetail.post.userId }">
 				등록하기</button>

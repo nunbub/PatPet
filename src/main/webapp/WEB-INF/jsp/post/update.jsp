@@ -17,6 +17,8 @@
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
+	<c:import url="/WEB-INF/jsp/include/font.jsp" />
+
 </head>
 <body>
 	
@@ -35,7 +37,7 @@
 			<div>
 				<!-- 게시물 제목 -->
 				<div class="d-flex align-items-center justify-content-center">
-					<div class="text-center col-1">제목</div> <input value="${detailPost.post.title }" type="text" class="form-control col-11" id="titleInput">
+					<div class="text-center col-1 create-font">제목</div> <input value="${detailPost.post.title }" type="text" class="form-control col-11" id="titleInput">
 				</div>
 				<!-- /게시물 제목 -->
 				
@@ -43,14 +45,14 @@
 				<div class="mt-3 d-flex align-items-center justify-content-center">
 					<!-- 아이 이름 -->
 					<div class="col-4 d-flex align-items-center justify-content-center">
-						<div class="col-3">이름</div> <input type="text" value="${detailPost.post.name }"class="form-control col-9" id="nameInput">
+						<div class="col-3 create-font">이름</div> <input type="text" value="${detailPost.post.name }"class="form-control col-9" id="nameInput">
 					</div>
 					<!-- /아이 이름 -->
 					
 					<!-- 아이 분류 -->
 					<div class="d-flex col-4 align-items-center justify-content-center">
-						<div class="ml-2 col-3">분류</div>
-						<select class="form-control col-8" id="categorySelect">
+						<div class="ml-2 col-3 create-font">분류</div>
+						<select class="form-control col-8 create-font" id="categorySelect">
 							<option value="nonselect">--분류 선택--</option>
 							<option value="dog" 
 							<c:if test="${detailPost.post.category == 'dog'}"> selected="selected"</c:if>
@@ -72,9 +74,9 @@
 					
 					<!-- 아이 상태 -->
 					<div class="d-flex col-4 align-items-center justify-content-center">
-						<div class="ml-2 col-3">상태</div>
+						<div class="ml-2 col-3 create-font">상태</div>
 						
-						<select class="form-control col-8" id="stateSelect">
+						<select class="form-control col-8 create-font" id="stateSelect">
 							<option value="nonselect">--상태 선택--</option>
 							
 							<option value="입양 대기" 
@@ -96,7 +98,7 @@
 				
 				<!-- 게시물 내용 -->
 				<div class="mt-3 mb-5 ml-4 pl-2">
-					<div>아이를 소개해 주세요.</div>
+					<div class="create-font">아이를 소개해 주세요.</div>
 					<textarea class="form-control mt-3" rows="10" cols="50" id="introduce-textbox">${detailPost.post.content }</textarea>
 				</div>
 				<!-- /게시물 내용 -->
@@ -104,8 +106,8 @@
 			</div>
 			<!-- /게시물 입력창 -->
 			<div class="d-flex justify-content-between align-items-center p-3">
-				<a href="/post/list/view?category=${detailPost.post.category }" class="btn btn-secondary">목록으로</a>
-				<button type="button" class="btn btn-success" id="updateBtn" data-post-id="${detailPost.post.id }">수정하기</button>
+				<a href="/post/list/view?category=${detailPost.post.category }" class="btn listbtn-font">목록으로</a>
+				<button type="button" class="btn updatebtn-font" id="updateBtn" data-post-id="${detailPost.post.id }">수정하기</button>
 			</div>
 		</section>
 		
