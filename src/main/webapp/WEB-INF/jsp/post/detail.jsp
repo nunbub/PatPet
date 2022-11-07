@@ -108,7 +108,7 @@
 				currentImageIndex = 0;
 			}
 			
-		}, 5000);
+		}, 3500);
 		
 		
 		

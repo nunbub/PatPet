@@ -89,7 +89,7 @@
 				
 			}
 			
-		}, 5000);
+		}, 3500);
 		
 		$("#deleteBtn").on("click", function() {
 			

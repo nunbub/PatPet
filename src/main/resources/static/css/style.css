@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+/* 폰트 */
+
+#pageTitle {
+	font-family: 'Dancing Script', cursive;
+	font-size:55px;
+}
+
+.nav-font {
+	font-family: 'Poor Story', cursive;
+	font-size:20px;
+	color:black;
+}
+
+/* /폰트 */
+
 .main-animal {
 	background:#eeeeee;
 	font-size:30px;

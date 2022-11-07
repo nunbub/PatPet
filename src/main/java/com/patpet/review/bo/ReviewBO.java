@@ -82,7 +82,7 @@ public class ReviewBO {
 	public ReviewDetail getReview(int id, int loginUserId) {
 		Review review = reviewDAO.selectReview(id);
 		
-		User reviewUser = userBO.getUserById(loginUserId);
+		User reviewUser = userBO.getUserById(review.getUserId());
 		
 		List<File> files = fileBO.getReviewList(id);
 		

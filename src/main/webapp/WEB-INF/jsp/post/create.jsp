@@ -73,20 +73,26 @@
 				<!-- /이름, 분류, 상태 -->
 				
 				<!-- 사진 업로드 -->
-				<div class="d-flex align-items-center mt-3">
-				
-					<div class="ml-4">아이의 사진 업로드</div>
+				<div class="mt-3">
+					<div class="d-flex align-items-center">
 					
-					<div class="pb-2 ml-4">
-					<a href="#" id="imageIcon"> <i class="bi bi-card-image text-dark"></i> </a>
-					<input type="file" id="fileInput" class="d-none" name="uploadFile" multiple accept="image/*" onchange="setPreview(event);">
+						<div class="ml-4">아이의 사진 업로드</div>
+						
+						<div class="pb-2 ml-4">
+						<a href="#" id="imageIcon"> <i class="bi bi-card-image text-dark"></i> </a>
+						<input type="file" id="fileInput" class="d-none" name="uploadFile" multiple accept=".jpg, .png">
+						</div>
+						
+						<div class="text-danger ml-4 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
+						
 					</div>
 					
-					<div class="text-danger ml-4 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
-					
+					<div id="image-preview" class="ml-5 d-none align-items-center">
+						
+						
+					</div>
 				</div>
 				
-				<div class="ml-4 my-2" id="image-preivew"></div>
 				
 				
 				<!-- /사진 업로드 -->
@@ -111,20 +117,43 @@
 	</div>
 
 	<script>
-	function setPreview(event) {
-		alert();
-		for(var image of event.target.files){
-			var reader = new FileReader();
+	
+	$("#fileInput").on("change", function() {
+		
+		let fileTag = $("input[name=uploadFile]")[0];
+		let divTag = $("#image-preview");
+		divTag.html("");
+		
+		divTag.addClass("d-flex");
+		divTag.removeClass("d-none");
+		
+		if(fileTag.files.length > 0 ) {
 			
-			reader.onload = function(event) {
-				var img = document.createElement("img");
-				img.setAttribute("src", event.target.result);
-				$("#image-preview").append(img);
-			};
-			console.log(image);
-			reader.readAsDataURL(image);
-		}
-	}
+			if(fileTag.files.length > 5) {
+				alert("사진은 5개까지 등록이 가능합니다.");
+				return ;
+			}
+			
+			for(let i = 0; i < fileTag.files.length; i++){
+				let reader = new FileReader();
+				reader.onload = function(data) {
+					let imgTag = document.createElement("img");
+					
+					imgTag.setAttribute("src", data.target.result);
+					imgTag.setAttribute("width", "150");
+					imgTag.setAttribute("height", "150");
+					imgTag.setAttribute("class", "ml-2 mr-2")
+					
+					divTag.append(imgTag);
+				}
+				reader.readAsDataURL(fileTag.files[i]);
+			}
+			
+		}	
+		
+	});
+	
+	
 	$(document).ready(function() {
 		
 		
@@ -213,7 +242,11 @@
 		
 		$("#imageIcon").on("click", function() {
 			$("#fileInput").click();
+			
+			
 		});
+		
+		
 		
 		
 	});

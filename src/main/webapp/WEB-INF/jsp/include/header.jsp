@@ -5,7 +5,7 @@
 		<header class="d-flex justify-content-between">
 			<div class="d-flex pt-2">
 				<div class="logo-image"><image src="/static/image/Patpet-logo-image.jpg" width="60"></div>
-				<div class="page-name d-flex justify-content-center align-items-center ml-2"><h1><a href="/post/main/view" class="text-dark">Pat, Pet</a></h1></div>
+				<div class="page-name d-flex justify-content-center align-items-center ml-2"><a href="/post/main/view" class="text-dark" id="pageTitle">Pat, Pet</a></div>
 			</div>
 			
 			<c:choose>
@@ -16,7 +16,7 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-					<div class="mt-4">
+					<div class="pt-5">
 						<a href="/user/signin/view" class="mr-3 text-dark">로그인</a>
 						<a href="/user/signup/view" class="text-dark">회원가입</a> 
 					</div>
