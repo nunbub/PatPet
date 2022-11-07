@@ -34,12 +34,18 @@
 			<!-- /이후 이야기 게시물 제목 -->
 			
 			<!-- 이후 이야기 이미지 파일 -->
-			<div class="d-flex align-items-center ml-2 mt-4">
-				<div class="mr-3 mt-2 review-letter">아이의 사진</div>
-				<a href="#" id="imageIcon"><i class="bi bi-card-image text-dark fileIcon"></i></a>
-				<input type="file" id="fileInput" class="d-none" name="uploadFile" multiple>
+			<div class=" ml-2 mt-4">
+				<div class="d-flex align-items-center">
+					<div class="mr-3 mt-2 review-letter">아이의 사진</div>
+					<a href="#" id="imageIcon"><i class="bi bi-card-image text-dark fileIcon"></i></a>
+					<input type="file" id="fileInput" class="d-none" name="uploadFile" multiple accept=".jpg, .png">
+					
+					<div class="text-danger ml-4 mt-2 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
+				</div>
 				
-				<div class="text-danger ml-4 mt-2 small">※ 사진은 최대 5개까지 등록이 가능합니다.</div>
+				<div id="image-preview" class="ml-5 d-none align-items-center">
+							
+				</div>
 			</div>
 			<!-- /이후 이야기 이미지 파일 -->
 			
@@ -66,74 +72,115 @@
 	</div>
 	
 	<script>
-		$(document).ready(function() {
+	
+	$("#fileInput").on("change", function() {
+		
+		let fileTag = $("input[name=uploadFile]")[0];
+		let divTag = $("#image-preview");
+		divTag.html("");
+		
+		divTag.addClass("d-flex");
+		divTag.removeClass("d-none");
+		
+		if(fileTag.files.length > 0 ) {
 			
-			$("#createBtn").on("click", function() {
+			if(fileTag.files.length > 5) {
+				alert("사진은 5개까지 등록이 가능합니다.");
 				
-				let title = $("#titleInput").val();
-				let content = $("#contentInput").val();
+				divTag.removeClass("d-flex");
+				divTag.addClass("d-none");
 				
-				var formData = new FormData();
-				var inputFile = $("input[name='uploadFile']")
-				var files = inputFile[0].files;
-				
-				for(var i = 0; i < files.length; i++) {
-					formData.append("file", files[i]);
+				return ;
+			}
+			
+			for(let i = 0; i < fileTag.files.length; i++){
+				let reader = new FileReader();
+				reader.onload = function(data) {
+					let imgTag = document.createElement("img");
 					
-					if(files.length > 5) {
-						alert("사진은 최대 5개까지 선택 가능합니다.");
-						return ;
-					}
+					imgTag.setAttribute("src", data.target.result);
+					imgTag.setAttribute("width", "150");
+					imgTag.setAttribute("height", "150");
+					imgTag.setAttribute("class", "ml-2 mr-2")
+					
+					divTag.append(imgTag);
 				}
-				
-				if(title == "") {
-					alert("제목을 입력해주세요.");
-					return ;
-				}
-				
-				if(content == "") {
-					alert("내용을 입력해주세요.");
-					return ;
-				}
-				
-				if($("#fileInput")[0].files.length == 0) {
-					alert("아이의 사진을 업로드해주세요.");
-					return ;
-				}
-				
-				
-				formData.append("title", title);
-				formData.append("content", content);
-				
-				
-				$.ajax({
-					type:"post"
-					, url:"/review/create"
-					, data:formData
-					, enctype:"multipart/form-data"
-					, processData:false
-					, contentType:false
-					, success:function(data) {
-						
-						if(data.result == "success") {
-							location.href="/review/main/view";
-						} else {
-							alert("업로드 실패");
-						}
-						
-					}
-					, error:function() {
-						alert("업로드 에러");
-					}
-				});
-				
-			});
+				reader.readAsDataURL(fileTag.files[i]);
+			}
 			
-			$("#imageIcon").on("click", function() {
-				$("#fileInput").click();
+		}	
+		
+	});
+	
+	
+	$(document).ready(function() {
+		
+		$("#createBtn").on("click", function() {
+			
+			let title = $("#titleInput").val();
+			let content = $("#contentInput").val();
+			
+			var formData = new FormData();
+			var inputFile = $("input[name='uploadFile']")
+			var files = inputFile[0].files;
+			
+			for(var i = 0; i < files.length; i++) {
+				formData.append("file", files[i]);
+				
+				if(files.length > 5) {
+					alert("사진은 최대 5개까지 선택 가능합니다.");
+					return ;
+				}
+			}
+			
+			if(title == "") {
+				alert("제목을 입력해주세요.");
+				return ;
+			}
+			
+			if(content == "") {
+				alert("내용을 입력해주세요.");
+				return ;
+			}
+			
+			if($("#fileInput")[0].files.length == 0) {
+				alert("아이의 사진을 업로드해주세요.");
+				return ;
+			}
+			
+			
+			formData.append("title", title);
+			formData.append("content", content);
+			
+			
+			$.ajax({
+				type:"post"
+				, url:"/review/create"
+				, data:formData
+				, enctype:"multipart/form-data"
+				, processData:false
+				, contentType:false
+				, success:function(data) {
+					
+					if(data.result == "success") {
+						location.href="/review/main/view";
+					} else {
+						alert("업로드 실패");
+					}
+					
+				}
+				, error:function() {
+					alert("업로드 에러");
+				}
 			});
 			
 		});
+		
+		$("#imageIcon").on("click", function() {
+			$("#fileInput").click();
+		});
+		
+	});
 	</script>
 </body>
 </html>

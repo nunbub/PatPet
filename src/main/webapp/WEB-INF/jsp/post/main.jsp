@@ -16,13 +16,19 @@
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 	
 	<!-- 구글 웹 폰트 -->
+	<!-- Pat, Pet -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+	<!-- / Pat, Pet -->
 	
+	<!-- 메뉴 -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300&display=swap" rel="stylesheet">
+	<!-- / 메뉴 -->
+	
+	
 	<!-- / 구글 웹 폰트 -->
 	
 </head>
