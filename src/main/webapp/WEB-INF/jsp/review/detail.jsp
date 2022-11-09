@@ -80,7 +80,7 @@
 			files.push($(fileImage[i]).val());
 		}
 		
-		var currentImageIndex = 0;
+		var currentImageIndex = 1;
 		
 		setInterval(function() {
 			

@@ -53,7 +53,7 @@
 		WHERE
 			`postId` = #{postId}
 		ORDER BY 
-			`id` DESC	
+			`id`	
 		LIMIT 1;			
 	</select>
 	
@@ -102,7 +102,7 @@
 		WHERE
 			`reviewId` = #{reviewId}
 		ORDER BY 
-			`id` DESC
+			`id` 
 		LIMIT 1;
 	</select>
 	

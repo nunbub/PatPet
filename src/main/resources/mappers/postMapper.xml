@@ -61,7 +61,7 @@
 			, `updatedAt`
 		FROM
 			`post`				
-		ORDER BY `id` DESC
+		ORDER BY `id`
 		LIMIT 1;
 	</select>
 	
