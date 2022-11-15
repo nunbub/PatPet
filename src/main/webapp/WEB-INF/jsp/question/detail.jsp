@@ -57,7 +57,7 @@
 			
 			<!-- 버튼들 -->
 			<div class="d-flex justify-content-between align-items-center my-5">
-				<a href="/question/list/view?loginId=${userId }" class="btn listbtn-font">목록으로</a>
+				<a href="/question/list/view?loginId=${userId }&receive=F" class="btn listbtn-font">목록으로</a>
 				<!-- 문의를 받은 게시물의 사용자 에게만 답변하기 버튼 보이기 -->
 				<c:if test="${questionDetail.post.userId eq userId && questionDetail.question.isAnswer == 0 }">
 				<a href="/question/answer/view?questionId=${questionDetail.question.id }" class="btn createbtn-font">답변하기</a>
