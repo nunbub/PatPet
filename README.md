@@ -62,7 +62,7 @@
     <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/user">com.patpet.user.*</a>
     
     * view : 
-    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/user">/webapp/WER-INF/jsp/user/* </a>
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/user/signin.jsp">/webapp/WER-INF/jsp/user/singin.jsp </a>
     
   * 회원가입
     
@@ -70,7 +70,7 @@
     <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/user">com.patpet.user.*</a>
     
     * view : 
-    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/user">/webapp/WER-INF/jsp/user/* </a>
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/user/singup.jsp">/webapp/WER-INF/jsp/user/singup.jsp </a>
     
   * 메인 페이지
   
@@ -78,7 +78,7 @@
     <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/post">com.patpet.post.*</a>
     
     * view : 
-    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post">/webapp/WEB-INF/jsp/post/*</a>
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post/main.jsp">/webapp/WEB-INF/jsp/post/main.jsp</a>
     
   * 게시글 리스트 페이지
   
@@ -86,7 +86,7 @@
     <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/post">com.patpet.post.*</a>
     
     * view : 
-    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post">/webapp/WEB-INF/jsp/post/*</a>
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post/list.jsp">/webapp/WEB-INF/jsp/post/list.jsp</a>
     
   * 게시글 작성 페이지
   
@@ -94,7 +94,7 @@
     <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/post">com.patpet.post.*</a>
     
     * view : 
-    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post">/webapp/WEB-INF/jsp/post/*</a>
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post/create.jsp">/webapp/WEB-INF/jsp/post/create.jsp</a>
     
   * 관심 버튼
   
@@ -110,7 +110,7 @@
     <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/review">com.patpet.review.*</a>
     
     * view : 
-    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/review">/webapp/WEB-INF/jsp/review/*</a>
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/review/main.jsp">/webapp/WEB-INF/jsp/review/main.jsp</a>
     
   * 사용자가 작성한 문의, 사용자가 받은 문의 리스트 페이지
   
@@ -118,7 +118,7 @@
     <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/question">com.patpet.question.*</a>
     
     * view : 
-    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/question">/webapp/WEB-INF/jsp/question/*</a>
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/question/list.jsp">/webapp/WEB-INF/jsp/question/list.jsp</a>
     
   * 문의 답변 작성 페이지
   
@@ -126,7 +126,7 @@
     <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/question/answer">com.patpet.question.answer.*</a>
     
     * view : 
-    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/question">/webapp/WEB-INF/jsp/question/*</a>
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/question/answer.jsp">/webapp/WEB-INF/jsp/question/answer.jsp</a>
   
   </h4>
   
