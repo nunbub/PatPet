@@ -35,7 +35,7 @@
 </div>
 
 <h3>:link: 포트폴리오</h3>
-<h4>포트폴리오</h4>
+<h4><a href="">포트폴리오</h4>
 
 <div>
   <h3>:pencil2: 설계 :pencil2:</h3>
@@ -58,57 +58,75 @@
   
   * 로그인
   
-    * package : com.patpet.user.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/user">com.patpet.user.*</a>
     
-    * view : /webapp/WER-INF/jsp/user/*
+    * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/user">/webapp/WER-INF/jsp/user/* </a>
     
   * 회원가입
     
-    * package : com.patpet.user.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/user">com.patpet.user.*</a>
     
-    * view : /webapp/WEB-INF/jsp/user/*
+    * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/user">/webapp/WER-INF/jsp/user/* </a>
     
   * 메인 페이지
   
-    * package : com.patpet.post.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/post">com.patpet.post.*</a>
     
-    * view : /webapp/WEB-INF/jsp/post/*
+    * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post">/webapp/WEB-INF/jsp/post/*</a>
     
   * 게시글 리스트 페이지
   
-    * package : com.patpet.post.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/post">com.patpet.post.*</a>
     
-    * view : /webapp/WEB-INF/jsp/post/*
+    * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post">/webapp/WEB-INF/jsp/post/*</a>
     
   * 게시글 작성 페이지
   
-    * package : com.patpet.post.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/post">com.patpet.post.*</a>
     
-    * view : /webapp/WEB-INF/jsp/post/*
+    * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post">/webapp/WEB-INF/jsp/post/*</a>
     
   * 관심 버튼
   
-    * package : com.patpet.post.attention.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/post/attention">com.patpet.post.attention.*</a>
     
-    * view : /webapp/WEB-INF/jsp/post/*
+     * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/post">/webapp/WEB-INF/jsp/post/*</a>
     
   * 이후 이야기 리스트 페이지
   
-    * package : com.patpet.review.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/review">com.patpet.review.*</a>
     
-    * view : /webapp/WEB-INF/jsp/review/*
+    * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/review">/webapp/WEB-INF/jsp/review/*</a>
     
   * 사용자가 작성한 문의, 사용자가 받은 문의 리스트 페이지
   
-    * package : com.patpet.question.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/question">com.patpet.question.*</a>
     
-    * view : /webapp/WEB-INF/jsp/question/*
+    * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/question">/webapp/WEB-INF/jsp/question/*</a>
     
   * 문의 답변 작성 페이지
   
-    * package : com.patpet.question.answer.*
+    * package : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/java/com/patpet/question/answer">com.patpet.question.answer.*</a>
     
-    * view : /webapp/WEB-INF/jsp/question/*
+    * view : 
+    <a href="https://github.com/nunbub/PatPet/tree/master/src/main/webapp/WEB-INF/jsp/question">/webapp/WEB-INF/jsp/question/*</a>
   
   </h4>
   
