@@ -35,7 +35,7 @@
 </div>
 
 <h3>:link: 포트폴리오</h3>
-<h4><a href="">포트폴리오</h4>
+<h4><a href="https://github.com/nunbub/PatPet/blob/master/Pat_-Pet-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20(1).pdf">포트폴리오</h4>
 
 <div>
   <h3>:pencil2: 설계 :pencil2:</h3>
