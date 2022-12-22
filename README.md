@@ -132,30 +132,33 @@
   
 </div>
 
-<div>
+<!-- <div>
     <h3>:high_brightness: 기능 구현 영상 :high_brightness:</h3>
     <h4>영상 링크</h4>
-</div>
+</div> -->
 
 <div>
-<h3>:open_file_folder:외부 라이브러리 라이센스:open_file_folder:</h3>
-<h4>
 
-* Tomcat [Apache License 2.0](https://tomcat.apache.org/)
+   <h3>:open_file_folder:외부 라이브러리 라이센스:open_file_folder:</h3>
 
-* Mysql [GPLv2 or proprietary](https://www.mysql.com/)
+   <h4>
 
-* Spring framework [Apache License 2.0](https://spring.io/)
+   * Tomcat [Apache License 2.0](https://tomcat.apache.org/)
 
-* Mybatis [Apache License 2.0](https://mybatis.org/mybatis-3/)
+   * Mysql [GPLv2 or proprietary](https://www.mysql.com/)
 
-* Bootstrap [MIT License](https://getbootstrap.com/)
+   * Spring framework [Apache License 2.0](https://spring.io/)
 
-* jQuery [MIT License](https://jquery.com/)
+   * Mybatis [Apache License 2.0](https://mybatis.org/mybatis-3/)
 
-* 이미지 출처 : [pixabay](https://pixabay.com/ko/)
+   * Bootstrap [MIT License](https://getbootstrap.com/)
 
-</h4>
+   * jQuery [MIT License](https://jquery.com/)
+
+   * 이미지 출처 : [pixabay](https://pixabay.com/ko/)
+
+   </h4>
+
 </div>
 
 <div>
